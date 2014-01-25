@@ -1,3 +1,13 @@
+/*
+ * mathematical_tests.js
+ *
+ * Author: Andrew Butterfield
+ * Date: 18 Jan 2014
+ *
+ * Contains all the tests for mathematical operations
+ *
+ */
+
 // testing atomic
 test("make sure that the interpreter properly returns a numeric atom", function() {
   var i = new Interpreter();
@@ -5,7 +15,7 @@ test("make sure that the interpreter properly returns a numeric atom", function(
   equal(i.runJSON(5), 5);
 });
 
-//testing simple addition
+// testing simple addition
 test("add one number", function() {
   var i = new Interpreter();
   var exp = '{ "+" : [1] }';
