@@ -11,7 +11,6 @@
 function Interpreter() 
 {
   this.objects = {};
-  this.events = {};
   this.methods = {};
 }
 
@@ -23,22 +22,31 @@ Interpreter.prototype.loadObject = function(o)
   // Create object
   var formatted_object = { properties: o["properties"], code: o["code"], events: {}}
 
+  // Add it to the list of objects
+  this.objects[o["id"]] = formatted_object;
 
-  this.objects[o["id"] = formatted_object;
+  // Run the code
+  this.runSuiteWithContext(this.objects[o["id"]].code, o["id"]);
+
 };
 
-Interpreter.prototype.triggerEvent = function(e)
+/*
+ * Triggers an event of type 'event_name' on an object with id 'object_id'
+ * passing the given parameters
+ */
+Interpreter.prototype.triggerEventOnObjectWithParameters = function(event_name, object_id, parameters)
 {
-
+  // add parameters to the object
+  this.runSuiteWithContext(this.objects[object_id].events[event_name], object_id);
 };
 
 
 /*
  * Loads a method into the interpreter
  */
-Interpreter.prototype.loadMethod = function()
+Interpreter.prototype.loadMethod = function(name,func)
 {
-
+  this.methods[name] = func;
 };
 
 /*
@@ -50,47 +58,84 @@ Interpreter.prototype.runJSON = function(exp)
 {
   // Convert json to object
   var o = JSON.parse(exp);
+  var empty = this.emptyObject();
 
-  return this.runCode(o);
+  this.loadObject(empty);
+
+  return this.runCodeWithContext(o,empty.id);
  
 };
 
-Interpreter.prototype.runSuite = function(suites)
+/*
+ * Generates an empty object 
+ * Mostly used for testing
+ */
+Interpreter.prototype.emptyObject = function()
+{
+  return { id: Math.random() * Number.MAX_VALUE + "",
+           properties: {},
+           code: []};
+};
+
+/*
+ * Interprets a series of statements, return the result of the last
+ */
+Interpreter.prototype.runSuiteWithContext = function(suites, context)
 {
   var value = null;
 
   for (var i = 0; i < suites.length; i++)
-    value = this.runCode(suites[i]);
+    value = this.runCodeWithContext(suites[i], context);
 
   return value;
 };
 
-Interpreter.prototype.runCode = function(obj)
+/*
+ * Basically runs the code its given
+ */
+Interpreter.prototype.runCodeWithContext = function(obj, context)
 {
   // Get key of obj
   var key = this.getObjectKey(obj);
 
-
-  // Handle if statement
-  if (key === "if")
+  // Handle code block
+  if (key === "code")
   {
-    if (this.evalExpression(obj[key]["test"]))
-      return this.runSuite(obj[key]["true"]);
+    return this.runSuiteWithContext(obj[key], context);
+  }
+  // Handle on_event
+  else if (key === "on_event")
+  {
+    this.objects[context].events[obj[key]["name"]] = obj[key]["code"]; 
+  }
+  // Handle set
+  else if (key === "set")
+  {
+    // add/update var in context
+    this.objects[context].properties[obj[key][0]] = this.evalExpressionWithContext(obj[key][1]);
+  }
+  // Handle if statement
+  else if (key === "if")
+  {
+    if (this.evalExpressionWithContext(obj[key]["test"], context))
+      return this.runSuiteWithContext(obj[key]["true"], context);
     else if ("false" in obj[key])
-      return this.runSuite(obj[key]["false"]);
+      return this.runSuiteWithContext(obj[key]["false"], context);
     else
       return null;
   }
   // Must be an expression, evaluate it
   else
-    return this.evalExpression(obj);
+  {
+    return this.evalExpressionWithContext(obj, context);
+  }
   
 };
 
 /*
  * Evaluates the object expression and returns the result
  */
-Interpreter.prototype.evalExpression = function(exp)
+Interpreter.prototype.evalExpressionWithContext = function(exp, context)
 {
   // capture result
   var result = null;
@@ -100,11 +145,32 @@ Interpreter.prototype.evalExpression = function(exp)
   {
     return exp;
   }
-  else if ((result = this.evalMathExpression(exp)) !== null)
+
+  // Get key of obj
+  var key = this.getObjectKey(exp);
+
+  if (key === "get")
+  {
+    if (exp["get"] in this.objects[context].properties)
+      return this.objects[context].properties[exp["get"]];
+    else
+      throw new Error("Free variable: " + exp["get"]);
+  }
+  else if (key === "call")
+  {
+    var that = this;
+    var params = "parameters" in exp["call"] ? exp["call"]["parameters"] : [];
+    params = params.map(function(p){return that.evalExpressionWithContext(p,context)});
+    if (exp["call"].method in this.methods)
+      return this.methods[exp["call"].method](params);
+    else
+      throw new Error("Undefined method: " + exp["call"].method);
+  }
+  else if ((result = this.evalMathExpressionWithContext(exp, context)) !== null)
   {
     return result;
   }
-  else if ((result = this.evalBoolExpression(exp)) !== null)
+  else if ((result = this.evalBoolExpressionWithContext(exp, context)) !== null)
   {
     return result
   }
@@ -117,7 +183,7 @@ Interpreter.prototype.evalExpression = function(exp)
  * result; if the expression is not a mathematical one,
  * returns null
  */
-Interpreter.prototype.evalMathExpression = function(exp)
+Interpreter.prototype.evalMathExpressionWithContext = function(exp, context)
 {
   // Get operation type
   var op = this.getObjectKey(exp);
@@ -129,28 +195,28 @@ Interpreter.prototype.evalMathExpression = function(exp)
   {
     // Handle addition
     case "+":
-      var first = this.evalExpression(val.shift());
-      return val.foldl(function(a,b) { return a + that.evalExpression(b); }, first); 
+      var first = this.evalExpressionWithContext(val.shift(), context);
+      return val.foldl(function(a,b) { return a + that.evalExpressionWithContext(b, context); }, first); 
       break;
     // Handle subtraction
     case "-":
-      var first = this.evalExpression(val.shift());
-      return val.foldl(function(a,b) { return a - that.evalExpression(b); }, first);
+      var first = this.evalExpressionWithContext(val.shift(), context);
+      return val.foldl(function(a,b) { return a - that.evalExpressionWithContext(b, context); }, first);
       break;
     // Handle multiplication
     case "*":
-      var first = this.evalExpression(val.shift());
-      return val.foldl(function(a,b) { return a * that.evalExpression(b); }, first);
+      var first = this.evalExpressionWithContext(val.shift(), context);
+      return val.foldl(function(a,b) { return a * that.evalExpressionWithContext(b, context); }, first);
       break;
     // Handle division
     case "/":
-      var first = this.evalExpression(val.shift());
-       return val.foldl(function(a,b) { return a / that.evalExpression(b); }, first);
+      var first = this.evalExpressionWithContext(val.shift(), context);
+       return val.foldl(function(a,b) { return a / that.evalExpressionWithContext(b, context); }, first);
       break;
     // Handle modulus
     case "%":
-      var first = this.evalExpression(val.shift());
-      return val.foldl(function(a,b) { return a % that.evalExpression(b); }, first);
+      var first = this.evalExpressionWithContext(val.shift(), context);
+      return val.foldl(function(a,b) { return a % that.evalExpressionWithContext(b, context); }, first);
       break;
   }
  
@@ -158,7 +224,10 @@ Interpreter.prototype.evalMathExpression = function(exp)
   return null;
 };
 
-Interpreter.prototype.evalBoolExpression = function(exp)
+/*
+ * Interprets the given boolean expression returning its result
+ */
+Interpreter.prototype.evalBoolExpressionWithContext = function(exp, context)
 {
   // Get operation type
   var op = this.getObjectKey(exp);
@@ -170,37 +239,37 @@ Interpreter.prototype.evalBoolExpression = function(exp)
   {
     // handle and
     case "and":
-      var first = this.evalExpression(val.shift());
-      return val.foldl(function(a,b) { return a && that.evalExpression(b); }, first);
+      var first = this.evalExpressionWithContext(val.shift(), context);
+      return val.foldl(function(a,b) { return a && that.evalExpressionWithContext(b, context); }, first);
       break;
     // handle or
     case "or":
-      var first = this.evalExpression(val.shift());
-      return val.foldl(function(a,b) { return a || that.evalExpression(b); }, first);
+      var first = this.evalExpressionWithContext(val.shift(), context);
+      return val.foldl(function(a,b) { return a || that.evalExpressionWithContext(b, context); }, first);
       break;
     // handle ==
     case "==":
-      return this.evalExpression(val[0]) === this.evalExpression(val[1]);
+      return this.evalExpressionWithContext(val[0], context) === this.evalExpressionWithContext(val[1], context);
       break;
     // handle !=
     case "!=":
-      return this.evalExpression(val[0]) !== this.evalExpression(val[1]);
+      return this.evalExpressionWithContext(val[0], context) !== this.evalExpressionWithContext(val[1], context);
       break;
     // handle >
     case ">":
-      return this.evalExpression(val[0]) > this.evalExpression(val[1]);
+      return this.evalExpressionWithContext(val[0], context) > this.evalExpressionWithContext(val[1], context);
       break;
     // handle <
     case "<":
-      return this.evalExpression(val[0]) < this.evalExpression(val[1]);
+      return this.evalExpressionWithContext(val[0], context) < this.evalExpressionWithContext(val[1], context);
       break;
     // handle >=
     case ">=":
-      return this.evalExpression(val[0]) >= this.evalExpression(val[1]);
+      return this.evalExpressionWithContext(val[0], context) >= this.evalExpressionWithContext(val[1], context);
       break;
     // handle <=
     case "<=":
-      return this.evalExpression(val[0]) <= this.evalExpression(val[1]);
+      return this.evalExpressionWithContext(val[0], context) <= this.evalExpressionWithContext(val[1], context);
       break;
   }
 
@@ -226,10 +295,14 @@ Interpreter.prototype.getObjectKey = function(o)
   }
   // If the object had more than one key
   if (count > 1)
+  {
     return null;
+  }
   // Otherwise here is the single key
   else
+  {
     return key;
+  }
 };
 
 
