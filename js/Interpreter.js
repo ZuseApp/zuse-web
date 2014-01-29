@@ -8,10 +8,17 @@
  *  language.
  *
  */
+
+/*
+ * Constructor
+ */
 function Interpreter() 
 {
   this.objects = {};
   this.methods = {};
+  this.properties = {};
+  this.events = {};
+  this.data_store = {};
 }
 
 /*
@@ -19,15 +26,20 @@ function Interpreter()
  */
 Interpreter.prototype.loadObject = function(o)
 {
-  // Create object
-  var formatted_object = { properties: o["properties"], code: o["code"], events: {}}
+  // Add entry in events
+  this.events[o["id"]] = {};
 
-  // Add it to the list of objects
-  this.objects[o["id"]] = formatted_object;
+  // Object to objects
+  this.objects[o["id"]] = o;
+
+  var env = this.addPropertiesToDataStore(o["properties"]);
+
+  var context = new ExecutionContext({ id: o["id"], environment: env});
+
+  this.properties[o["id"]] = context;
 
   // Run the code
-  this.runSuiteWithContext(this.objects[o["id"]].code, o["id"]);
-
+  this.runSuiteWithContext(this.objects[o["id"]].code, context);
 };
 
 /*
@@ -37,9 +49,36 @@ Interpreter.prototype.loadObject = function(o)
 Interpreter.prototype.triggerEventOnObjectWithParameters = function(event_name, object_id, parameters)
 {
   // add parameters to the object
-  this.runSuiteWithContext(this.objects[object_id].events[event_name], object_id);
+  this.runSuiteWithContext(this.events[object_id].code, this.events[object_id].context);
 };
 
+/*
+ * Adds the values of the properties object into the data store
+ * with a unique identifier key. Creates an object where key is 
+ * the key from properties and its value is the identifier of
+ * the value in the store
+ */
+Interpreter.prototype.addPropertiesToDataStore = function(properties)
+{
+  // Create empty environment
+  var environment = {};
+
+  // For each key in properties
+  for (p in properties)
+  {
+    // Generate a unique key
+    var unique_key = String.uuid();
+
+    // add identifier to the environment
+    environment[p] = unique_key;
+
+    // add value to the store
+    this.data_store[unique_key] = properties[p];
+  }
+
+  // Return the environment
+  return environment;
+};
 
 /*
  * Loads a method into the interpreter
@@ -62,7 +101,9 @@ Interpreter.prototype.runJSON = function(exp)
 
   this.loadObject(empty);
 
-  return this.runCodeWithContext(o,empty.id);
+  var env = this.addPropertiesToDataStore(empty.properties);
+  var context = new ExecutionContext({ id: empty.id, environment: env});
+  return this.runCodeWithContext(o,context);
  
 };
 
@@ -72,7 +113,7 @@ Interpreter.prototype.runJSON = function(exp)
  */
 Interpreter.prototype.emptyObject = function()
 {
-  return { id: Math.random() * Number.MAX_VALUE + "",
+  return { id: String.uuid(),
            properties: {},
            code: []};
 };
@@ -106,13 +147,27 @@ Interpreter.prototype.runCodeWithContext = function(obj, context)
   // Handle on_event
   else if (key === "on_event")
   {
-    this.objects[context].events[obj[key]["name"]] = obj[key]["code"]; 
+    this.events[context.id][obj[key]["name"]] = { code: obj[key]["code"], context: context }; 
   }
   // Handle set
   else if (key === "set")
   {
-    // add/update var in context
-    this.objects[context].properties[obj[key][0]] = this.evalExpressionWithContext(obj[key][1]);
+    // evaluate value
+    var new_value = this.evalExpressionWithContext(obj[key][1]);
+
+    // get identifier if any
+    var identifier = context.environment[obj[key][0]];
+
+    // If identifier already exists set new value
+    if (identifier)
+      this.data_store[identifier] = new_value;
+    // Otherwise create new identifier and set value
+    else
+    {
+      identifier = String.uuid();
+      context.environment[obj[key][0]] = identifier;
+      this.data_store[identifier] = new_value;
+    }
   }
   // Handle if statement
   else if (key === "if")
@@ -149,32 +204,45 @@ Interpreter.prototype.evalExpressionWithContext = function(exp, context)
   // Get key of obj
   var key = this.getObjectKey(exp);
 
+  // Handle a get
   if (key === "get")
   {
-    if (exp["get"] in this.objects[context].properties)
-      return this.objects[context].properties[exp["get"]];
+    // If the key is in the environment return it
+    if (exp["get"] in context.environment)
+      return this.data_store[context.environment[exp["get"]]];
+    // Otherwise throw an exception
     else
       throw new Error("Free variable: " + exp["get"]);
   }
+  // Handle method call
   else if (key === "call")
   {
+    // Create reference to this scope
     var that = this;
+
+    // evaluate params if any
     var params = "parameters" in exp["call"] ? exp["call"]["parameters"] : [];
-    params = params.map(function(p){return that.evalExpressionWithContext(p,context)});
+    params = params.map(function(p){return that.evalExpressionWithContext(p, context)});
+
+    // check if the method is defined and call if it is
     if (exp["call"].method in this.methods)
       return this.methods[exp["call"].method](params);
+    // Otherwise throw exception
     else
       throw new Error("Undefined method: " + exp["call"].method);
   }
+  // Check if it is a math expression
   else if ((result = this.evalMathExpressionWithContext(exp, context)) !== null)
   {
     return result;
   }
+  // Check if ti is a boolean expression
   else if ((result = this.evalBoolExpressionWithContext(exp, context)) !== null)
   {
     return result
   }
 
+  // Otherwise return null
   return null;
 };
 

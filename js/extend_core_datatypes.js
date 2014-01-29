@@ -22,6 +22,12 @@ Array.prototype.foldl = function(f,init)
   return init;
 };
 
+/*
+ * Calls f on each item in the array,
+ * returning a new array of the values
+ * that f returned. f must take one parameter 
+ * of the type of object in this array
+ */
 Array.prototype.map = function(f)
 {
   var result = [];
@@ -30,3 +36,14 @@ Array.prototype.map = function(f)
 
   return result;
 };
+
+/*
+ * Simple utility function that generates a uuid
+ */
+String.uuid = function()
+{
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    return v.toString(16);
+});
+}
