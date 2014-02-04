@@ -25,9 +25,18 @@ ExecutionContext.prototype.contextWithNewEnvironment = function ()
 {
   var new_env = {};
 
-  for (k in this.environment)
+  for (var k in this.environment)
     new_env[k] = this.environment[k];
 
   return new ExecutionContext({id: this.id, environment: new_env});
+};
+
+/*
+ * Adds properties to the environment
+ */
+ExecutionContext.prototype.addPropertiesToEnvironment = function(properties)
+{
+  for (var k in properties)
+    this.environment[k] = properties[k];
 };
 

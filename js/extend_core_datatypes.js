@@ -47,3 +47,16 @@ String.uuid = function()
     return v.toString(16);
 });
 }
+
+/*
+ * Creates a shallow copy of obj
+ */
+Object.copy = function (obj)
+{
+  var copy = {};
+
+  for (var k in obj)
+    copy[k] = obj[k];
+
+  return copy;
+};

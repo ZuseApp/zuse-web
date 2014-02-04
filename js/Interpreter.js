@@ -48,8 +48,17 @@ Interpreter.prototype.loadObject = function(o)
  */
 Interpreter.prototype.triggerEventOnObjectWithParameters = function(event_name, object_id, parameters)
 {
-  // add parameters to the object
-  this.runSuiteWithContext(this.events[object_id].code, this.events[object_id].context);
+  // get new context for event
+  var new_context = this.events[object_id][event_name].context.contextWithNewEnvironment();
+  
+  // Add parameters to store
+  var params = this.addPropertiesToDataStore(parameters);
+
+  // Add these to the context
+  new_context.addPropertiesToEnvironment(params);
+
+  // Run the code
+  return this.runSuiteWithContext(this.events[object_id][event_name].code, new_context);
 };
 
 /*
@@ -64,7 +73,7 @@ Interpreter.prototype.addPropertiesToDataStore = function(properties)
   var environment = {};
 
   // For each key in properties
-  for (p in properties)
+  for (var p in properties)
   {
     // Generate a unique key
     var unique_key = String.uuid();
@@ -124,7 +133,7 @@ Interpreter.prototype.emptyObject = function()
 Interpreter.prototype.runSuiteWithContext = function(suites, context)
 {
   var value = null;
-
+  
   for (var i = 0; i < suites.length; i++)
     value = this.runCodeWithContext(suites[i], context);
 
@@ -178,6 +187,11 @@ Interpreter.prototype.runCodeWithContext = function(obj, context)
       return this.runSuiteWithContext(obj[key]["false"], context);
     else
       return null;
+  }
+  // Handle scope
+  else if (key === "scope")
+  {
+    return this.runSuiteWithContext(obj[key], context.contextWithNewEnvironment());
   }
   // Must be an expression, evaluate it
   else
@@ -356,7 +370,7 @@ Interpreter.prototype.getObjectKey = function(o)
   var count = 0;
 
   // Loop through object to get key
-  for (k in o)
+  for (var k in o)
   {
     key = k;
     count++
