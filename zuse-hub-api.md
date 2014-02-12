@@ -2,17 +2,17 @@
 
 Following is an explanation of version 1 (v1) of the RESTful Zuse Hub API.
 
-| Method | Endpoint                  | Authentication |
-| ------ | ------------------------- | -------------- |
-| GET    | /v1/projects              | None           | 
-| GET    | /v1/my_favorites          | Token: user    |
-| POST   | /v1/project               | Token: user    |
-| PUT    | /v1/project/:id           | Token: user    |
-| DELETE | /v1/project/:id           | Token: user    |
-| GET    | /v1/project/:id           | None           |
-| GET    | /v1/project/:id/json      | None           |
-| POST   | /v1/auth                  | None           |
-| POST   | /v1/register              | None           |
+| Method | Endpoint                      | Authentication |
+| ------ | ----------------------------- | -------------- |
+| GET    | /api/v1/projects              | None           | 
+| GET    | /api/v1/my_favorites          | Token: user    |
+| POST   | /api/v1/project               | Token: user    |
+| PUT    | /api/v1/project/:id           | Token: user    |
+| DELETE | /api/v1/project/:id           | Token: user    |
+| GET    | /api/v1/project/:id           | None           |
+| GET    | /api/v1/project/:id/json      | None           |
+| POST   | /api/v1/auth                  | None           |
+| POST   | /api/v1/register              | None           |
 
 ## Endpoint Specifications
 
@@ -21,7 +21,7 @@ Following is an explanation of the url parameters and JSON formatted data that e
 ### Index
 
 ```
-GET /v1/projects
+GET /api/v1/projects
 ```
 
 This endpoint takes any combination of the following url parameters:
@@ -35,7 +35,7 @@ This endpoint takes any combination of the following url parameters:
 ---
 
 ```
-GET /v1/my_favorites
+GET /api/v1/my_favorites
 ```
 
 This endpoint only requires the user's authentication token and returns all projects the user has favorited
@@ -43,7 +43,7 @@ This endpoint only requires the user's authentication token and returns all proj
 ### Create
 
 ```
-POST /v1/project
+POST /api/v1/project
 ```
 
 This endpoint requires the user's authentication token and the following JSON structure:
@@ -68,7 +68,7 @@ In response the server will return:
 ### Read
 
 ```
-GET /v1/project/:id
+GET /api/v1/project/:id
 ```
 
 This endpoint returns the meta data of the project
@@ -76,7 +76,7 @@ This endpoint returns the meta data of the project
 ---
 
 ```
-GET /v1/project/:id/json
+GET /api/v1/project/:id/json
 ```
 
 This endpoint returns the json of the project
@@ -84,7 +84,7 @@ This endpoint returns the json of the project
 ### Update
 
 ```
-PUT /v1/project/:id
+PUT /api/v1/project/:id
 ```
 
 This endpoint requires the user's authentication and the following JSON structure:
