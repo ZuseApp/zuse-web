@@ -15,7 +15,7 @@ document.onreadystatechange = function ()
 
     world.add( Physics.behavior('edge-collision-detection', {
       aabb: bounds,
-      restitution: 0.3
+      restitution: 1.0
     }));
 
     world.add( Physics.behavior('body-impulse-response') );

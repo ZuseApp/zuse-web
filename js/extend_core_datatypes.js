@@ -22,6 +22,11 @@ Array.prototype.foldl = function(f,init)
   return init;
 };
 
+Array.prototype.contains = function(item)
+{
+  return this.indexOf(item) > -1;
+};
+
 /*
  * Calls f on each item in the array,
  * returning a new array of the values

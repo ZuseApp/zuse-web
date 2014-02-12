@@ -29,9 +29,9 @@ function ZuseGame(options)
       that.mouseDown = true;
       that.currentObject = that.bodies[id];
       console.log(that.bodies[id]);
-      that.bodies[id].state.vel.set(0.01,0);
+      that.bodies[id].state.vel.set(1.0,0);
     }
-  });
+  };
 
   $(document).on("mousemove", function (e){
   });

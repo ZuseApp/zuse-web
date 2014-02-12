@@ -1,6 +1,6 @@
 $(function(){
   var canvas = $("#viewport");
 
-  var game = new ZuseGame( { canvas: canvas, code: pong } );
+  game = new ZuseAppEngine( { canvas: canvas, code: pong } );
   
 });

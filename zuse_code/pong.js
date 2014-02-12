@@ -133,9 +133,63 @@ var pong = {
       ]
     }
   },
+  "collision_groups": {
+    "paddle": [
+      "ball"
+    ],
+    "ball": [
+      "paddle"
+    ]
+  },
   "objects": [
     {
+      "id": "score",
+      "properties": {
+        "x": 270,
+        "y": 543,
+        "width": 100,
+        "height": 50,
+        "text": "0",
+        "score": 0
+      },
+      "physics_body": "none",
+      "collision_group": "text",
+      "type": "text",
+      "code": [
+        {
+          "on_event": {
+            "name": "score",
+            "parameters": [],
+            "code": [
+              {
+                "set": [
+                  "score",
+                  {
+                    "+": [
+                      {
+                        "get": "score"
+                      },
+                      1
+                    ]
+                  }
+                ]
+              },
+              {
+                "set": [
+                  "text",
+                  {
+                    "get": "score"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
       "id": "paddle1",
+      "type": "image",
       "physics_body": "rectangle",
       "image": {
         "path": "paddle.png"
@@ -147,6 +201,7 @@ var pong = {
           }
         }
       },
+      "collision_group": "paddle",
       "properties": {
         "x": 104,
         "y": 44,
@@ -157,6 +212,7 @@ var pong = {
     },
     {
       "id": "paddle2",
+      "type": "image",
       "physics_body": "rectangle",
       "image": {
         "path": "paddle.png"
@@ -168,6 +224,7 @@ var pong = {
           }
         }
       },
+      "collision_group": "paddle",
       "properties": {
         "x": 224,
         "y": 434,
@@ -178,6 +235,7 @@ var pong = {
     },
     {
       "id": "ball",
+      "type": "image",
       "physics_body": "circle",
       "image": {
         "path": "grayball.png"
@@ -190,6 +248,7 @@ var pong = {
         "height": 30,
         "bouncy": true
       },
+      "collision_group": "ball",
       "code": [
         {
           "on_event": {
@@ -199,7 +258,7 @@ var pong = {
               {
                 "set": [
                   "speed",
-                  100
+                  200
                 ]
               },
               {
@@ -217,6 +276,12 @@ var pong = {
           }
         },
         {
+          "set": [
+            "hits left",
+            1
+          ]
+        },
+        {
           "on_event": {
             "name": "collision",
             "parameters": [
@@ -224,42 +289,9 @@ var pong = {
             ],
             "code": [
               {
-                "if": {
-                  "test": {
-                    "or": [
-                      {
-                        "==": [
-                          {
-                            "get": "other_sprite"
-                          },
-                          "paddle1"
-                        ]
-                      },
-                      {
-                        "==": [
-                          {
-                            "get": "other_sprite"
-                          },
-                          "paddle2"
-                        ]
-                      }
-                    ]
-                  },
-                  "true": [
-                    {
-                      "set": [
-                        "speed",
-                        {
-                          "+": [
-                            {
-                              "get": "speed"
-                            },
-                            2
-                          ]
-                        }
-                      ]
-                    }
-                  ]
+                "trigger_event": {
+                  "name": "score",
+                  "parameters": {}
                 }
               }
             ]
@@ -268,4 +300,4 @@ var pong = {
       ]
     }
   ]
-};
+}; 
