@@ -129,7 +129,7 @@ ZuseAppEngine.prototype.loadImages = function ()
 
 ZuseAppEngine.prototype.imageLoadSuccess = function (e)
 {
-  console.log("Image Loaded: " + e.srcElement.src);
+  console.log("Image Loaded: " + e.currentTarget.src);
   this.loaded_image_count++;
 
   if (this.loaded_image_count == this.image_count)
@@ -142,7 +142,7 @@ ZuseAppEngine.prototype.imageLoadSuccess = function (e)
 
 ZuseAppEngine.prototype.imageLoadError = function (e)
 {
-  throw new Error("Image load error: " + e.srcElement.src); 
+  throw new Error("Image load error: " + e.currentTarget.src); 
 };
 
 ZuseAppEngine.prototype.start = function ()
