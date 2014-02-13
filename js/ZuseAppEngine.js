@@ -25,9 +25,9 @@ function ZuseAppEngine (options)
   this.canvas = options.canvas;
   
   // Set canvas to game width/height TODO
-  this.canvas.css( { width: "320px", height: "480px" } );
+  this.canvas.css( { width: "320px", height: "568px" } );
   this.canvas.attr("width", 320);
-  this.canvas.attr("height", 480);
+  this.canvas.attr("height", 568);
 
   // 2d context
   this.ctx = this.canvas[0].getContext("2d");
@@ -77,7 +77,7 @@ ZuseAppEngine.prototype.interpreterObjectUpdatedProperty = function (object_id, 
   }
   else if ("text" in update)
   {
-
+    s.text = update.text;
   }
 };
 
@@ -245,22 +245,25 @@ ZuseAppEngine.prototype.loadSprites = function ()
     var obj = this.code.objects[i];
     var options = {};
 
+    options.id = obj.id;
+    options.x = obj.properties.x;
+    options.y = this.canvas.innerHeight() - obj.properties.y;
+    options.width = obj.properties.width;
+    options.height = obj.properties.height;
+    options.physics_body = obj.physics_body;
+    options.collision_group = obj.collision_group;
+    options.type = obj.type;
+
     if (obj.type === "text")
     {
+      options.text = obj.properties.text;
     }
     else if (obj.type === "image")
     {
-      options.id = obj.id;
-      options.x = obj.properties.x;
-      options.y = this.canvas.innerHeight() - obj.properties.y;
-      options.width = obj.properties.width;
-      options.height = obj.properties.height;
-      options.physics_body = obj.physics_body;
-      options.collision_group = obj.collision_group;
       options.image = this.images[obj.image.path];
-
-      this.sprites[obj.id] = new Sprite(options);
     }
+    
+    this.sprites[obj.id] = new Sprite(options);
   }
 };
 
@@ -316,8 +319,20 @@ ZuseAppEngine.prototype.draw = function (timestamp)
   for (var k in this.sprites)
   {
     var s = this.sprites[k];
-        
-    this.ctx.drawImage(s.image, s.x, s.y, s.width, s.height);
+       
+    if (s.type === "image")
+    {
+      this.ctx.drawImage(s.image, s.x, s.y, s.width, s.height);
+    }
+    else if (s.type === "text")
+    {
+      this.ctx.textAlign = "center";
+      this.ctx.textBaseline = "middle";
+      this.ctx.font = "30px Helvetica";
+
+      this.ctx.fillText(s.text, s.cx, s.cy, s.width);
+
+    }
   }
 
 };
@@ -356,10 +371,16 @@ ZuseAppEngine.prototype.detectSpriteCollision = function ()
   var temp_sprites = {};
 
   for (var k in this.sprites)
-    temp_sprites[k] = this.sprites[k];
+  {
+    if (this.sprites[k].collision_group in this.collision_groups)
+      temp_sprites[k] = this.sprites[k];
+  }
 
   for (var k in this.sprites)
   {
+    if (!(this.sprites[k].collision_group in this.collision_groups))
+      continue;
+
     var s = this.sprites[k];
     delete temp_sprites[k];
 
@@ -370,6 +391,8 @@ ZuseAppEngine.prototype.detectSpriteCollision = function ()
       if (cg.contains(temp_sprites[q].collision_group) && s.collidesWith(temp_sprites[q]))
       {
         s.resolveCollisionWith(temp_sprites[q]);
+        this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_sprite: temp_sprites[q].id });
+        this.interpreter.triggerEventOnObjectWithParameters("collision", temp_sprites[q].id, { other_sprite: s.id });
       }
     }
   }

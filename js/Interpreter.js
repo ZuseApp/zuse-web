@@ -224,6 +224,11 @@ Interpreter.prototype.runCodeWithContext = function(obj, context)
   {
     return this.runSuiteWithContext(obj[key], context.contextWithNewEnvironment());
   }
+  // Handle trigger event
+  else if (key === "trigger_event")
+  {
+    this.triggerEventWithParameters(obj[key].name, obj[key].properties);
+  }
   // Must be an expression, evaluate it
   else
   {

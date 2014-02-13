@@ -12,7 +12,15 @@ function Sprite (options)
   this.physics_body = options.physics_body;
   this.collision_group = options.collision_group;
   this.type = options.type;
-  this.rasterizeImage(options.image);
+  
+  if (this.type === "image")
+  {
+    this.rasterizeImage(options.image);
+  }
+  else if (this.type === "text")
+  {
+    this.text = options.text;
+  }
 }
 
 Sprite.prototype.hasVelocity = function ()

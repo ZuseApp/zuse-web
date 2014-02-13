@@ -262,7 +262,7 @@ var pong = {
                 ]
               },
               {
-                "call": {
+                "call":{
                   "method": "move",
                   "parameters": [
                     45,
