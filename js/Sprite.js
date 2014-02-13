@@ -233,3 +233,9 @@ Sprite.prototype.restorePosition = function (pos)
   this.cy = pos.cy;
 };
 
+Sprite.prototype.applyVelocity = function (vx, vy)
+{
+  this.vx = vx;
+  this.vy = vy;
+};
+

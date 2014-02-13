@@ -43,11 +43,33 @@ Interpreter.prototype.loadObject = function(o)
 };
 
 /*
+ * Triggers an event on all objects with empty params
+ */
+Interpreter.prototype.triggerEvent = function (event_name)
+{
+  this.triggerEventWithParameters(event_name, {});
+};
+
+/*
+ * Triggers the named event on all object with the given parameters
+ */
+Interpreter.prototype.triggerEventWithParameters = function (event_name, parameters)
+{
+  // Loop through objects and trigger the event
+  for (var k in this.events)
+    this.triggerEventOnObjectWithParameters(event_name, k, parameters);
+};
+
+/*
  * Triggers an event of type 'event_name' on an object with id 'object_id'
  * passing the given parameters
  */
 Interpreter.prototype.triggerEventOnObjectWithParameters = function(event_name, object_id, parameters)
 {
+  // Make sure the object is in the event hash and that the event name is in the objects events
+  if (!(object_id in this.events) || !(event_name in this.events[object_id]))
+    return null;
+
   // get new context for event
   var new_context = this.events[object_id][event_name].context.contextWithNewEnvironment();
   
@@ -237,10 +259,10 @@ Interpreter.prototype.evalExpressionWithContext = function(exp, context)
     // evaluate params if any
     var params = "parameters" in exp["call"] ? exp["call"]["parameters"] : [];
     params = params.map(function(p){return that.evalExpressionWithContext(p, context)});
-
+    
     // check if the method is defined and call if it is
     if (exp["call"].method in this.methods)
-      return this.methods[exp["call"].method](params);
+      return this.methods[exp["call"].method](context.id, params);
     // Otherwise throw exception
     else
       throw new Error("Undefined method: " + exp["call"].method);

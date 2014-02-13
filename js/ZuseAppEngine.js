@@ -18,6 +18,7 @@ function ZuseAppEngine (options)
   // Interpreter
   var compiler = new Compiler( { project_json: this.code } );
   this.interpreter = compiler.getInterpreter();
+  this.loadMethodsIntoInterpreter();
 
   // jQuery canvas handle
   this.canvas = options.canvas;
@@ -122,6 +123,7 @@ ZuseAppEngine.prototype.start = function ()
 
   this.animationFrameId = requestAnimationFrame(function (ts) { that.draw(ts); });
   this.timeoutId = setTimeout( function () { that.step(); }, 1000 / 60 );
+  this.interpreter.triggerEvent("start");
 };
 
 ZuseAppEngine.prototype.step = function ()
@@ -154,42 +156,49 @@ ZuseAppEngine.prototype.registerMouseEventHandlers = function ()
     var x = e.clientX - e.target.offsetLeft - 1;
     var y = e.clientY - e.target.offsetTop - 1;
     
+    that.mouseDown = true;
     if (id = that.hitObject(x, y))
     {
-      that.mouseDown = true;
       that.currentObject = that.sprites[id];
-      that.currentObject.vx = 100;
-      that.currentObject.vy = -100;
-      console.log(id, that.currentObject);
+      that.currentObject.vx = 110;
+      that.currentObject.vy = -110;
     }
   });
 
   $(document).on("mousemove", function (e){
+    if (e.target.nodeName === "CANVAS")
+    ;
   });
 
   $(document).on("mouseup", function (e){
     that.mouseDown = false;
     that.currentObject = null;
+    console.log("mouse up");
   });
+  
 };
 
 ZuseAppEngine.prototype.loadMethodsIntoInterpreter = function ()
 {
   // Reference to this object's scope
   var that = this;
+  var methods = {};
 
   // Move method
-  var move = function (sprite_id, args)
-  { 
+  methods.move = function (sprite_id, args)
+  {
     that.applyVelocityToSprite(sprite_id, args[0], args[1]);
   }
 
+  for (var k in methods)
+    this.interpreter.loadMethod(k, methods[k]);
 };
 
 ZuseAppEngine.prototype.applyVelocityToSprite = function (sprite_id, direction, speed)
 {
   var sprite = this.sprites[sprite_id];
-  sprite.applyVelocity(direction, speed);
+  var rad = direction * Math.PI / 180;
+  sprite.applyVelocity(Math.cos(rad) * speed, -Math.sin(rad) * speed);
 };
 
 ZuseAppEngine.prototype.loadSprites = function ()
