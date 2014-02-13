@@ -241,7 +241,15 @@ ZuseAppEngine.prototype.boundSpriteByWorld = function()
 ZuseAppEngine.prototype.updateSpritePositions = function (dt)
 {
   for (var k in this.sprites)
-    this.sprites[k].updatePosition(dt);
+  {
+    var s = this.sprites[k];
+    var old_position = s.position();
+    
+    s.updatePosition(dt);
+
+    if (this.isSpriteOutsideWorld(s))
+      s.restorePosition(old_position);
+  }
 };
 
 ZuseAppEngine.prototype.draw = function (timestamp)
@@ -315,11 +323,21 @@ ZuseAppEngine.prototype.detectSpriteCollision = function ()
 
       if (cg.contains(temp_sprites[q].collision_group) && s.collidesWith(temp_sprites[q]))
       {
-        console.log("collision");
         s.handleCollisionWith(temp_sprites[q]);
         temp_sprites[q].handleCollisionWith(s);
       }
     }
   }
+};
+
+ZuseAppEngine.prototype.isSpriteOutsideWorld = function (sprite)
+{
+  var pos = sprite.position;
+
+  if (sprite.right() < 0 || sprite.left() > this.canvas.innerWidth() ||
+      sprite.top() > this.canvas.innerHeight() || sprite.bottom() < 0)
+    return true;
+
+  return false;
 };
 

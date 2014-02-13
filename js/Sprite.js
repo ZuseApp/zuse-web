@@ -90,7 +90,7 @@ Sprite.prototype.collidesWith = function (other_sprite)
 {
   var s = other_sprite;
 
-  if (s.left() < this.right() && s.top() < this.bottom() && s.right() > this.left() && s.bottom() > this.top())
+  if (this.left() <= s.right() && this.top() <= s.bottom() && this.right() >= s.left() && this.bottom() >= s.top())
     return true;
 
   return false;
@@ -99,12 +99,23 @@ Sprite.prototype.collidesWith = function (other_sprite)
 Sprite.prototype.handleCollisionWith = function (other_sprite)
 {
   var s = other_sprite;
+  var diff = 0;
+  
+  if (!this.hasVelocity())
+    return;
 
-  if (s.top() < this.bottom() || s.bottom() > this.top())
+  if (this.top() <= s.bottom() && this.vy < 0)
     this.vy = this.vy * -1;
 
-  if (s.left() < this.right() || s.right() > this.left())
-    this.vx = this.vx * -1;
+  else if (this.bottom() >= s.top() && this.vy > 0)
+    this.vy = this.vy * -1;
+
+  //else if (this.left() <= s.right() && this.vx > 0)
+  //  this.vx = this.vx * -1;
+
+  //else if (this.right() >= s.left() && this.vx < 0)
+  //  this.vx = this.vx * -1;
+  
 };
 
 Sprite.prototype.top = function ()
@@ -116,3 +127,17 @@ Sprite.prototype.bottom = function ()
 {
   return this.y + this.height;
 };
+
+Sprite.prototype.position = function ()
+{
+  return { x: this.x, y: this.y, cx: this.cx, cy: this.cy };
+}
+
+Sprite.prototype.restorePosition = function (pos)
+{
+  this.x = pos.x;
+  this.y = pos.y;
+  this.cx = pos.cx;
+  this.cy = pos.cy;
+};
+
