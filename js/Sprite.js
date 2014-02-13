@@ -5,8 +5,8 @@ function Sprite (options)
   this.height = options.height;
   this.cx = options.x;
   this.cy = options.y;
-  this.x = Math.floor(this.cx - (this.width/2));
-  this.y = Math.floor(this.cy - (this.height/2));
+  this.x = Math.round(this.cx - (this.width/2));
+  this.y = Math.round(this.cy - (this.height/2));
   this.vx = 0.0;
   this.vy = 0.0;
   this.physics_body = options.physics_body;
@@ -29,13 +29,13 @@ Sprite.prototype.updatePosition = function (dt)
 Sprite.prototype.setX = function (x)
 {
   this.cx = x;
-  this.x = Math.floor(this.cx - (this.width/2));
+  this.x = Math.round(this.cx - (this.width/2));
 };
 
 Sprite.prototype.setY = function (y)
 {
   this.cy = y;
-  this.y = Math.floor(this.cy - (this.height/2));
+  this.y = Math.round(this.cy - (this.height/2));
 };
 
 Sprite.prototype.rasterizeImage = function (img)
@@ -120,8 +120,8 @@ Sprite.prototype.resolveCollisionWith = function (other_sprite)
 
   if (static !== null)
   {
-    var horizontalOverlap = (Math.min(static.right(), dynamic.right()) - Math.max(static.left(), dynamic.left())) + 1;
-    var verticalOverlap = (Math.min(static.bottom(), dynamic.bottom()) - Math.max(static.top(), dynamic.top())) + 1;
+    var horizontalOverlap = (Math.min(static.right(), dynamic.right()) - Math.max(static.left(), dynamic.left())) + 1.5;
+    var verticalOverlap = (Math.min(static.bottom(), dynamic.bottom()) - Math.max(static.top(), dynamic.top())) + 1.5;
 
     if (horizontalOverlap == verticalOverlap)
     {
@@ -160,8 +160,8 @@ Sprite.prototype.resolveCollisionWith = function (other_sprite)
   }
   else
   {
-    var horizontalOverlap = (Math.min(other_sprite.right(), this.right()) - Math.max(other_sprite.left(), this.left())) + 1;
-    var verticalOverlap = (Math.min(other_sprite.bottom(), this.bottom()) - Math.max(other_sprite.top(), this.top())) + 1;
+    var horizontalOverlap = (Math.min(other_sprite.right(), this.right()) - Math.max(other_sprite.left(), this.left())) + 1.5;
+    var verticalOverlap = (Math.min(other_sprite.bottom(), this.bottom()) - Math.max(other_sprite.top(), this.top())) + 1.5;
 
     if (horizontalOverlap == verticalOverlap)
     {

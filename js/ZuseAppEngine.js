@@ -19,6 +19,7 @@ function ZuseAppEngine (options)
   var compiler = new Compiler( { project_json: this.code } );
   this.interpreter = compiler.getInterpreter();
   this.loadMethodsIntoInterpreter();
+  this.interpreter.propertyUpdateCallback = function (object_id, update) { that.interpreterObjectUpdatedProperty(object_id, update) };
 
   // jQuery canvas handle
   this.canvas = options.canvas;
@@ -51,6 +52,34 @@ function ZuseAppEngine (options)
   this.loaded_image_count = 0;
   this.loadImages();
 }
+
+ZuseAppEngine.prototype.interpreterObjectUpdatedProperty = function (object_id, update)
+{
+  var s = this.sprites[object_id];
+
+  if ("x" in update)
+  {
+    s.setX(update.x);
+
+    if (s.left() < 0)
+      s.setX(s.cx + Math.abs(s.left()));
+    else if (s.right() > this.canvas.innerWidth())
+      s.setX(s.cx - (s.right() - this.canvas.innerWidth()));
+  }
+  else if ("y" in update)
+  {
+    s.setY(this.canvas.innerHeight() - update.y);
+
+    if (s.top() < 0)
+      s.setY(s.cy + Math.abs(s.top()));
+    else if (s.bottom() > this.canvas.innerHeight())
+      s.setY(s.cy - (s.bottom() - this.canvas.innerHeight()));
+  }
+  else if ("text" in update)
+  {
+
+  }
+};
 
 ZuseAppEngine.prototype.getImageCount = function()
 {
@@ -153,21 +182,29 @@ ZuseAppEngine.prototype.registerMouseEventHandlers = function ()
     if (e.target.nodeName !== "CANVAS")
       return;
     
-    var x = e.clientX - e.target.offsetLeft - 1;
-    var y = e.clientY - e.target.offsetTop - 1;
-    
+    var x = e.pageX - e.target.offsetLeft - 1;
+    var y = e.pageY - e.target.offsetTop - 1;
+   
     that.mouseDown = true;
     if (id = that.hitObject(x, y))
     {
       that.currentObject = that.sprites[id];
-      that.currentObject.vx = 110;
-      that.currentObject.vy = -110;
+      that.interpreter.triggerEventOnObjectWithParameters("touch_began", id, { touch_x: x, touch_y: that.canvas.innerHeight() - y });
     }
   });
 
-  $(document).on("mousemove", function (e){
+  $(document).on("mousemove", function (e) {
+    if (!that.mouseDown || that.currentObject == null)
+      return;
+
     if (e.target.nodeName === "CANVAS")
-    ;
+    {
+      var x = e.pageX - e.target.offsetLeft - 1;
+      var y = e.pageY - e.target.offsetTop - 1;
+
+      that.interpreter.triggerEventOnObjectWithParameters("touch_moved", that.currentObject.id, { touch_x: x, touch_y: that.canvas.innerHeight() - y });
+    }
+
   });
 
   $(document).on("mouseup", function (e){

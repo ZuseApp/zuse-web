@@ -19,6 +19,8 @@ function Interpreter()
   this.properties = {};
   this.events = {};
   this.data_store = {};
+
+  this.propertyUpdateCallback = null;
 }
 
 /*
@@ -184,7 +186,7 @@ Interpreter.prototype.runCodeWithContext = function(obj, context)
   else if (key === "set")
   {
     // evaluate value
-    var new_value = this.evalExpressionWithContext(obj[key][1]);
+    var new_value = this.evalExpressionWithContext(obj[key][1], context);
 
     // get identifier if any
     var identifier = context.environment[obj[key][0]];
@@ -198,6 +200,13 @@ Interpreter.prototype.runCodeWithContext = function(obj, context)
       identifier = String.uuid();
       context.environment[obj[key][0]] = identifier;
       this.data_store[identifier] = new_value;
+    }
+
+    if (this.propertyUpdateCallback)
+    {
+      var update = {};
+      update[obj[key][0]] = new_value;
+      this.propertyUpdateCallback(context.id, update);
     }
   }
   // Handle if statement
@@ -299,28 +308,28 @@ Interpreter.prototype.evalMathExpressionWithContext = function(exp, context)
   {
     // Handle addition
     case "+":
-      var first = this.evalExpressionWithContext(val.shift(), context);
-      return val.foldl(function(a,b) { return a + that.evalExpressionWithContext(b, context); }, first); 
+      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
+      return val.slice(1).foldl(function(a,b) { return a + that.evalExpressionWithContext(b, context); }, first); 
       break;
     // Handle subtraction
     case "-":
-      var first = this.evalExpressionWithContext(val.shift(), context);
-      return val.foldl(function(a,b) { return a - that.evalExpressionWithContext(b, context); }, first);
+      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
+      return val.slice(1).foldl(function(a,b) { return a - that.evalExpressionWithContext(b, context); }, first);
       break;
     // Handle multiplication
     case "*":
-      var first = this.evalExpressionWithContext(val.shift(), context);
-      return val.foldl(function(a,b) { return a * that.evalExpressionWithContext(b, context); }, first);
+      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
+      return val.slice(1).foldl(function(a,b) { return a * that.evalExpressionWithContext(b, context); }, first);
       break;
     // Handle division
     case "/":
-      var first = this.evalExpressionWithContext(val.shift(), context);
-       return val.foldl(function(a,b) { return a / that.evalExpressionWithContext(b, context); }, first);
+      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
+       return val.slice(1).foldl(function(a,b) { return a / that.evalExpressionWithContext(b, context); }, first);
       break;
     // Handle modulus
     case "%":
-      var first = this.evalExpressionWithContext(val.shift(), context);
-      return val.foldl(function(a,b) { return a % that.evalExpressionWithContext(b, context); }, first);
+      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
+      return val.slice(1).foldl(function(a,b) { return a % that.evalExpressionWithContext(b, context); }, first);
       break;
   }
  
@@ -343,13 +352,13 @@ Interpreter.prototype.evalBoolExpressionWithContext = function(exp, context)
   {
     // handle and
     case "and":
-      var first = this.evalExpressionWithContext(val.shift(), context);
-      return val.foldl(function(a,b) { return a && that.evalExpressionWithContext(b, context); }, first);
+      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
+      return val.slice(1).foldl(function(a,b) { return a && that.evalExpressionWithContext(b, context); }, first);
       break;
     // handle or
     case "or":
-      var first = this.evalExpressionWithContext(val.shift(), context);
-      return val.foldl(function(a,b) { return a || that.evalExpressionWithContext(b, context); }, first);
+      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
+      return val.slice(1).foldl(function(a,b) { return a || that.evalExpressionWithContext(b, context); }, first);
       break;
     // handle ==
     case "==":
