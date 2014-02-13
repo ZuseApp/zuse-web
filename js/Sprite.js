@@ -96,25 +96,117 @@ Sprite.prototype.collidesWith = function (other_sprite)
   return false;
 };
 
-Sprite.prototype.handleCollisionWith = function (other_sprite)
+Sprite.prototype.resolveCollisionWith = function (other_sprite)
 {
-  var s = other_sprite;
   var diff = 0;
+  var width = 0;
+  var height = 0;
+  var static = null;
+  var dynamic = null;
+  var topOrBottom = false;
+  var leftOrRight = false;
+
+  if (!this.hasVelocity() && other_sprite.hasVelocity())
+  {
+    static = this;
+    dynamic = other_sprite;
+  }
+
+  if (!other_sprite.hasVelocity() && this.hasVelocity())
+  {
+    static = other_sprite;
+    dynamic = this;
+  }
+
+  if (static !== null)
+  {
+    var horizontalOverlap = (Math.min(static.right(), dynamic.right()) - Math.max(static.left(), dynamic.left())) + 1;
+    var verticalOverlap = (Math.min(static.bottom(), dynamic.bottom()) - Math.max(static.top(), dynamic.top())) + 1;
+
+    if (horizontalOverlap == verticalOverlap)
+    {
+      dynamic.vx = dynamic.vx * -1;
+      dynamic.vy = dynamic.vy * -1;
+
+      if (dynamic.top() <= static.bottom())
+        dynamic.setX(dynamic.cx + verticalOverlap)
+      else
+        dynamic.setX(dynamic.cx - verticalOverlap)
+
+      if (dynamic.left() <= static.right())
+        dynamic.setY(dynamic.cy + horizontalOverlap)
+      else
+        dynamic.setY(dynamic.cy - horizontalOverlap)
+    }
+    else if (horizontalOverlap > verticalOverlap)
+    {
+      dynamic.vy = dynamic.vy * -1;
+
+      if (dynamic.top() <= static.bottom())
+        dynamic.setX(dynamic.cx + verticalOverlap)
+      else
+        dynamic.setX(dynamic.cx - verticalOverlap)
+
+    }
+    else if (horizontalOverlap < verticalOverlap)
+    {
+      dynamic.vx = dynamic.vx * -1;
+
+      if (dynamic.left() <= static.right())
+        dynamic.setY(dynamic.cy + horizontalOverlap)
+      else
+        dynamic.setY(dynamic.cy - horizontalOverlap)
+    }
+  }
+  else
+  {
+    var horizontalOverlap = (Math.min(other_sprite.right(), this.right()) - Math.max(other_sprite.left(), this.left())) + 1;
+    var verticalOverlap = (Math.min(other_sprite.bottom(), this.bottom()) - Math.max(other_sprite.top(), this.top())) + 1;
+
+    if (horizontalOverlap == verticalOverlap)
+    {
+      this.vx = this.vx * -1;
+      this.vy = this.vy * -1;
+
+      other_sprite.vx = other_sprite.vx * -1;
+      other_sprite.vy = other_sprite.vy * -1;
+
+      if (this.top() <= other_sprite.bottom())
+        this.setX(this.cx + verticalOverlap)
+      else
+        this.setX(this.cx - verticalOverlap)
+
+      if (this.left() <= other_sprite.right())
+        this.setY(this.cy + horizontalOverlap)
+      else
+        this.setY(this.cy - horizontalOverlap)
+    }
+    else if (horizontalOverlap > verticalOverlap)
+    {
+      this.vy = this.vy * -1;
+
+      other_sprite.vy = other_sprite.vy * -1;
+
+      if (this.top() <= other_sprite.bottom())
+        this.setX(this.cx + verticalOverlap)
+      else
+        this.setX(this.cx - verticalOverlap)
+
+    }
+    else if (horizontalOverlap < verticalOverlap)
+    {
+      this.vx = this.vx * -1;
+
+      other_sprite.vx = other_sprite.vx * -1;
+
+      if (this.left() <= other_sprite.right())
+        this.setY(this.cy + horizontalOverlap)
+      else
+        this.setY(this.cy - horizontalOverlap)
+    }
+
+  }
   
-  if (!this.hasVelocity())
-    return;
-
-  if (this.top() <= s.bottom() && this.vy < 0)
-    this.vy = this.vy * -1;
-
-  else if (this.bottom() >= s.top() && this.vy > 0)
-    this.vy = this.vy * -1;
-
-  //else if (this.left() <= s.right() && this.vx > 0)
-  //  this.vx = this.vx * -1;
-
-  //else if (this.right() >= s.left() && this.vx < 0)
-  //  this.vx = this.vx * -1;
   
 };
 

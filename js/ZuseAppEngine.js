@@ -135,8 +135,8 @@ ZuseAppEngine.prototype.step = function ()
   var now = new Date().getTime();
   var elapsed = now - this.lastStep;
   this.lastStep = now;
-  this.boundSpriteByWorld();
   this.detectSpriteCollision();
+  this.boundSpriteByWorld();
   this.updateSpritePositions(elapsed);
 };
 
@@ -323,8 +323,7 @@ ZuseAppEngine.prototype.detectSpriteCollision = function ()
 
       if (cg.contains(temp_sprites[q].collision_group) && s.collidesWith(temp_sprites[q]))
       {
-        s.handleCollisionWith(temp_sprites[q]);
-        temp_sprites[q].handleCollisionWith(s);
+        s.resolveCollisionWith(temp_sprites[q]);
       }
     }
   }
