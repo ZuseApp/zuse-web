@@ -423,4 +423,12 @@ Interpreter.prototype.getObjectKey = function(o)
   }
 };
 
-
+/*
+ * Removes an object from the interpreter
+ */
+Interpreter.prototype.removeObjectWithIdentifier = function (id)
+{
+  delete this.objects[id];
+  delete this.properties[id];
+  delete this.events[id];
+}

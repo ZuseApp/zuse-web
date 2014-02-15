@@ -227,6 +227,11 @@ ZuseAppEngine.prototype.loadMethodsIntoInterpreter = function ()
     that.applyVelocityToSprite(sprite_id, args[0], args[1]);
   }
 
+  methods.remove = function (sprite_id, args)
+  {
+    that.removeSpriteFromWorld(sprite_id);
+  }
+
   for (var k in methods)
     this.interpreter.loadMethod(k, methods[k]);
 };
@@ -237,6 +242,12 @@ ZuseAppEngine.prototype.applyVelocityToSprite = function (sprite_id, direction, 
   var rad = direction * Math.PI / 180;
   sprite.applyVelocity(Math.cos(rad) * speed, -Math.sin(rad) * speed);
 };
+
+ZuseAppEngine.prototype.removeSpriteFromWorld = function(sprite_id)
+{
+  delete this.sprites[sprite_id];
+  this.interpreter.removeObjectWithIdentifier(sprite_id);
+}
 
 ZuseAppEngine.prototype.loadSprites = function ()
 {
