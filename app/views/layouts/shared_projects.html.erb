@@ -12,6 +12,7 @@
 
     <% if @shared_project.compiled_code && !@shared_project.compiled_code.empty? %>
       window.compiled_code = <%= raw @shared_project.compiled_code %>;
+
     <% end %>
 
       var canvas = $("#viewport");
