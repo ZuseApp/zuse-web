@@ -25,9 +25,9 @@ function ZuseAppEngine (options)
   this.canvas = options.canvas;
   
   // Set canvas to game width/height TODO
-  this.canvas.css( { width: "320px", height: "568px" } );
+  this.canvas.css( { width: "320px", height: "524px" } );
   this.canvas.attr("width", 320);
-  this.canvas.attr("height", 568);
+  this.canvas.attr("height", 524);
 
   // 2d context
   this.ctx = this.canvas[0].getContext("2d");
