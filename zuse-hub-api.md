@@ -2,6 +2,12 @@
 
 Following is an explanation of version 1 (v1) of the RESTful Zuse Hub API.
 
+## Endpoint Tables
+
+### Authentication/Registration
+
+| Method | Endpoint
+
 | Method | Endpoint                      | Authentication |
 | ------ | ----------------------------- | -------------- |
 | GET    | /api/v1/projects              | None           | 
