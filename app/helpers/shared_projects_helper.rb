@@ -1,0 +1,2 @@
+module SharedProjectsHelper
+end

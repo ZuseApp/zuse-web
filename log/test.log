@@ -1,0 +1,822 @@
+  [1m[36m (9.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.9ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProjects (20140222152850)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (6.8ms)[0m  [1mCREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140222152850"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20140222155817)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140222155817"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSharedProjects (20140225152749)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140225152749"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to AddIndexToTokenOnSharedProjects (20140225153218)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (1.2ms)[0m  [1mCREATE INDEX "index_shared_projects_on_token" ON "shared_projects" ("token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140225153218"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to RemoveTokenFromSharedProjects (20140225160358)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.2ms)[0m  [1mALTER TABLE "shared_projects" DROP "token"[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140225160358"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (119.9ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (312.4ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.8ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.8ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (4.1ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.4ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+ProjectsControllerTest: test_should_get_create
+----------------------------------------------
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------
+ProjectsControllerTest: test_should_get_destroy
+-----------------------------------------------
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+ProjectsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+ProjectsControllerTest: test_should_get_show
+--------------------------------------------
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+ProjectsControllerTest: test_should_get_update
+----------------------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (5.4ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:15:09 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:15:09 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Completed 404 Not Found in 4ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:15:09 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:15:09 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 660ms (Views: 658.4ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:15:09 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:15:09 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (217.1ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (246.4ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (8.2ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.3ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+ProjectsControllerTest: test_should_get_create
+----------------------------------------------
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------
+ProjectsControllerTest: test_should_get_destroy
+-----------------------------------------------
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+ProjectsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+ProjectsControllerTest: test_should_get_show
+--------------------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+ProjectsControllerTest: test_should_get_update
+----------------------------------------------
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:16:12 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:16:12 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Completed 404 Not Found in 4ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:16:12 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:16:12 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 54ms (Views: 51.8ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:16:12 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:16:12 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36m (118.8ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (250.8ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.1ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.6ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.3ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+ProjectsControllerTest: test_should_get_create
+----------------------------------------------
+Processing by ProjectsController#create as HTML
+Filter chain halted as :authenticate_api_request rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------
+ProjectsControllerTest: test_should_get_destroy
+-----------------------------------------------
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+ProjectsControllerTest: test_should_get_index
+---------------------------------------------
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.6ms)[0m  SELECT "projects".* FROM "projects"
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------
+ProjectsControllerTest: test_should_get_show
+--------------------------------------------
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+----------------------------------------------
+ProjectsControllerTest: test_should_get_update
+----------------------------------------------
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (5.5ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:17:23 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:17:23 UTC +00:00]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1
+Completed 404 Not Found in 4ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:17:23 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:17:23 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.5ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+Completed 200 OK in 54ms (Views: 52.4ms | ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:17:23 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:17:23 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (116.3ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (244.7ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (8.4ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.2ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:18:25 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:18:25 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Completed 404 Not Found in 5ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:18:25 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:18:25 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 25ms (Views: 23.1ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:18:25 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:18:25 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36m (119.1ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (244.6ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.6ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (216.8ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (243.9ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.1ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (2.9ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.1ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:22:22 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:22:22 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Redirected to http://test.host404.html
+Completed 404 Not Found in 4ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:22:22 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:22:22 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 24ms (Views: 21.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:22:22 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:22:22 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36m (119.3ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (244.8ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.2ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.5ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (2.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (3.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (5.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.8ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:22:39 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:22:39 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Redirected to http://test.host404.html
+Completed 404 Not Found in 5ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:22:39 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:22:39 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:22:39 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:22:39 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#create as HTML
+  Parameters: {"shared_project"=>{"title"=>"My Zuse Project", "description"=>"An essay into programming", "raw_code"=>"", "compiled_code"=>""}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:22:39 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:22:39 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 4ms
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (116.4ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (241.9ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.9ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.0ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (5.7ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:25:09 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:25:09 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Redirected to http://test.host404.html
+Completed 404 Not Found in 4ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:25:09 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:25:09 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 24ms (Views: 22.1ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:25:09 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:25:09 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#create as HTML
+  Parameters: {"shared_project"=>{"title"=>"My Zuse Project", "description"=>"An essay into programming", "raw_code"=>"", "compiled_code"=>""}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:25:09 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:25:09 UTC +00:00]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 3ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (118.6ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (246.4ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.5ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.5ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.9ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:27:44 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:27:44 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.7ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Redirected to http://test.host404.html
+Completed 404 Not Found in 6ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:27:44 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:27:44 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 25ms (Views: 22.8ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:27:44 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:27:44 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#create as HTML
+  Parameters: {"shared_project"=>{"title"=>"My Zuse Project", "description"=>"An essay into programming", "raw_code"=>"", "compiled_code"=>""}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:27:44 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:27:44 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (120.5ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (248.7ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.8ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (5.4ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:29:39 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:29:39 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Redirected to http://test.host404.html
+Completed 404 Not Found in 5ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:29:39 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:29:39 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:29:39 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:29:39 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#create as HTML
+  Parameters: {"shared_project"=>{"title"=>"My Zuse Project", "description"=>"An essay into programming", "raw_code"=>"", "compiled_code"=>""}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:29:39 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:29:39 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (120.6ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (246.1ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.2ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.4ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.8ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:31:37 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:31:37 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Redirected to http://test.host404.html
+Completed 404 Not Found in 4ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:31:37 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:31:37 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 25ms (Views: 22.7ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:31:37 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:31:37 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#create as HTML
+  Parameters: {"shared_project"=>{"title"=>"My Zuse Project", "description"=>"An essay into programming", "raw_code"=>"", "compiled_code"=>""}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:31:37 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:31:37 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (119.2ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (247.2ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.6ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.1ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:32:43 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:32:43 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Redirected to http://test.host404.html
+Completed 404 Not Found in 4ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:32:43 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:32:43 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 27ms (Views: 24.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:32:43 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:32:43 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#create as HTML
+  Parameters: {"shared_project"=>{"title"=>"My Zuse Project", "description"=>"An essay into programming", "raw_code"=>"", "compiled_code"=>""}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:32:44 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:32:44 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (118.9ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (247.7ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (11.2ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.8ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (4.7ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.1ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:33:04 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:33:04 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Redirected to http://test.host404.html
+Completed 404 Not Found in 4ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:33:04 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:33:04 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 29ms (Views: 26.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:33:04 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:33:04 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#create as HTML
+  Parameters: {"shared_project"=>{"title"=>"My Zuse Project", "description"=>"An essay into programming", "raw_code"=>"", "compiled_code"=>""}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:33:04 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:33:04 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 4ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (118.8ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (245.6ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.0ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.8ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225160358')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (3.9ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:34:09 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:34:09 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Redirected to http://test.host404.html
+Completed 404 Not Found in 4ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:34:09 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:34:09 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 200 OK in 24ms (Views: 21.9ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:34:10 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:34:10 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#create as HTML
+  Parameters: {"shared_project"=>{"title"=>"My Zuse Project", "description"=>"An essay into programming", "raw_code"=>"", "compiled_code"=>""}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Tue, 25 Feb 2014 17:34:10 UTC +00:00], ["description", "An essay into programming"], ["raw_code", ""], ["title", "My Zuse Project"], ["updated_at", Tue, 25 Feb 2014 17:34:10 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK

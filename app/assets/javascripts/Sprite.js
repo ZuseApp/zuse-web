@@ -48,7 +48,7 @@ Sprite.prototype.setY = function (y)
 
 Sprite.prototype.rasterizeImage = function (img)
 {
-  if (img.height <= this.height && img.width <= this.width)
+  //if (img.height <= this.height && img.width <= this.width)
   {
     this.image = img;
     return;

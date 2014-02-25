@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zuse Hub - <%= @shared_project.title %></title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "shared_projects" %>
+  <%= javascript_tag do %>
+    $(function () {
+    <% if @shared_project.raw_code && !@shared_project.raw_code.empty? %>
+      window.raw_code = <%= raw @shared_project.raw_code %>;
+    <% end %>
+
+    <% if @shared_project.compiled_code && !@shared_project.compiled_code.empty? %>
+      window.compiled_code = <%= raw @shared_project.compiled_code %>;
+    <% end %>
+
+      var canvas = $("#viewport");
+
+      window.game = new ZuseAppEngine( { canvas: canvas, code: raw_code } );
+    });
+  <% end %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
