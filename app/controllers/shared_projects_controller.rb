@@ -16,7 +16,7 @@ class SharedProjectsController < ApplicationController
     @shared_project = SharedProject.find_by_id params[:id]
 
     if @shared_project.nil?
-      redirect_to "404.html", status: :not_found
+      redirect_to "/404.html", status: :not_found
     end
 
   end
