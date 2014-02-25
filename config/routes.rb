@@ -1,4 +1,9 @@
 Myapp::Application.routes.draw do
+  
+  resources :projects, path: "/api/v1/projects"
+  resources :shared_projects, path: "/api/v1/shared_projects", only: [ :create ]
+  resources :shared_projects, only: [ :show ]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

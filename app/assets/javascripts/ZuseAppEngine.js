@@ -122,7 +122,7 @@ ZuseAppEngine.prototype.loadImages = function ()
       this.images[path] = new Image();
       this.images[path].onload = function (e) { that.imageLoadSuccess(e); };
       this.images[path].onerror = function (e) { that.imageLoadError(e); };
-      this.images[path].src = "images/" + path;
+      this.images[path].src = "/assets/" + path;
     }
   }
 };

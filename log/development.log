@@ -196,3 +196,1219 @@ Started GET "/" for 127.0.0.1 at 2014-02-15 11:27:51 -0700
 Processing by Rails::WelcomeController#index as HTML
   Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.2/lib/rails/templates/rails/welcome/index.html.erb (1.3ms)
 Completed 200 OK in 24ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (30.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProjects (20140222152850)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (8.8ms)[0m  [1mCREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140222152850"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/api/v1/projects" for 127.0.0.1 at 2014-02-22 08:40:14 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 674ms (Views: 654.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/breakout.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/pong.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-22 08:40:15 -0700
+
+
+Started GET "/api/v1/projects" for 127.0.0.1 at 2014-02-22 08:41:26 -0700
+Processing by ProjectsController#index as HTML
+Completed 500 Internal Server Error in 2ms
+
+NameError (uninitialized constant ProjectsController::Post):
+  app/controllers/projects_controller.rb:3:in `index'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.7ms)
+
+
+Started GET "/api/v1/projects" for 127.0.0.1 at 2014-02-22 08:41:36 -0700
+Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.8ms)[0m  SELECT "projects".* FROM "projects"
+Completed 200 OK in 4ms (Views: 0.9ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (111.6ms)[0m  INSERT INTO "projects" ("code", "created_at", "description", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["code", "{ 'project' : 'code' }"], ["created_at", Sat, 22 Feb 2014 15:47:50 UTC +00:00], ["description", "My project's description"], ["title", "First Project"], ["updated_at", Sat, 22 Feb 2014 15:47:50 UTC +00:00]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/api/v1/projects" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/breakout.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/pong.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-02-22 08:47:57 -0700
+
+
+Started GET "/api/v1/projects" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/breakout.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/pong.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-22 08:48:33 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20140222155817)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (8.8ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140222155817"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/api/v1/projects" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ProjectsController#index as HTML
+  Rendered projects/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 11ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/breakout.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/pong.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-22 09:17:45 -0700
+
+
+Started GET "/projects" for 127.0.0.1 at 2014-02-22 12:35:59 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/projects"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.2ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.9ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (26.4ms)
+
+
+Started GET "/api/v1/projects" for 127.0.0.1 at 2014-02-22 12:36:06 -0700
+
+SyntaxError (/Users/andrew/capstone/zuse-web/app/controllers/projects_controller.rb:27: syntax error, unexpected end-of-input, expecting keyword_end):
+  activesupport (4.0.2) lib/active_support/dependencies.rb:424:in `load'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:424:in `block in load_file'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:616:in `new_constants_in'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:423:in `load_file'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:324:in `require_or_load'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:463:in `load_missing_constant'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:184:in `const_missing'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `const_get'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:226:in `block in constantize'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `each'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `inject'
+  activesupport (4.0.2) lib/active_support/inflector/methods.rb:224:in `constantize'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:535:in `get'
+  activesupport (4.0.2) lib/active_support/dependencies.rb:566:in `constantize'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:76:in `controller_reference'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:66:in `controller'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:44:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__1268445189680412036__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (23.5ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (42.4ms)
+
+
+Started GET "/api/v1/projects" for 127.0.0.1 at 2014-02-22 12:36:44 -0700
+Processing by ProjectsController#index as */*
+  Rendered projects/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 96ms (Views: 93.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/v1/projects" for 127.0.0.1 at 2014-02-22 12:37:13 -0700
+Processing by ProjectsController#index as */*
+  [1m[35mProject Load (0.8ms)[0m  SELECT "projects".* FROM "projects"
+  Rendered projects/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 23ms (Views: 20.1ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/projects" for 127.0.0.1 at 2014-02-22 12:37:46 -0700
+Processing by ProjectsController#index as */*
+  Rendered projects/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+  [1m[36mUser Load (2.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."token" = 'd8dhdjd' LIMIT 1[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateSharedProjects (20140225152749)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (20.2ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140225152749"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddIndexToTokenOnSharedProjects (20140225153218)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.4ms)[0m  [1mCREATE INDEX "index_shared_projects_on_token" ON "shared_projects" ("token")[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140225153218"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveTokenFromSharedProjects (20140225160358)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.7ms)[0m  [1mALTER TABLE "shared_projects" DROP "token"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveTokenFromSharedProjects (20140225160358)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.7ms)[0m  [1mALTER TABLE "shared_projects" DROP "token"[0m
+  [1m[35mSQL (2.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140225160358"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (6.5ms)[0m  INSERT INTO "shared_projects" ("created_at", "raw_code", "title", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["created_at", Tue, 25 Feb 2014 17:57:05 UTC +00:00], ["raw_code", "{\n  \"title\": \"Pong\",\n  \"version\": \"1.0.0\",\n  \"traits\": {\n    \"Draggable\": {\n      \"parameters\": {\n        \"horizontal\": true,\n        \"vertical\": true\n      },\n      \"code\": [\n        {\n          \"set\": [\n            \"offset_x\",\n            0\n          ]\n        },\n        {\n          \"set\": [\n            \"offset_y\",\n            0\n          ]\n        },\n        {\n          \"on_event\": {\n            \"name\": \"touch_began\",\n            \"parameters\": [\n              \"touch_x\",\n              \"touch_y\"\n            ],\n            \"code\": [\n              {\n                \"set\": [\n                  \"offset_x\",\n                  {\n                    \"-\": [\n                      {\n                        \"get\": \"touch_x\"\n                      },\n                      {\n                        \"get\": \"x\"\n                      }\n                    ]\n                  }\n                ]\n              },\n              {\n                \"set\": [\n                  \"offset_y\",\n                  {\n                    \"-\": [\n                      {\n                        \"get\": \"touch_y\"\n                      },\n                      {\n                        \"get\": \"y\"\n                      }\n                    ]\n                  }\n                ]\n              }\n            ]\n          }\n        },\n        {\n          \"on_event\": {\n            \"name\": \"touch_moved\",\n            \"parameters\": [\n              \"touch_x\",\n              \"touch_y\"\n            ],\n            \"code\": [\n              {\n                \"if\": {\n                  \"test\": {\n                    \"==\": [\n                      {\n                        \"get\": \"horizontal\"\n                      },\n                      true\n                    ]\n                  },\n                  \"true\": [\n                    {\n                      \"set\": [\n                        \"x\",\n                        {\n                          \"-\": [\n                            {\n                              \"get\": \"touch_x\"\n                            },\n                            {\n                              \"get\": \"offset_x\"\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              },\n              {\n                \"if\": {\n                  \"test\": {\n                    \"==\": [\n                      {\n                        \"get\": \"vertical\"\n                      },\n                      true\n                    ]\n                  },\n                  \"true\": [\n                    {\n                      \"set\": [\n                        \"y\",\n                        {\n                          \"-\": [\n                            {\n                              \"get\": \"touch_y\"\n                            },\n                            {\n                              \"get\": \"offset_y\"\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  },\n  \"collision_groups\": {\n    \"paddle\": [\n      \"ball\"\n    ],\n    \"ball\": [\n      \"paddle\"\n    ]\n  },\n  \"objects\": [\n    {\n      \"id\": \"score\",\n      \"properties\": {\n        \"x\": 270,\n        \"y\": 543,\n        \"width\": 100,\n        \"height\": 50,\n        \"text\": \"0\",\n        \"score\": 0\n      },\n      \"physics_body\": \"none\",\n      \"collision_group\": \"text\",\n      \"type\": \"text\",\n      \"code\": [\n        {\n          \"on_event\": {\n            \"name\": \"score\",\n            \"parameters\": [],\n            \"code\": [\n              {\n                \"set\": [\n                  \"score\",\n                  {\n                    \"+\": [\n                      {\n                        \"get\": \"score\"\n                      },\n                      1\n                    ]\n                  }\n                ]\n              },\n              {\n                \"set\": [\n                  \"text\",\n                  {\n                    \"get\": \"score\"\n                  }\n                ]\n              }\n            ]\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"paddle1\",\n      \"type\": \"image\",\n      \"physics_body\": \"rectangle\",\n      \"image\": {\n        \"path\": \"paddle.png\"\n      },\n      \"traits\": {\n        \"Draggable\": {\n          \"parameters\": {\n            \"vertical\": false\n          }\n        }\n      },\n      \"collision_group\": \"paddle\",\n      \"properties\": {\n        \"x\": 104,\n        \"y\": 44,\n        \"width\": 129,\n        \"height\": 28\n      },\n      \"code\": []\n    },\n    {\n      \"id\": \"paddle2\",\n      \"type\": \"image\",\n      \"physics_body\": \"rectangle\",\n      \"image\": {\n        \"path\": \"paddle.png\"\n      },\n      \"traits\": {\n        \"Draggable\": {\n          \"parameters\": {\n            \"vertical\": false\n          }\n        }\n      },\n      \"collision_group\": \"paddle\",\n      \"properties\": {\n        \"x\": 224,\n        \"y\": 434,\n        \"width\": 129,\n        \"height\": 28\n      },\n      \"code\": []\n    },\n    {\n      \"id\": \"ball\",\n      \"type\": \"image\",\n      \"physics_body\": \"circle\",\n      \"image\": {\n        \"path\": \"grayball.png\"\n      },\n      \"traits\": {},\n      \"properties\": {\n        \"x\": 160,\n        \"y\": 240,\n        \"width\": 30,\n        \"height\": 30,\n        \"bouncy\": true\n      },\n      \"collision_group\": \"ball\",\n      \"code\": [\n        {\n          \"on_event\": {\n            \"name\": \"start\",\n            \"parameters\": [],\n            \"code\": [\n              {\n                \"set\": [\n                  \"speed\",\n                  200\n                ]\n              },\n              {\n                \"call\":{\n                  \"method\": \"move\",\n                  \"parameters\": [\n                    45,\n                    {\n                      \"get\": \"speed\"\n                    }\n                  ]\n                }\n              }\n            ]\n          }\n        },\n        {\n          \"set\": [\n            \"hits left\",\n            1\n          ]\n        },\n        {\n          \"on_event\": {\n            \"name\": \"collision\",\n            \"parameters\": [\n              \"other_sprite\"\n            ],\n            \"code\": [\n              {\n                \"trigger_event\": {\n                  \"name\": \"score\",\n                  \"parameters\": {}\n                }\n              }\n            ]\n          }\n        }\n      ]\n    }\n  ]\n}"], ["title", "Pong"], ["updated_at", Tue, 25 Feb 2014 17:57:05 UTC +00:00]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-25 10:57:48 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.2/lib/rails/templates/rails/welcome/index.html.erb (1.5ms)
+Completed 200 OK in 30ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/shared_projects/1" for 127.0.0.1 at 2014-02-25 10:57:56 -0700
+
+ActionController::RoutingError (No route matches [GET] "/shared_projects/1"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.7ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (5.5ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (59.6ms)
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSharedProject Load (0.7ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 296ms (Views: 277.7ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/breakout.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/pong.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:20 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:21 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-02-25 10:58:21 -0700
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 10ms (Views: 7.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/breakout.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/pong.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-25 10:59:53 -0700
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:02:23 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSharedProject Load (0.5ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1
+Completed 500 Internal Server Error in 21ms
+
+ActionView::MissingTemplate (Missing template layouts/shared_projects with {:locale=>[:en], :formats=>[:html], :handlers=>[:erb, :builder, :raw, :ruby, :jbuilder, :coffee]}. Searched in:
+  * "/Users/andrew/capstone/zuse-web/app/views"
+):
+  actionpack (4.0.2) lib/action_view/path_set.rb:46:in `find'
+  actionpack (4.0.2) lib/action_view/lookup_context.rb:122:in `find'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:81:in `resolve_layout'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:88:in `resolve_layout'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:71:in `block in find_layout'
+  actionpack (4.0.2) lib/action_view/lookup_context.rb:235:in `with_layout_format'
+  actionpack (4.0.2) lib/action_view/renderer/abstract_renderer.rb:18:in `with_layout_format'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:71:in `find_layout'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:55:in `render_with_layout'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.2) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/benchmark.rb:296:in `realtime'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:403:in `_run__378918338086484049__process_action__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__1549830760518633869__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/missing_template.erb within rescues/layout (0.6ms)
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:02:51 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 10ms (Views: 6.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 11:02:51 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:02:51 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:02:51 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:02:51 -0700
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:04:02 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 9ms (Views: 6.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 11:04:02 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:04:02 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:04:02 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:04:02 -0700
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:06:18 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (undefined method `html_safe' for nil:NilClass):
+     7:   <%= javascript_tag do %>
+     8:     $(function () {
+     9:       window.raw_code = <%= @shared_project.raw_code.html_safe %>;
+    10:       window.compiled_code = <%= @shared_project.compiled_code.html_safe %>;
+    11: 
+    12:       var canvas = $("#viewport");
+    13: 
+  app/views/layouts/shared_projects.html.erb:10:in `block in _app_views_layouts_shared_projects_html_erb___837811348734596272_70092694225200'
+  app/views/layouts/shared_projects.html.erb:7:in `_app_views_layouts_shared_projects_html_erb___837811348734596272_70092694225200'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.3ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (13.5ms)
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:07:38 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSharedProject Load (0.5ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 11:07:38 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:07:38 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:07:38 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:07:38 -0700
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:09:10 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (undefined method `empty?' for nil:NilClass):
+    10:       window.raw_code = <%= raw @shared_project.raw_code %>;
+    11:     <% end %>
+    12: 
+    13:     <% if !@shared_project.compiled_code.empty? %>
+    14:       window.compiled_code = <%= raw @shared_project.compiled_code %>;
+    15:     <% end %>
+    16: 
+  app/views/layouts/shared_projects.html.erb:13:in `block in _app_views_layouts_shared_projects_html_erb___837811348734596272_70092695032580'
+  app/views/layouts/shared_projects.html.erb:7:in `_app_views_layouts_shared_projects_html_erb___837811348734596272_70092695032580'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (11.6ms)
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:09:48 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 8ms (Views: 4.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 11:09:48 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:09:48 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:09:48 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:09:48 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:10:19 -0700
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:10:39 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 11:10:39 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:10:39 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:10:39 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:10:39 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:10:43 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:11:15 -0700
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 24ms (Views: 20.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:11:18 -0700
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 9ms (Views: 6.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+
+Started GET "/api/v1/shared_projects/images/paddle.png" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+ActionController::RoutingError (No route matches [GET] "/api/v1/shared_projects/images/paddle.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.8ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (26.3ms)
+
+
+Started GET "/api/v1/shared_projects/images/grayball.png" for 127.0.0.1 at 2014-02-25 11:12:16 -0700
+
+ActionController::RoutingError (No route matches [GET] "/api/v1/shared_projects/images/grayball.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (23.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-25 11:14:23 -0700
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/railties-4.0.2/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets" for 127.0.0.1 at 2014-02-25 11:14:27 -0700
+
+ActionController::RoutingError (No route matches [GET] "/assets"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.4ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.0ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (19.7ms)
+
+
+Started GET "/assets/ball.png" for 127.0.0.1 at 2014-02-25 11:14:33 -0700
+
+ActionController::RoutingError (No route matches [GET] "/assets/ball.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.5ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (20.5ms)
+
+
+Started GET "/assets/grayball.png" for 127.0.0.1 at 2014-02-25 11:14:48 -0700
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 213ms (Views: 209.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/paddle.png" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/assets/grayball.png" for 127.0.0.1 at 2014-02-25 11:15:35 -0700
+
+
+Started GET "/api/v1/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:16:57 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+ActionController::RoutingError (No route matches [GET] "/api/v1/shared_projects/1"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.0.0-p247/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.6ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (4.9ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p247/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (37.3ms)
+
+
+Started GET "/shared_projects/1" for 127.0.0.1 at 2014-02-25 11:17:01 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSharedProject Load (0.7ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.6ms)
+Completed 200 OK in 114ms (Views: 77.4ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 11:17:01 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 11:17:01 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:17:01 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 11:17:02 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 11:17:02 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-25 11:17:02 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-25 11:17:02 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-25 11:17:02 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-25 11:17:02 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-25 11:17:02 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-25 11:17:02 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 11:17:02 -0700
+
+
+Started GET "/assets/paddle.png" for 127.0.0.1 at 2014-02-25 11:17:02 -0700
+
+
+Started GET "/assets/grayball.png" for 127.0.0.1 at 2014-02-25 11:17:02 -0700
