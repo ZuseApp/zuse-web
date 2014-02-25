@@ -44,7 +44,7 @@ function ZuseAppEngine (options)
   this.lastDraw = null;
   this.fps = 0;
 
-  this.groups = this.code.groups;
+  this.collision_groups = this.code.collision_groups;
 
   // Image assets
   this.images = {};
@@ -262,7 +262,7 @@ ZuseAppEngine.prototype.loadSprites = function ()
     options.width = obj.properties.width;
     options.height = obj.properties.height;
     options.physics_body = obj.physics_body;
-    options.group = obj.group;
+    options.collision_group = obj.collision_group;
     options.type = obj.type;
 
     if (obj.type === "text")
@@ -383,13 +383,13 @@ ZuseAppEngine.prototype.detectSpriteCollision = function ()
 
   for (var k in this.sprites)
   {
-    if (this.sprites[k].group in this.groups)
+    if (this.sprites[k].collision_group in this.collision_groups)
       temp_sprites[k] = this.sprites[k];
   }
 
   for (var k in this.sprites)
   {
-    if (!(this.sprites[k].group in this.groups))
+    if (!(this.sprites[k].collision_group in this.collision_groups))
       continue;
 
     var s = this.sprites[k];
@@ -397,9 +397,9 @@ ZuseAppEngine.prototype.detectSpriteCollision = function ()
 
     for (var q in temp_sprites)
     {
-      var cg = this.groups[s.group];
+      var cg = this.collision_groups[s.collision_group];
 
-      if (cg.contains(temp_sprites[q].group) && s.collidesWith(temp_sprites[q]))
+      if (cg.contains(temp_sprites[q].collision_group) && s.collidesWith(temp_sprites[q]))
       {
         s.resolveCollisionWith(temp_sprites[q]);
         this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_sprite: temp_sprites[q].id });
