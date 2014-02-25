@@ -3,7 +3,7 @@
 <head>
   <title>Zuse Hub - <%= @shared_project.title %></title>
   <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "shared_projects" %>
+  <%= javascript_include_tag "application" %>
   <%= javascript_tag do %>
     $(function () {
     <% if @shared_project.raw_code && !@shared_project.raw_code.empty? %>
