@@ -12175,3 +12175,107 @@ Started GET "/assets/sprite_ball.png" for 127.0.0.1 at 2014-02-25 12:15:35 -0700
 
 
 Started GET "/assets/sprite_paddle.png" for 127.0.0.1 at 2014-02-25 12:15:35 -0700
+
+
+Started GET "/shared_projects/1" for 127.0.0.1 at 2014-02-25 12:33:53 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (1.3ms)
+Completed 200 OK in 107ms (Views: 73.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/paddle.png" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/assets/grayball.png" for 127.0.0.1 at 2014-02-25 12:33:54 -0700
+
+
+Started GET "/shared_projects/3" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSharedProject Load (86.9ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 3 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 96ms (Views: 5.9ms | ActiveRecord: 86.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/sprite_brick.png" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/sprite_paddle.png" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
+
+
+Started GET "/assets/sprite_ball.png" for 127.0.0.1 at 2014-02-25 12:34:02 -0700
