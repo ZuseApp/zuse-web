@@ -31,6 +31,7 @@ Following is a series of tables that succinctly describes the API.
 | Method | Endpoint | Authentication |
 | ------ | -------- | -------------- |
 | GET | /api/v1/projects | Token |
+| GET | /api/v1/projects/:id | Token |
 
 ## Endpoint Specifications
 
@@ -101,6 +102,8 @@ TODO
 
 ### General
 
+#### Index
+
 ```
 GET /api/v1/projects
 ```
@@ -133,3 +136,7 @@ On success, the endpoint returns an :ok status with the following json:
     .
 ]
 ```
+
+#### Clone
+
+TODO
