@@ -19,6 +19,7 @@ Following is a series of tables that succinctly describes the API.
 | ------ | -------- | -------------- |
 | GET | /api/v1/user/projects | Token |
 | GET | /api/v1/user/projects/:id | Token |
+| GET | /api/v1/user/projects/:id/download | Token |
 | POST | /api/v1/user/projects | Token |
 | PUT | /api/v1/user/projects/:id | Token |
 | DELETE | /api/v1/user/projects/:id | Token |
@@ -31,7 +32,6 @@ Following is a series of tables that succinctly describes the API.
 | Method | Endpoint | Authentication |
 | ------ | -------- | -------------- |
 | GET | /api/v1/projects | Token |
-| GET | /api/v1/projects/:id | Token |
 
 ## Endpoint Specifications
 
@@ -98,7 +98,69 @@ Again, this token should be saved by the client as it will be used to authentica
 
 ### User Specific
 
-TODO
+#### User Projects
+
+```
+GET /api/v1/user/projects
+```
+
+The above endpoint is used to obtain the user's (identified by authentication token) shared projects on zuse hub. On success, the endpoint returns an :ok status with the following json:
+
+```
+[
+  { 
+    "id" : "<Project id>", 
+    "title" : "<Project title>", 
+    "description" : "<Project description>",
+    "favorites" : <Number of favorites>,
+    "downloads" : <Number of downloads>
+    },
+    { 
+      <More projects>
+    },
+    .
+    .
+    .
+]
+```
+
+#### User Project
+
+```
+GET /api/v1/user/projects/:id
+```
+
+The above endpoint is used to obtain a user's (identified by authentication token) particular project. On success, the endpoint returns an :ok status with the following json:
+
+```
+{ 
+  "id" : "<Project id>", 
+  "title" : "<Project title>", 
+  "description" : "<Project description>",
+  "favorites" : <Number of favorites>,
+  "downloads" : <Number of downloads>,
+  "raw_code" : "<Project raw code>",
+  "compiled_code" : "<Project compiled code>"
+}
+```
+
+If the user doesn't own the project that is being asked for, the endpoint returns a :forbidden status with no json.
+
+#### User Full Project
+
+```
+GET /api/v1/user/projects/:id/download
+```
+
+The above endpoint is used to download a copy of a project. On success, the endpoint returns
+| GET | /api/v1/user/projects/:id | Token |
+| GET | /api/v1/user/projects/:id/download | Token |
+| POST | /api/v1/user/projects | Token |
+| PUT | /api/v1/user/projects/:id | Token |
+| DELETE | /api/v1/user/projects/:id | Token |
+| GET | /api/v1/user/projects/favorites | Token |
+| POST | /api/v1/user/projects/:id/favorite | Token |
+| DELETE | /api/v1/user/projects/:id/unfavorite | Token |
 
 ### General
 
@@ -136,7 +198,3 @@ On success, the endpoint returns an :ok status with the following json:
     .
 ]
 ```
-
-#### Clone
-
-TODO
