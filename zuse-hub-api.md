@@ -19,21 +19,25 @@ Please find below a series of tables that succinctly describe the API.
 | ------ | -------- | -------------- |
 | GET | /api/v1/user/projects | Token |
 | GET | /api/v1/user/projects/:uuid | Token |
-| GET | /api/v1/user/projects/:uuid/download | Token |
 | POST | /api/v1/user/projects | Token |
 | PUT | /api/v1/user/projects/:uuid | Token |
+| DELETE | /api/v1/user/projects/:uuid | Token |
 
 ### General
 
 | Method | Endpoint | Authentication |
 | ------ | -------- | -------------- |
 | GET | /api/v1/projects | Token |
+| GET | /api/v1/projects/:uuid | Token |
+| GET | /api/v1/projects/:uuid/download | Token |
+| GET | /api/v1/projects/:uuid/fork | Token |
+
 
 ### Project Sharing on Social Media
 
 | Method | Endpoint | Authentication |
 | ------ | -------- | -------------- |
-| POST | /api/v1/shared_projects | Token |
+| POST | /api/v1/shared_projects | None |
 
 ## Endpoint Specifications
 
@@ -96,7 +100,7 @@ On success, the endpoint returns an :ok status with the following json:
 
 Again, this token should be saved by the client as it will be used to authenticate on all succeeding request to the api. On error, the endpoint returns an :unauthorized status with no json.
 
-**All remaining endpoints require a valid token for access. If a valid token is not given, these endpoints return an :unauthorized status with no json.**
+**All endpoints requiring a token for authentication return an :unauthorized status with no json.**
 
 ### User Specific
 
@@ -116,17 +120,17 @@ The above endpoint is used to obtain the user's (identified by authentication to
     "description" : "<Project description>",
     "username" : "<Project author's user name>",
     "downloads" : <Number of downloads>
-  },
-  { 
-    <More projects>
-  },
-  .
-  .
-  .
+    },
+    { 
+      <More projects>
+    },
+    .
+    .
+    .
 ]
 ```
 
-#### User Project
+#### User Project Show
 
 ```
 GET /api/v1/user/projects/:uuid
@@ -147,25 +151,7 @@ The above endpoint is used to obtain a user's (identified by authentication toke
 
 If the user doesn't own the project that is being asked for, the endpoint returns a :forbidden status with no json.
 
-#### User Full Project
-
-```
-GET /api/v1/user/projects/:uuid/download
-```
-
-The above endpoint is used to download a copy of a project. This copy comes with its own uuid different from the original project's uuid. On success, the endpoint returns an :ok status with the following json:
-
-```
-{ 
-  "uuid" : "<Newly Generated Project uuid>", 
-  "title" : "<Project title>", 
-  "description" : "<Project description>",
-  "project_json" : "<Project json>",
-  "compiled_code" : "<Project compiled code>"
-}
-```
-
-#### Project Creation
+#### User Project Creation
 
 ```
 POST /api/v1/user/projects
@@ -189,7 +175,7 @@ The server pulls the project title, description, and uuid out of the project\_js
 { "errors" : [ <List of full error messages>, ... ] }
 ```
 
-#### Project Update
+#### User Project Update
 
 ```
 PUT /api/v1/user/projects/:uuid
@@ -214,7 +200,7 @@ On success, the endpoint returns an :no\_content status. The server grabs the pr
 
 If the user doesn't own the project the endpoint returns a :forbidden status.
 
-#### Project Deletion
+#### User Project Deletion
 
 ```
 DELETE /api/v1/user/projects/:uuid
@@ -249,14 +235,69 @@ On success, the endpoint returns an :ok status with the following json:
     "description" : "<Project description>",
     "downloads" : <Number of downloads>
     },
-  { 
-    <More projects>
-  },
-  .
-  .
-  .
+    { 
+      <More projects>
+    },
+    .
+    .
+    .
 ]
 ```
+
+#### Show
+
+```
+GET /api/v1/projects/:uuid
+```
+
+The above endpoint is used to obtain meta information about a single project. On success, the endpoint returns an :ok status with the following json:
+
+```
+{ 
+  "uuid" : "<Project uuid>", 
+  "title" : "<Project title>", 
+  "username" : "<Project author's username>",
+  "description" : "<Project description>",
+  "downloads" : <Number of downloads>
+}
+```
+
+#### Project Download
+
+```
+GET /api/v1/projects/:uuid/download
+```
+
+The above endpoint is used to obtain the compiled code for the project for immediate execution. On success, the endpoint returns an :ok status with the following json:
+
+```
+{ 
+  "uuid" : "<Project uuid>", 
+  "title" : "<Project title>", 
+  "username" : "<Project author's username>",
+  "description" : "<Project description>",
+  "project_json" : "<Project json>",
+  "compiled_code" : "<Project compiled_code>"
+}
+```
+
+#### Project Forking
+
+```
+GET /api/v1/projects/:uuid/fork
+```
+The above endpoint is used to fork a copy of a project. This copy comes with its own uuid different from the original project's uuid. On success, the endpoint returns an :ok status with the following json:
+
+```
+{ 
+  "uuid" : "<Newly Generated Project uuid>", 
+  "title" : "<Project title>", 
+  "description" : "<Project description>",
+  "project_json" : "<Project json>",
+  "compiled_code" : "<Project compiled code>"
+}
+```
+
 
 ### Project Sharing on Social Media
 
