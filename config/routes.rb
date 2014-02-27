@@ -1,6 +1,12 @@
 Myapp::Application.routes.draw do
-  
+ 
+  # User registration/authentication
+  post "/api/v1/user/register" => "api_users#register"
+  post "/api/v1/user/auth" => "api_users#authenticate"
+
+  # General project access
   resources :projects, path: "/api/v1/projects"
+
   resources :shared_projects, path: "/api/v1/shared_projects", only: [ :create ]
   resources :shared_projects, only: [ :show ]
 

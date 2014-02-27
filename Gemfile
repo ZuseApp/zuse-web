@@ -50,3 +50,4 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 # gem 'debugger', group: [:development, :test]
 
 gem "factory_girl_rails", "~> 4.0", group: :test
+gem 'forgery', '0.5.0', group: :test
