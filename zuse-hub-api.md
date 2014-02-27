@@ -140,7 +140,7 @@ The above endpoint is used to obtain a user's (identified by authentication toke
   "title" : "<Project title>", 
   "description" : "<Project description>",
   "downloads" : <Number of downloads>,
-  "raw_code" : "<Project raw code>",
+  "project_json" : "<Project json>",
   "compiled_code" : "<Project compiled code>"
 }
 ```
@@ -160,7 +160,7 @@ The above endpoint is used to download a copy of a project. This copy comes with
   "uuid" : "<Newly Generated Project uuid>", 
   "title" : "<Project title>", 
   "description" : "<Project description>",
-  "raw_code" : "<Project raw code>",
+  "project_json" : "<Project json>",
   "compiled_code" : "<Project compiled code>"
 }
 ```
@@ -176,14 +176,14 @@ The above endpoint is used to upload a project on Zusehub. This endpoint expects
 ```
 {
   "project" : {
-    "raw_code" : "<Project raw code>",
+    "project_json" : "<Project json>",
     "compiled_code" : "<Project compiled code>"
   }
 }
 ```
 On success, the endpoint returns a :no_content status.
 
-The server pulls the project title, description, and uuid out of the raw\_code. If any of these keys are not present or if the raw\_code or compiled\_code are invalid json the endpoint will return an :unprocessable\_entity status with the following json:
+The server pulls the project title, description, and uuid out of the project\_json. If any of these keys are not present or if the project\_json or compiled\_code are invalid json the endpoint will return an :unprocessable\_entity status with the following json:
 
 ```
 { "errors" : [ <List of full error messages>, ... ] }
@@ -200,13 +200,13 @@ The above endpoint is used to update a project and expects the following json st
 ```
 {
   "project" : {
-    "raw_code" : "<Project raw code>",
+    "project_json" : "<Project json>",
     "compiled_code" : "<Project compiled code>"
   }
 }
 ```
 
-On success, the endpoint returns an :no\_content status. The server grabs the project title, description, and uuid from the raw\_code json and verifies that the json is valid. If the uuid doesn't match or if the json is not valid the endpoint returns an :unprocessable\_entity status with the following json:
+On success, the endpoint returns an :no\_content status. The server grabs the project title, description, and uuid from the project\_json and verifies that the json is valid. If the uuid doesn't match or if the json is not valid the endpoint returns an :unprocessable\_entity status with the following json:
 
 ```
 { "errors" : [ <List of full error messages>, ... ] }
@@ -271,7 +271,7 @@ The above endpoint is used to quickly share a project via social media and expec
 ```
 { 
   "shared_project" : {
-    "raw_code" : "<Project raw code>",
+    "project_json" : "<Project json>",
     "compiled_code" : <Project compiled code>"
   }
 }
@@ -283,7 +283,7 @@ On success, the endpoint returns an :ok status with the following json:
 { "url" : "<Shared project url>" }
 ```
 
-The endpoint gets project title and description information from the raw\_code. If the raw\_code or compiled\_code are invalid json the endpoint will return an :unprocessable\_entity status with the following json:
+The endpoint gets project title and description information from the project\_json. If the project\_json or compiled\_code are invalid json the endpoint will return an :unprocessable\_entity status with the following json:
 
 ```
 { "errors" : [ <List of full error messages>, ... ] }
