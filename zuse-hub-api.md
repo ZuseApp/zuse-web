@@ -116,13 +116,13 @@ The above endpoint is used to obtain the user's (identified by authentication to
     "description" : "<Project description>",
     "username" : "<Project author's user name>",
     "downloads" : <Number of downloads>
-    },
-    { 
-      <More projects>
-    },
-    .
-    .
-    .
+  },
+  { 
+    <More projects>
+  },
+  .
+  .
+  .
 ]
 ```
 
@@ -249,12 +249,12 @@ On success, the endpoint returns an :ok status with the following json:
     "description" : "<Project description>",
     "downloads" : <Number of downloads>
     },
-    { 
-      <More projects>
-    },
-    .
-    .
-    .
+  { 
+    <More projects>
+  },
+  .
+  .
+  .
 ]
 ```
 
