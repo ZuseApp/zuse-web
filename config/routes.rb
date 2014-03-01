@@ -1,13 +1,29 @@
 Myapp::Application.routes.draw do
  
+  ############
+  # API
+  ############
+
   # User registration/authentication
   post "/api/v1/user/register" => "api_users#register"
   post "/api/v1/user/auth" => "api_users#authenticate"
 
-  # General project access
-  resources :projects, path: "/api/v1/projects"
+  # User specific project access
+  resources :projects, param: :uuid, path: "/api/v1/user/projects", except: [ :edit, :new ]
 
+  # General project access
+  get "/api/v1/projects" => "general_projects#index"
+  get "/api/v1/projects/:uuid" => "general_projects#show"
+  get "/api/v1/projects/:uuid/download" => "general_projects#download"
+  get "/api/v1/projects/:uuid/fork" => "general_projects#fork"
+
+  # Shared project access
   resources :shared_projects, path: "/api/v1/shared_projects", only: [ :create ]
+  
+  
+  ############
+  # Non API
+  ############
   resources :shared_projects, only: [ :show ]
 
   # The priority is based upon order of creation: first created -> highest priority.
