@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
         render json: @project.errors, status: :unprocessable_entity
       end
     end
+
   end
 
   def show
