@@ -100,7 +100,7 @@ On success, the endpoint returns an :ok status with the following json:
 
 Again, this token should be saved by the client as it will be used to authenticate on all succeeding request to the api. On error, the endpoint returns an :unauthorized status with no json.
 
-**All endpoints requiring a token for authentication return an :unauthorized status with no json.**
+**All endpoints requiring a token for authentication return an :unauthorized status with no json if the token doesn't identifiy a user.**
 
 ### User Specific
 
