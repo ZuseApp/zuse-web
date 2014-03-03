@@ -1,0 +1,2 @@
+module ApiSharedProjectsHelper
+end

@@ -3323,3 +3323,812 @@ Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
   [1m[35m (0.2ms)[0m  ROLLBACK
   [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (137.0ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (310.8ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (2.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (10.5ms)[0m  CREATE TABLE "commits" ("id" serial primary key, "project_id" integer, "ancestry" character varying(255), "project_json" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.3ms)[0m  [1mCREATE INDEX "index_commits_on_project_id" ON "commits" USING btree ("project_id")[0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp, "uuid" character varying(255), "downloads" integer, "user_id" integer) 
+  [1m[36m (0.9ms)[0m  [1mCREATE INDEX "index_projects_on_user_id" ON "projects" USING btree ("user_id")[0m
+  [1m[35m (3.4ms)[0m  CREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "project_json" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (1.2ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_token" ON "users" USING btree ("token")[0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_username" ON "users" USING btree ("username")
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140301200541')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225160358')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140227221438')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140301194645')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140301194718')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.4ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.8ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 18:59:41', '2014-03-03 18:59:41', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36mActiveRecord::SchemaMigration Load (94.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (92.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProjects (20140222152850)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (4.0ms)[0m  [1mCREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140222152850"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20140222155817)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140222155817"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSharedProjects (20140225152749)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "raw_code" text, "compiled_code" text, "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140225152749"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to AddIndexToTokenOnSharedProjects (20140225153218)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mCREATE INDEX "index_shared_projects_on_token" ON "shared_projects" ("token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140225153218"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to RemoveTokenFromSharedProjects (20140225160358)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "shared_projects" DROP "token"[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140225160358"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddIndexesToUser (20140227221438)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (0.7ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_token" ON "users" ("token")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140227221438"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateCommits (20140301194645)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "commits" ("id" serial primary key, "project_id" integer, "ancestry" character varying(255), "project_json" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.0ms)[0m  CREATE INDEX "index_commits_on_project_id" ON "commits" ("project_id")
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140301194645"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Migrating to AlterProjectsTable (20140301194718)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.5ms)[0m  ALTER TABLE "projects" ADD COLUMN "uuid" character varying(255)
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "projects" ADD COLUMN "downloads" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "projects" DROP "code"
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "projects" ADD COLUMN "user_id" integer[0m
+  [1m[35m (0.8ms)[0m  CREATE INDEX "index_projects_on_user_id" ON "projects" ("user_id")
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140301194718"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+Migrating to AlterSharedProject (20140301200541)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "shared_projects" RENAME COLUMN "raw_code" TO "project_json"
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140301200541"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (120.2ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (245.3ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.0ms)[0m  CREATE TABLE "commits" ("id" serial primary key, "project_id" integer, "ancestry" character varying(255), "project_json" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.3ms)[0m  [1mCREATE INDEX "index_commits_on_project_id" ON "commits" USING btree ("project_id")[0m
+  [1m[35m (3.5ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp, "uuid" character varying(255), "downloads" integer, "user_id" integer) 
+  [1m[36m (1.0ms)[0m  [1mCREATE INDEX "index_projects_on_user_id" ON "projects" USING btree ("user_id")[0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "project_json" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_token" ON "users" USING btree ("token")[0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_username" ON "users" USING btree ("username")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140301200541')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225160358')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140227221438')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140301194645')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140301194718')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.3ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.5ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mALTER TABLE "commits" DISABLE TRIGGER ALL;ALTER TABLE "projects" DISABLE TRIGGER ALL;ALTER TABLE "shared_projects" DISABLE TRIGGER ALL;ALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "commits"[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+PG::UndefinedColumn: ERROR:  column "commit_id" of relation "commits" does not exist
+LINE 1: INSERT INTO "commits" ("project_id", "commit_id", "project_j...
+                                             ^
+: INSERT INTO "commits" ("project_id", "commit_id", "project_json", "compiled_code", "created_at", "updated_at", "id") VALUES (NULL, NULL, 'MyText', 'MyText', '2014-03-03 19:03:40', '2014-03-03 19:03:40', 980190962)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "commits" ENABLE TRIGGER ALL;ALTER TABLE "projects" ENABLE TRIGGER ALL;ALTER TABLE "shared_projects" ENABLE TRIGGER ALL;ALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL
+  [1m[36m (119.8ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (254.2ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.7ms)[0m  CREATE TABLE "commits" ("id" serial primary key, "project_id" integer, "ancestry" character varying(255), "project_json" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.1ms)[0m  [1mCREATE INDEX "index_commits_on_project_id" ON "commits" USING btree ("project_id")[0m
+  [1m[35m (3.3ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp, "uuid" character varying(255), "downloads" integer, "user_id" integer) 
+  [1m[36m (0.9ms)[0m  [1mCREATE INDEX "index_projects_on_user_id" ON "projects" USING btree ("user_id")[0m
+  [1m[35m (3.8ms)[0m  CREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "project_json" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (1.1ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_token" ON "users" USING btree ("token")[0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_username" ON "users" USING btree ("username")
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140301200541')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225160358')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140227221438')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140301194645')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140301194718')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------------
+ApiUsersControllerTest: test_authenticate:_bad_password_should_fail
+-------------------------------------------------------------------
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'TzJkAP6Pj7agYR' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'cchavez@agimba.gov' LIMIT 1
+  [1m[36mSQL (5.8ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["email", "cchavez@agimba.gov"], ["password_digest", "$2a$04$h/TRrFYrZRb.rnALs1V7/eTq8T7cytoLXNIP0QFZpZ1fALXjjB1.O"], ["token", "j_XVv4h5VBPJxAaIBApBLLDiGbWAguq0Z9yty1xs"], ["updated_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["username", "TzJkAP6Pj7agYR"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#authenticate as HTML
+  Parameters: {"user"=>{"username"=>"TzJkAP6Pj7agYR", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'TzJkAP6Pj7agYR' LIMIT 1[0m
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------------------
+ApiUsersControllerTest: test_authenticate:_should_get_user_token
+----------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'YSpIIYWpe5Lg' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'rlee@eazzy.biz' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["email", "rlee@eazzy.biz"], ["password_digest", "$2a$04$9lK1VJqC30UEO4Nvi3Ir4eZlsV2BDYROCVehjpPeszm/OGSMtGRwm"], ["token", "7UNZFrVa1oyukkJZQtLMc9ZMXmeHOprVFnWg-JYI"], ["updated_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["username", "YSpIIYWpe5Lg"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#authenticate as HTML
+  Parameters: {"user"=>{"username"=>"YSpIIYWpe5Lg", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'YSpIIYWpe5Lg' LIMIT 1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_create_new_user
+-------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = '9NXtgFj84s7' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'dmeyer@yakitri.name' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["email", "dmeyer@yakitri.name"], ["password_digest", "$2a$04$sgGnFw.q78hmyU.CGSKFC.riZaSJ44wxO54dE4unowPIIyYJwabRu"], ["token", "_NXceo9ZipAnC3zKpWfYgZ9YnhpsoThpkC7irHW2"], ["updated_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["username", "9NXtgFj84s7"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"lXq9hGgbTCBN3", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"kfranklin@dabz.com"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'lXq9hGgbTCBN3' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'kfranklin@dabz.com' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["email", "kfranklin@dabz.com"], ["password_digest", "$2a$04$7TNnTpUlQ/uzUCIAMvNBWOxzxxXpBGS06LGor5PRS3y0t/7A/CiN."], ["token", "CJjuwcP4R5q1HCafrgCxc15lwLL7ZMRJfMQqfhw5"], ["updated_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["username", "lXq9hGgbTCBN3"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 5ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_missing_attributes
+-----------------------------------------------------------------------------
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'gau9AOz7XQBEjqb' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'dgibson@teklist.info' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["email", "dgibson@teklist.info"], ["password_digest", "$2a$04$tVWTExU2BuA7jdeMZ.Kwkud/hbpj2MERVDx6/TNnh3Y/BTik2FxNK"], ["token", "sz0ztbVEBzX471o-xEsijTyKqVit2PO08kBh43Yh"], ["updated_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["username", "gau9AOz7XQBEjqb"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = '' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 422 Unprocessable Entity in 11ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_password_confirm_blank
+---------------------------------------------------------------------------------
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'rn08Qcla5uaZGFa' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'hhill@vipe.mil' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["email", "hhill@vipe.mil"], ["password_digest", "$2a$04$nThdKtd7/VEkmTf3/kSVFOptIXIveB7dnq9oUB64zuRNsT8m6jd4m"], ["token", "IDnYE253ofo0yjWSiv0qYmNXieqtf0UoJZMuJ-Mb"], ["updated_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["username", "rn08Qcla5uaZGFa"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"RZrvD1RBZydg62", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"jwood@zoombox.biz"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'RZrvD1RBZydg62' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'jwood@zoombox.biz' LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 7ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_password_confirm_doesn't_match
+-----------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'kyuMXfveqcg' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'fmorris@demivee.gov' LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["email", "fmorris@demivee.gov"], ["password_digest", "$2a$04$aPVOPO8EK4cx/Qi8cJWbf.kTZ5AgB3AQvcsonjQn0Z0IWM9kcSVaG"], ["token", "tjdm4an4ASb5l2ay8RHYTU9NJtrDes3u3_yZ3yCu"], ["updated_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["username", "kyuMXfveqcg"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"nrAwwYEzcy5Xw", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"chawkins@mycat.info"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'nrAwwYEzcy5Xw' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'chawkins@mycat.info' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_username_and_email_already_taken
+-------------------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = '91B8fMR8ofJdZE' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'jphillips@yabox.name' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["email", "jphillips@yabox.name"], ["password_digest", "$2a$04$e96Mo5UC4MUVQPDGaUoZpOm6eUOssFO1VJmWL813SrL7QqANyacPu"], ["token", "06pfBF-mkJXM6eam-UHQ5RjTiShRAc5Gq-zad8Q1"], ["updated_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["username", "91B8fMR8ofJdZE"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"91B8fMR8ofJdZE", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"jphillips@yabox.name"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = '91B8fMR8ofJdZE' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'jphillips@yabox.name' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_404
+-------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "project_json", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["description", "An essay into programming"], ["project_json", ""], ["title", "My Zuse Project"], ["updated_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 0 LIMIT 1[0m
+Redirected to http://test.host/404.html
+Completed 404 Not Found in 2ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------------
+SharedProjectsControllerTest: test_should_get_shared_project
+------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "project_json", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00], ["description", "An essay into programming"], ["project_json", ""], ["title", "My Zuse Project"], ["updated_at", Mon, 03 Mar 2014 19:06:53 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+Completed 500 Internal Server Error in 969ms
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------
+SharedProjectsControllerTest: test_should_get_url
+-------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "project_json", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Mon, 03 Mar 2014 19:06:54 UTC +00:00], ["description", "An essay into programming"], ["project_json", ""], ["title", "My Zuse Project"], ["updated_at", Mon, 03 Mar 2014 19:06:54 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (219.1ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (245.2ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (21.0ms)[0m  CREATE TABLE "commits" ("id" serial primary key, "project_id" integer, "ancestry" character varying(255), "project_json" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.1ms)[0m  [1mCREATE INDEX "index_commits_on_project_id" ON "commits" USING btree ("project_id")[0m
+  [1m[35m (3.3ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp, "uuid" character varying(255), "downloads" integer, "user_id" integer) 
+  [1m[36m (0.9ms)[0m  [1mCREATE INDEX "index_projects_on_user_id" ON "projects" USING btree ("user_id")[0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "project_json" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_token" ON "users" USING btree ("token")[0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_username" ON "users" USING btree ("username")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140301200541')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225160358')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140227221438')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140301194645')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140301194718')
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+ApiSharedProjectsControllerTest: test_should_get_404
+----------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (5.9ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "project_json", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["description", "An essay into programming"], ["project_json", ""], ["title", "My Zuse Project"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------------
+ApiSharedProjectsControllerTest: test_should_get_shared_project
+---------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "project_json", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["compiled_code", ""], ["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["description", "An essay into programming"], ["project_json", ""], ["title", "My Zuse Project"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+ApiSharedProjectsControllerTest: test_should_get_url
+----------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "project_json", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["description", "An essay into programming"], ["project_json", ""], ["title", "My Zuse Project"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiSharedProjectsController#create as HTML
+  Parameters: {"shared_project"=>{"title"=>"My Zuse Project", "description"=>"An essay into programming", "project_json"=>"", "compiled_code"=>""}}
+Unpermitted parameters: project_json
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["compiled_code", ""], ["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["description", "An essay into programming"], ["title", "My Zuse Project"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 4ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------------
+ApiUsersControllerTest: test_authenticate:_bad_password_should_fail
+-------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'HMqS3wGMDPCoJB' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'jkim@rhyzio.gov' LIMIT 1
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["email", "jkim@rhyzio.gov"], ["password_digest", "$2a$04$dXsvUzxDOoZVXLS5qImDguBosA03gt0WUC1onpi1C.h5bYNNfCZFu"], ["token", "ELW3zYJb4DWfPVx44o_BHGI_WrW4kqcq6Kg6EKCP"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["username", "HMqS3wGMDPCoJB"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#authenticate as HTML
+  Parameters: {"user"=>{"username"=>"HMqS3wGMDPCoJB", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'HMqS3wGMDPCoJB' LIMIT 1[0m
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------------------
+ApiUsersControllerTest: test_authenticate:_should_get_user_token
+----------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'wk9RSHDWUP3AxSa' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'ahill@zooveo.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["email", "ahill@zooveo.com"], ["password_digest", "$2a$04$6PfoCMP4V5b6Lo32gBv5pOITJM/1VyYtcaZw7zhlD463X4Z5NWPkW"], ["token", "Day4X8TyEUi6EsXfle8tj1fepAxWShtoD5Rr7B66"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["username", "wk9RSHDWUP3AxSa"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#authenticate as HTML
+  Parameters: {"user"=>{"username"=>"wk9RSHDWUP3AxSa", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'wk9RSHDWUP3AxSa' LIMIT 1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_create_new_user
+-------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'yNkoeUMlQrKtp1' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'awilson@digitube.info' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["email", "awilson@digitube.info"], ["password_digest", "$2a$04$0dDKZj8uegL0rzKEk.dNJOHSgeI0Jdkh/550oom9uqlb9bDFLb1vu"], ["token", "NoKg-Gs3gh3YqzR6HV77PG6506laTi9nCZSYfjpE"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["username", "yNkoeUMlQrKtp1"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"DkBZ4lpXP2Yn", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"tmedina@skippad.edu"}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'DkBZ4lpXP2Yn' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'tmedina@skippad.edu' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["email", "tmedina@skippad.edu"], ["password_digest", "$2a$04$ZwbRMVPNr70PbDivl1PzMeQ.xFGXDh2VPeg5iSwm0JLeP2twxuFAu"], ["token", "tBE2nPcJo09On58Lpi6ea1hCP-22ud0ZuYJTHInW"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["username", "DkBZ4lpXP2Yn"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 5ms (Views: 0.1ms | ActiveRecord: 1.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_missing_attributes
+-----------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'G2K4bjsiz9tzA' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'along@tavu.edu' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["email", "along@tavu.edu"], ["password_digest", "$2a$04$s0/wSu8o1JOygVf6NOcOXuWPWw499Z264yMysYuECe8ipeexibRFa"], ["token", "L5SnOTH4eWTqsFPQvCaYus2r6mBYjXH4t0E1VtRz"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["username", "G2K4bjsiz9tzA"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = '' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = '' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 422 Unprocessable Entity in 11ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_password_confirm_blank
+---------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = '8c4F3D5CdsBQt' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'cpierce@pixonyx.gov' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["email", "cpierce@pixonyx.gov"], ["password_digest", "$2a$04$f9SPAX8xW7XZxW2luDKgqeSWn4fqzfD5WKLISujrRVxMTvC7AnXAq"], ["token", "vH1LlD1JMPAH2EZ-tSG4gNZC8xmHxbjMKJnLiCZf"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["username", "8c4F3D5CdsBQt"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"9KbC7BOcPLyk68", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"rwells@cogibox.org"}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = '9KbC7BOcPLyk68' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'rwells@cogibox.org' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 8ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_password_confirm_doesn't_match
+-----------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'K3xX8KWPmjk8S' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'rgibson@yacero.org' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["email", "rgibson@yacero.org"], ["password_digest", "$2a$04$QIzr2HJt6/tHudvIbONpAuF/TFh6y5/4VjbQtF9enPGTz2EiBRsQ6"], ["token", "7pKVIjUk6f2imlpVe8JZ9AueA76JJAxSEZ8HR-0J"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["username", "K3xX8KWPmjk8S"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"lJ7HfIi9o7p", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"jstanley@vipe.mil"}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'lJ7HfIi9o7p' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'jstanley@vipe.mil' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_username_and_email_already_taken
+-------------------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'iYFH3Fhha8ff' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'sreyes@eimbee.biz' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["email", "sreyes@eimbee.biz"], ["password_digest", "$2a$04$phQtzmf84aq.Zk2r6o2Leemnjbenc0lfYjXzO9hDSLz4vjUWiFlfa"], ["token", "co4rzWroc1lTKuyrEkNrpETgiKE79AvGig_ja79P"], ["updated_at", Mon, 03 Mar 2014 19:10:01 UTC +00:00], ["username", "iYFH3Fhha8ff"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"iYFH3Fhha8ff", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sreyes@eimbee.biz"}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'iYFH3Fhha8ff' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'sreyes@eimbee.biz' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (119.9ms)[0m  [1mDROP DATABASE IF EXISTS "zuse_test"[0m
+  [1m[35m (244.8ms)[0m  CREATE DATABASE "zuse_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.1ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.3ms)[0m  CREATE TABLE "commits" ("id" serial primary key, "project_id" integer, "ancestry" character varying(255), "project_json" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (1.1ms)[0m  [1mCREATE INDEX "index_commits_on_project_id" ON "commits" USING btree ("project_id")[0m
+  [1m[35m (3.6ms)[0m  CREATE TABLE "projects" ("id" serial primary key, "title" character varying(255), "description" text, "created_at" timestamp, "updated_at" timestamp, "uuid" character varying(255), "downloads" integer, "user_id" integer) 
+  [1m[36m (1.0ms)[0m  [1mCREATE INDEX "index_projects_on_user_id" ON "projects" USING btree ("user_id")[0m
+  [1m[35m (3.2ms)[0m  CREATE TABLE "shared_projects" ("id" serial primary key, "title" character varying(255), "description" text, "project_json" text, "compiled_code" text, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (3.0ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "username" character varying(255), "email" character varying(255), "password_digest" character varying(255), "token" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.1ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" USING btree ("email")
+  [1m[36m (0.9ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_token" ON "users" USING btree ("token")[0m
+  [1m[35m (0.9ms)[0m  CREATE UNIQUE INDEX "index_users_on_username" ON "users" USING btree ("username")
+  [1m[36m (0.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.3ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140301200541')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140222152850')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140222155817')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225152749')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140225153218')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140225160358')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140227221438')
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140301194645')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140301194718')
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+----------------------------------------------------
+ApiSharedProjectsControllerTest: test_should_get_url
+----------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (4.1ms)[0m  [1mINSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "project_json", "title", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["compiled_code", ""], ["created_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["description", "An essay into programming"], ["project_json", ""], ["title", "My Zuse Project"], ["updated_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiSharedProjectsController#create as HTML
+  Parameters: {"shared_project"=>{"title"=>"My Zuse Project", "description"=>"An essay into programming", "project_json"=>"", "compiled_code"=>""}}
+Unpermitted parameters: project_json
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "shared_projects" ("compiled_code", "created_at", "description", "title", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["compiled_code", ""], ["created_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["description", "An essay into programming"], ["title", "My Zuse Project"], ["updated_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------------
+ApiUsersControllerTest: test_authenticate:_bad_password_should_fail
+-------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'z77KihIpVxOtQgY' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'agarcia@skiba.biz' LIMIT 1
+  [1m[36mSQL (1.3ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["email", "agarcia@skiba.biz"], ["password_digest", "$2a$04$7YvG/VtfpghJ6hlV0Iko1e1gdhE4rIYiYYosXIN5.4nd9g0Yfyco."], ["token", "WOmUK_T7sVA2pRpY8qcqzpzQPnEo86F6iOUUCjB9"], ["updated_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["username", "z77KihIpVxOtQgY"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#authenticate as HTML
+  Parameters: {"user"=>{"username"=>"z77KihIpVxOtQgY", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'z77KihIpVxOtQgY' LIMIT 1[0m
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------------------------
+ApiUsersControllerTest: test_authenticate:_should_get_user_token
+----------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'uKRtN4OBv5' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'syoung@skyble.com' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["email", "syoung@skyble.com"], ["password_digest", "$2a$04$ilKfbxb9xy9b/gHru7pKc.Hntrs6K0W2eR3cbb0EE75oAzJgQbN3O"], ["token", "x7X2iXcdyEQcdZCIrbmOXJqTS0DrVLz9hgP5i-bX"], ["updated_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["username", "uKRtN4OBv5"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#authenticate as HTML
+  Parameters: {"user"=>{"username"=>"uKRtN4OBv5", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."username" = 'uKRtN4OBv5' LIMIT 1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_create_new_user
+-------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'xcUSnL8A1Whw' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'ethomas@oyoloo.mil' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["email", "ethomas@oyoloo.mil"], ["password_digest", "$2a$04$yb2bH0QxppdAS1uudnMU/.q.3HZsaSHW4LsA/7kYYRE.T2KtWFlrK"], ["token", "bEYbm4AxIysFtq9bWXI_28YKrFpRQ_yNlliVBHVy"], ["updated_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["username", "xcUSnL8A1Whw"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"1AMwzPDEoC", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"jsmith@vimbo.org"}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = '1AMwzPDEoC' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'jsmith@vimbo.org' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["email", "jsmith@vimbo.org"], ["password_digest", "$2a$04$7fNvZZ8SjvPvnE4yYN/h0uSanFmKDkV/M4kC5.p9O0n2g6lToRx4W"], ["token", "Dx8AQ-1ea8JXqQ-nTVy_rnxnYZmH-9MwDwcXEb--"], ["updated_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["username", "1AMwzPDEoC"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Completed 201 Created in 6ms (Views: 0.3ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_missing_attributes
+-----------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'AvJJiuYYQyVuVy7' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'tbrown@photobug.org' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["email", "tbrown@photobug.org"], ["password_digest", "$2a$04$k94457q6Nc40gjyJBn5nLuOy6MSV/hImw2i5XrKYAvvFIq0Dg8D4q"], ["token", "VG9ZOtBs9RCr_DU0ftkfZPWFqqQBSGaaDhWuStqC"], ["updated_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["username", "AvJJiuYYQyVuVy7"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"", "email"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = '' LIMIT 1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = '' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 422 Unprocessable Entity in 11ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_password_confirm_blank
+---------------------------------------------------------------------------------
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'sMrNmj81LHC4sUu' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'cbarnes@npath.biz' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["email", "cbarnes@npath.biz"], ["password_digest", "$2a$04$jylOEaOmOtSAcVqHc7DxqutT4JYO9AJJbjt/NFY7HrQXVQZwclhoO"], ["token", "_xdLiLKSGalrqK-Ue0gF6Z5kKqwhNAueWGe1_ExD"], ["updated_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["username", "sMrNmj81LHC4sUu"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"yZ7rDg6xRrt0GD8", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"fevans@zooveo.edu"}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'yZ7rDg6xRrt0GD8' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'fevans@zooveo.edu' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_password_confirm_doesn't_match
+-----------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'BnRx7qPdRz' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'phudson@topicshots.org' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["created_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["email", "phudson@topicshots.org"], ["password_digest", "$2a$04$kqjlid5qt0YlwEvtaVKK8uw054d7l2WZezPRHq.oeocNNfzhF9xW."], ["token", "3PKLqDoMw2DIzy9_BYfNfmNH9l51_a8pRwP7YKH9"], ["updated_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["username", "BnRx7qPdRz"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"XQ8uOxAhsfi", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"jwelch@latz.org"}}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'XQ8uOxAhsfi' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'jwelch@latz.org' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------------------------------------
+ApiUsersControllerTest: test_register:_should_fail_because_username_and_email_already_taken
+-------------------------------------------------------------------------------------------
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'wr3aEnPEXJwsF' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'jnichols@mydo.info' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["email", "jnichols@mydo.info"], ["password_digest", "$2a$04$eJMDdyoShQD3QCqTvDIix.LQ5Z.cKaM/2ua0zuqUG5aXFlhAP3fpm"], ["token", "Amx5oJDWVD_-VfitWgfUspaUhdIMiopoxhy-sVQp"], ["updated_at", Mon, 03 Mar 2014 19:11:31 UTC +00:00], ["username", "wr3aEnPEXJwsF"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Processing by ApiUsersController#register as HTML
+  Parameters: {"user"=>{"username"=>"wr3aEnPEXJwsF", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"jnichols@mydo.info"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."username" = 'wr3aEnPEXJwsF' LIMIT 1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'jnichols@mydo.info' LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK

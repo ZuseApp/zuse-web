@@ -9,16 +9,16 @@ Myapp::Application.routes.draw do
   post "/api/v1/user/auth" => "api_users#authenticate"
 
   # User specific project access
-  resources :projects, param: :uuid, path: "/api/v1/user/projects", except: [ :edit, :new ]
+  resources :projects, param: :uuid, path: "/api/v1/user/projects", controller: :api_user_projects, except: [ :edit, :new ]
 
   # General project access
-  get "/api/v1/projects" => "general_projects#index"
-  get "/api/v1/projects/:uuid" => "general_projects#show"
-  get "/api/v1/projects/:uuid/download" => "general_projects#download"
-  get "/api/v1/projects/:uuid/fork" => "general_projects#fork"
+  get "/api/v1/projects" => "api_projects#index"
+  get "/api/v1/projects/:uuid" => "api_projects#show"
+  get "/api/v1/projects/:uuid/download" => "api_projects#download"
+  get "/api/v1/projects/:uuid/fork" => "api_projects#fork"
 
   # Shared project access
-  resources :shared_projects, path: "/api/v1/shared_projects", only: [ :create ]
+  resources :shared_projects, path: "/api/v1/shared_projects", controller: :api_shared_projects, only: [ :create ]
   
   
   ############

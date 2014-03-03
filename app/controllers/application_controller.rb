@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
         head :unauthorized
       else
         @api_user = User.find_by_token token
+
+        if @api_user.nil?
+          head :unauthorized
+        end
       end
     end
   end

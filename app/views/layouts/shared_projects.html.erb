@@ -6,8 +6,8 @@
   <%= javascript_include_tag "application" %>
   <%= javascript_tag do %>
     $(function () {
-    <% if @shared_project.raw_code && !@shared_project.raw_code.empty? %>
-      window.raw_code = <%= raw @shared_project.raw_code %>;
+    <% if @shared_project.project_json && !@shared_project.project_json.empty? %>
+      window.raw_code = <%= raw @shared_project.project_json %>;
     <% end %>
 
     <% if @shared_project.compiled_code && !@shared_project.compiled_code.empty? %>
