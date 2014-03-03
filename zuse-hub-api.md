@@ -162,6 +162,9 @@ The above endpoint is used to upload a project on Zusehub. This endpoint expects
 ```
 {
   "project" : {
+    "title" : "<Project title>",
+    "description" : "<Project description>",
+    "uuid" : "<Project uuid>",
     "project_json" : "<Project json>",
     "compiled_code" : "<Project compiled code>"
   }
