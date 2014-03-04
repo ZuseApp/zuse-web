@@ -13,6 +13,8 @@ class ApiUserProjectsController < ApplicationController
     if @project.save
       head :no_content
     else
+      puts "\n\n\nHAHAHAH\n\n\n\n"
+      puts @projects.errors.full_messages
       render json: @project.errors, status: :unprocessable_entity
     end
   end
