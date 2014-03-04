@@ -13722,3 +13722,3253 @@ Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:3
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:36:21 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:47:04 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (1.3ms)
+Completed 200 OK in 143ms (Views: 120.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:05 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.6ms)
+Completed 200 OK in 12ms (Views: 10.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:12 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.5ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 47ms (Views: 44.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:47:52 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 36ms (Views: 33.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:48:31 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.8ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.5ms)
+Completed 200 OK in 47ms (Views: 44.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:15 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.6ms)
+Completed 200 OK in 40ms (Views: 37.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:25 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 35ms (Views: 32.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:49:46 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 25ms (Views: 23.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:03 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.6ms)
+Completed 200 OK in 14ms (Views: 11.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:50:19 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.7ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.7ms)
+Completed 200 OK in 16ms (Views: 13.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:51:09 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.5ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.5ms)
+Completed 200 OK in 17ms (Views: 15.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:00 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.8ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:24 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:54:25 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (1.3ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 14ms (Views: 11.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:56:05 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+Completed 200 OK in 121ms (Views: 119.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:18:06 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:22:23 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:23:32 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.8ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (6.2ms)
+Completed 200 OK in 19ms (Views: 16.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:32 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:32 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:32 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:32 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:32 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:32 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:32 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:32 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:32 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:33 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.5ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:23:45 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+Completed 200 OK in 46ms (Views: 44.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:09 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:25:43 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.4ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:25:44 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+Completed 200 OK in 45ms (Views: 43.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:04 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.5ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 36ms (Views: 34.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:12 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 35ms (Views: 33.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:27:43 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.4ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 47ms (Views: 45.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:02 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.7ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:28:56 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (1.3ms)
+Completed 200 OK in 46ms (Views: 44.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:30:34 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:31:00 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+Completed 200 OK in 39ms (Views: 37.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:01 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.5ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.8ms)
+Completed 200 OK in 43ms (Views: 41.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:31:57 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.8ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+Completed 200 OK in 43ms (Views: 40.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:33 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+Completed 200 OK in 42ms (Views: 40.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:33:39 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.8ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+Completed 200 OK in 12ms (Views: 10.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:37:22 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:38:12 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+ERROR: compiling _app_views_layouts_shared_projects_html_erb___4413981376796965125_70287954636600 RAISED /Users/andrew/capstone/zuse-web/app/views/layouts/shared_projects.html.erb:29: syntax error, unexpected '<', expecting ')'
+<%= yield );@output_buffer.safe_append='
+ ^
+/Users/andrew/capstone/zuse-web/app/views/layouts/shared_projects.html.erb:34: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/andrew/capstone/zuse-web/app/views/layouts/shared_projects.html.erb:36: syntax error, unexpected keyword_end, expecting ')'
+Function body:           def _app_views_layouts_shared_projects_html_erb___4413981376796965125_70287954636600(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "layouts/shared_projects";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_append='<!DOCTYPE html>
+<html>
+<head>
+  <title>Zuse Hub - ';@output_buffer.append=( @shared_project.title );@output_buffer.safe_append='</title>
+  <link href=\'http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300\' rel=\'stylesheet\' type=\'text/css\' />
+  ';@output_buffer.append=( stylesheet_link_tag    "application", media: "all" );@output_buffer.safe_append='
+  ';@output_buffer.append=( javascript_include_tag "application" );@output_buffer.safe_append='
+  ';@output_buffer.append=  javascript_tag do @output_buffer.safe_append='
+    $(function () {
+';     if @shared_project.project_json && !@shared_project.project_json.empty? 
+@output_buffer.safe_append='      window.raw_code = ';@output_buffer.append=( raw @shared_project.project_json );@output_buffer.safe_append=';
+';     end 
+@output_buffer.safe_append='
+';     if @shared_project.compiled_code && !@shared_project.compiled_code.empty? 
+@output_buffer.safe_append='      window.compiled_code = ';@output_buffer.append=( raw @shared_project.compiled_code );@output_buffer.safe_append=';
+
+';     end 
+@output_buffer.safe_append='
+      var canvas = $("#viewport");
+
+      window.game = new ZuseAppEngine( { canvas: canvas, code: raw_code } );
+    });
+';   end 
+@output_buffer.safe_append='  ';@output_buffer.append=( csrf_meta_tags );@output_buffer.safe_append='
+</head>
+<body>
+  ';@output_buffer.append=( render "layouts/header"
+
+<%= yield );@output_buffer.safe_append='
+
+</body>
+</html>
+';@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `module_eval'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/template.rb:299:in `compile'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/template.rb:248:in `block in compile!'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `synchronize'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/template.rb:236:in `compile!'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/template.rb:142:in `block in render'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/notifications.rb:161:in `instrument'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/template.rb:141:in `render'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/renderer/template_renderer.rb:17:in `render'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:42:in `render_template'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_view/renderer/renderer.rb:23:in `render'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:127:in `_render_template'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/streaming.rb:219:in `_render_template'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:120:in `render_to_body'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:97:in `render'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:189:in `process_action'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:403:in `_run__2639586936894262113__process_action__callbacks'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `block in instrument'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/notifications.rb:159:in `instrument'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activerecord-4.0.2/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/abstract_controller/base.rb:136:in `process'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/abstract_controller/rendering.rb:44:in `process'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal.rb:195:in `dispatch'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_controller/metal.rb:231:in `block in action'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:48:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:71:in `block in call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `each'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/journey/router.rb:59:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/routing/route_set.rb:680:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/etag.rb:23:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/conditionalget.rb:25:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/head.rb:11:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/flash.rb:241:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:225:in `context'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/session/abstract/id.rb:220:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/cookies.rb:486:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activerecord-4.0.2/lib/active_record/query_cache.rb:36:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activerecord-4.0.2/lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activerecord-4.0.2/lib/active_record/migration.rb:369:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:373:in `_run__4363707891073827115__call__callbacks'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/callbacks.rb:80:in `run_callbacks'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/reloader.rb:64:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/railties-4.0.2/lib/rails/rack/logger.rb:38:in `call_app'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `block in call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `block in tagged'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:25:in `tagged'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/tagged_logging.rb:67:in `tagged'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/railties-4.0.2/lib/rails/rack/logger.rb:20:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/request_id.rb:21:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/methodoverride.rb:21:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/runtime.rb:17:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/activesupport-4.0.2/lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/static.rb:64:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/sendfile.rb:112:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/railties-4.0.2/lib/rails/engine.rb:511:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/railties-4.0.2/lib/rails/application.rb:97:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/lock.rb:17:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/content_length.rb:14:in `call'
+/Users/andrew/.rvm/gems/ruby-2.1.1/gems/rack-1.5.2/lib/rack/handler/webrick.rb:60:in `service'
+/Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+/Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+/Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+Completed 500 Internal Server Error in 11ms
+
+ActionView::Template::Error (/Users/andrew/capstone/zuse-web/app/views/layouts/shared_projects.html.erb:29: syntax error, unexpected '<', expecting ')'
+<%= yield );@output_buffer.safe_append='
+ ^
+/Users/andrew/capstone/zuse-web/app/views/layouts/shared_projects.html.erb:34: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/andrew/capstone/zuse-web/app/views/layouts/shared_projects.html.erb:36: syntax error, unexpected keyword_end, expecting ')'):
+    26: <body>
+    27:   <%= render "layouts/header"
+    28: 
+    29: <%= yield %>
+    30: 
+    31: </body>
+    32: </html>
+  actionpack (4.0.2) lib/action_view/template.rb:299:in `module_eval'
+  actionpack (4.0.2) lib/action_view/template.rb:299:in `compile'
+  actionpack (4.0.2) lib/action_view/template.rb:248:in `block in compile!'
+  actionpack (4.0.2) lib/action_view/template.rb:236:in `synchronize'
+  actionpack (4.0.2) lib/action_view/template.rb:236:in `compile!'
+  actionpack (4.0.2) lib/action_view/template.rb:142:in `block in render'
+  activesupport (4.0.2) lib/active_support/notifications.rb:161:in `instrument'
+  actionpack (4.0.2) lib/action_view/template.rb:141:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/template_renderer.rb:17:in `render'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionpack (4.0.2) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:127:in `_render_template'
+  actionpack (4.0.2) lib/action_controller/metal/streaming.rb:219:in `_render_template'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:120:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:33:in `render_to_body'
+  actionpack (4.0.2) lib/action_controller/metal/renderers.rb:26:in `render_to_body'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:97:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.0.2) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.0.2) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:403:in `_run__2639586936894262113__process_action__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.2) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.2) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.2) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.2) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+  activerecord (4.0.2) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.2) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.2) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.2) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.2) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `each'
+  actionpack (4.0.2) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.2) lib/action_dispatch/routing/route_set.rb:680:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__4363707891073827115__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (15.9ms)
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 17ms (Views: 15.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+
+Started GET "/shared_projects/images/icon.png" for 127.0.0.1 at 2014-03-04 13:38:20 -0700
+
+ActionController::RoutingError (No route matches [GET] "/shared_projects/images/icon.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.4ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (12.4ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (47.6ms)
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.4ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/images/icon.png" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+ActionController::RoutingError (No route matches [GET] "/images/icon.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.0ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (21.8ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+
+Started GET "/images/icon.png" for 127.0.0.1 at 2014-03-04 13:38:40 -0700
+
+ActionController::RoutingError (No route matches [GET] "/images/icon.png"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (3.5ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (42.8ms)
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:39:19 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:40:59 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+Completed 200 OK in 33ms (Views: 31.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:00 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 12.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:08 -0700
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.5ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.4ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+Completed 200 OK in 31ms (Views: 28.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:30 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:31 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:31 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:31 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 13:41:31 -0700

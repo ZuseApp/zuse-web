@@ -1,3 +1,35 @@
 // Place all the styles related to the SharedProjects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#shared-project-container
+{
+  width: 660px;
+  margin: 0px auto;
+
+  #project-meta
+  {
+    width: 320px;
+    float: left;
+
+    #title
+    {
+      margin: 0px;
+      color: #fff;
+    }
+
+    #description
+    {
+      color: #888;
+    }
+  }
+
+  #viewport
+  {
+    float: left;
+    margin-left: 20px;
+  }
+
+}
+
+
