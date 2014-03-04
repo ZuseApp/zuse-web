@@ -59,7 +59,7 @@ The above endpoint is used to register a user on Zuse Hub. It expects the follow
     "username" : "<Some user name>",
     "email" : "<Some email address>",
     "password" : "<Some password>",
-    "confirm_password" : "<Confirmation password>"
+    "password_confirmation" : "<Confirmation password>"
   }
 }
 ```
