@@ -58,11 +58,11 @@ class ApiUserProjectsController < ApplicationController
   private
   def user_create_params
     puts params.keys
-    params.require(:project).permit(:project_json, :compiled_code, :title, :description, :uuid)
+    params.require(:project).permit(:project_json, :compiled_code, :title, :description, :uuid, :screenshot)
   end
 
   def user_update_params
-    params.require(:project).permit(:project_json, :compiled_code, :title, :description)
+    params.require(:project).permit(:project_json, :compiled_code, :title, :description, :screenshot)
   end
 
 end

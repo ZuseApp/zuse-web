@@ -12771,3 +12771,225 @@ ActionDispatch::ParamsParser::ParseError (795: unexpected token at '{ "project" 
   Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
   Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
   Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.6ms)
+
+
+Started POST "/api/v1/shared_projects" for 155.99.173.83 at 2014-03-04 12:08:55 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApiSharedProjectsController#create as */*
+  Parameters: {"shared_project"=>{"title"=>"Snake", "project_json"=>"{\n  \"canvas_size\" : [\n    320,\n    524\n  ],\n  \"id\" : \"81E2C49A-B5BA-45A9-A10B-65040F3D5264\",\n  \"collision_groups\" : {\n\n  },\n  \"version\" : \"1.0.0\",\n  \"objects\" : [\n    {\n      \"properties\" : {\n        \"y\" : 432.5,\n        \"width\" : 64,\n        \"x\" : 72.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"7E60FA38-2D3F-483E-BB1E-5D8127A7B179\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 433,\n        \"width\" : 64,\n        \"x\" : 141.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"CA96E422-6128-41F8-95B5-9EF5E15F2819\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 433,\n        \"width\" : 64,\n        \"x\" : 213,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"98F4540B-C29D-4589-8BA0-46A6B61DA8D4\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 432.5,\n        \"width\" : 64,\n        \"x\" : 283.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"5520DD2E-EA82-4BF7-87F6-258F03ECF207\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 320,\n        \"width\" : 64,\n        \"x\" : 284,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"9809D365-9288-467C-8501-C117AD0315B5\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 357.5,\n        \"width\" : 64,\n        \"x\" : 283,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"AEAAA681-67DE-4EA9-AAF6-EC3B7A940525\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 395,\n        \"width\" : 64,\n        \"x\" : 283,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"42BAC26B-5E9E-4C9B-96A4-082637097D38\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 392.5,\n        \"width\" : 64,\n        \"x\" : 71.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"CDF34B0E-AA8B-4F0F-9A60-9C2B0CA4FE6C\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 323.5,\n        \"width\" : 30,\n        \"x\" : 74,\n        \"height\" : 30\n      },\n      \"type\" : \"image\",\n      \"id\" : \"72018051-F5B9-436D-A81B-E07018DE5D45\",\n      \"name\" : \"Ball\",\n      \"physics_body\" : \"circle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_ball.png\"\n      },\n      \"collision_group\" : \"\"\n    }\n  ],\n  \"traits\" : {\n\n  },\n  \"title\" : \"Snake\"\n}"}, "api_shared_project"=>{"shared_project"=>{"title"=>"Snake", "project_json"=>"{\n  \"canvas_size\" : [\n    320,\n    524\n  ],\n  \"id\" : \"81E2C49A-B5BA-45A9-A10B-65040F3D5264\",\n  \"collision_groups\" : {\n\n  },\n  \"version\" : \"1.0.0\",\n  \"objects\" : [\n    {\n      \"properties\" : {\n        \"y\" : 432.5,\n        \"width\" : 64,\n        \"x\" : 72.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"7E60FA38-2D3F-483E-BB1E-5D8127A7B179\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 433,\n        \"width\" : 64,\n        \"x\" : 141.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"CA96E422-6128-41F8-95B5-9EF5E15F2819\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 433,\n        \"width\" : 64,\n        \"x\" : 213,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"98F4540B-C29D-4589-8BA0-46A6B61DA8D4\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 432.5,\n        \"width\" : 64,\n        \"x\" : 283.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"5520DD2E-EA82-4BF7-87F6-258F03ECF207\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 320,\n        \"width\" : 64,\n        \"x\" : 284,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"9809D365-9288-467C-8501-C117AD0315B5\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 357.5,\n        \"width\" : 64,\n        \"x\" : 283,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"AEAAA681-67DE-4EA9-AAF6-EC3B7A940525\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 395,\n        \"width\" : 64,\n        \"x\" : 283,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"42BAC26B-5E9E-4C9B-96A4-082637097D38\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 392.5,\n        \"width\" : 64,\n        \"x\" : 71.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"CDF34B0E-AA8B-4F0F-9A60-9C2B0CA4FE6C\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 323.5,\n        \"width\" : 30,\n        \"x\" : 74,\n        \"height\" : 30\n      },\n      \"type\" : \"image\",\n      \"id\" : \"72018051-F5B9-436D-A81B-E07018DE5D45\",\n      \"name\" : \"Ball\",\n      \"physics_body\" : \"circle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_ball.png\"\n      },\n      \"collision_group\" : \"\"\n    }\n  ],\n  \"traits\" : {\n\n  },\n  \"title\" : \"Snake\"\n}"}}}
+Unpermitted parameters: project_json
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (7.2ms)[0m  [1mINSERT INTO "shared_projects" ("created_at", "title", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["created_at", Tue, 04 Mar 2014 19:08:55 UTC +00:00], ["title", "Snake"], ["updated_at", Tue, 04 Mar 2014 19:08:55 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  COMMIT
+Completed 201 Created in 34ms (Views: 0.2ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/shared_projects/1" for 155.99.173.83 at 2014-03-04 12:08:56 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 1 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (1.4ms)
+Completed 200 OK in 1267ms (Views: 1262.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+
+
+Started GET "/assets/application.js?body=1" for 155.99.173.83 at 2014-03-04 12:08:57 -0700
+  [1m[36mSharedProject Load (1.4ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects"[0m
+
+
+Started POST "/api/v1/shared_projects" for 155.99.173.83 at 2014-03-04 12:10:35 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApiSharedProjectsController#create as */*
+  Parameters: {"shared_project"=>{"title"=>"Snake", "project_json"=>"{\n  \"canvas_size\" : [\n    320,\n    524\n  ],\n  \"id\" : \"81E2C49A-B5BA-45A9-A10B-65040F3D5264\",\n  \"collision_groups\" : {\n\n  },\n  \"version\" : \"1.0.0\",\n  \"objects\" : [\n    {\n      \"properties\" : {\n        \"y\" : 432.5,\n        \"width\" : 64,\n        \"x\" : 72.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"7E60FA38-2D3F-483E-BB1E-5D8127A7B179\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 433,\n        \"width\" : 64,\n        \"x\" : 141.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"CA96E422-6128-41F8-95B5-9EF5E15F2819\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 433,\n        \"width\" : 64,\n        \"x\" : 213,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"98F4540B-C29D-4589-8BA0-46A6B61DA8D4\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 432.5,\n        \"width\" : 64,\n        \"x\" : 283.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"5520DD2E-EA82-4BF7-87F6-258F03ECF207\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 320,\n        \"width\" : 64,\n        \"x\" : 284,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"9809D365-9288-467C-8501-C117AD0315B5\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 357.5,\n        \"width\" : 64,\n        \"x\" : 283,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"AEAAA681-67DE-4EA9-AAF6-EC3B7A940525\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 395,\n        \"width\" : 64,\n        \"x\" : 283,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"42BAC26B-5E9E-4C9B-96A4-082637097D38\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 392.5,\n        \"width\" : 64,\n        \"x\" : 71.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"CDF34B0E-AA8B-4F0F-9A60-9C2B0CA4FE6C\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 323.5,\n        \"width\" : 30,\n        \"x\" : 74,\n        \"height\" : 30\n      },\n      \"type\" : \"image\",\n      \"id\" : \"72018051-F5B9-436D-A81B-E07018DE5D45\",\n      \"name\" : \"Ball\",\n      \"physics_body\" : \"circle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_ball.png\"\n      },\n      \"collision_group\" : \"\"\n    }\n  ],\n  \"traits\" : {\n\n  },\n  \"title\" : \"Snake\"\n}"}, "api_shared_project"=>{"shared_project"=>{"title"=>"Snake", "project_json"=>"{\n  \"canvas_size\" : [\n    320,\n    524\n  ],\n  \"id\" : \"81E2C49A-B5BA-45A9-A10B-65040F3D5264\",\n  \"collision_groups\" : {\n\n  },\n  \"version\" : \"1.0.0\",\n  \"objects\" : [\n    {\n      \"properties\" : {\n        \"y\" : 432.5,\n        \"width\" : 64,\n        \"x\" : 72.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"7E60FA38-2D3F-483E-BB1E-5D8127A7B179\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 433,\n        \"width\" : 64,\n        \"x\" : 141.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"CA96E422-6128-41F8-95B5-9EF5E15F2819\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 433,\n        \"width\" : 64,\n        \"x\" : 213,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"98F4540B-C29D-4589-8BA0-46A6B61DA8D4\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 432.5,\n        \"width\" : 64,\n        \"x\" : 283.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"5520DD2E-EA82-4BF7-87F6-258F03ECF207\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 320,\n        \"width\" : 64,\n        \"x\" : 284,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"9809D365-9288-467C-8501-C117AD0315B5\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 357.5,\n        \"width\" : 64,\n        \"x\" : 283,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"AEAAA681-67DE-4EA9-AAF6-EC3B7A940525\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 395,\n        \"width\" : 64,\n        \"x\" : 283,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"42BAC26B-5E9E-4C9B-96A4-082637097D38\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 392.5,\n        \"width\" : 64,\n        \"x\" : 71.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"CDF34B0E-AA8B-4F0F-9A60-9C2B0CA4FE6C\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 323.5,\n        \"width\" : 30,\n        \"x\" : 74,\n        \"height\" : 30\n      },\n      \"type\" : \"image\",\n      \"id\" : \"72018051-F5B9-436D-A81B-E07018DE5D45\",\n      \"name\" : \"Ball\",\n      \"physics_body\" : \"circle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_ball.png\"\n      },\n      \"collision_group\" : \"\"\n    }\n  ],\n  \"traits\" : {\n\n  },\n  \"title\" : \"Snake\"\n}"}}}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (3.9ms)[0m  [1mINSERT INTO "shared_projects" ("created_at", "project_json", "title", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", Tue, 04 Mar 2014 19:10:35 UTC +00:00], ["project_json", "{\n  \"canvas_size\" : [\n    320,\n    524\n  ],\n  \"id\" : \"81E2C49A-B5BA-45A9-A10B-65040F3D5264\",\n  \"collision_groups\" : {\n\n  },\n  \"version\" : \"1.0.0\",\n  \"objects\" : [\n    {\n      \"properties\" : {\n        \"y\" : 432.5,\n        \"width\" : 64,\n        \"x\" : 72.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"7E60FA38-2D3F-483E-BB1E-5D8127A7B179\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 433,\n        \"width\" : 64,\n        \"x\" : 141.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"CA96E422-6128-41F8-95B5-9EF5E15F2819\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 433,\n        \"width\" : 64,\n        \"x\" : 213,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"98F4540B-C29D-4589-8BA0-46A6B61DA8D4\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 432.5,\n        \"width\" : 64,\n        \"x\" : 283.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"5520DD2E-EA82-4BF7-87F6-258F03ECF207\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 320,\n        \"width\" : 64,\n        \"x\" : 284,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"9809D365-9288-467C-8501-C117AD0315B5\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 357.5,\n        \"width\" : 64,\n        \"x\" : 283,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"AEAAA681-67DE-4EA9-AAF6-EC3B7A940525\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 395,\n        \"width\" : 64,\n        \"x\" : 283,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"42BAC26B-5E9E-4C9B-96A4-082637097D38\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 392.5,\n        \"width\" : 64,\n        \"x\" : 71.5,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"CDF34B0E-AA8B-4F0F-9A60-9C2B0CA4FE6C\",\n      \"name\" : \"Red Brick\",\n      \"physics_body\" : \"rectangle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"collision_group\" : \"\"\n    },\n    {\n      \"properties\" : {\n        \"y\" : 323.5,\n        \"width\" : 30,\n        \"x\" : 74,\n        \"height\" : 30\n      },\n      \"type\" : \"image\",\n      \"id\" : \"72018051-F5B9-436D-A81B-E07018DE5D45\",\n      \"name\" : \"Ball\",\n      \"physics_body\" : \"circle\",\n      \"code\" : [\n\n      ],\n      \"traits\" : {\n\n      },\n      \"image\" : {\n        \"path\" : \"sprite_ball.png\"\n      },\n      \"collision_group\" : \"\"\n    }\n  ],\n  \"traits\" : {\n\n  },\n  \"title\" : \"Snake\"\n}"], ["title", "Snake"], ["updated_at", Tue, 04 Mar 2014 19:10:35 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Completed 201 Created in 28ms (Views: 0.2ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/shared_projects/2" for 155.99.173.83 at 2014-03-04 12:10:35 -0700
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (1.1ms)
+Completed 200 OK in 92ms (Views: 88.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/api_projects.js?body=1" for 155.99.173.83 at 2014-03-04 12:10:36 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 155.99.173.83 at 2014-03-04 12:10:36 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 155.99.173.83 at 2014-03-04 12:10:36 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 155.99.173.83 at 2014-03-04 12:10:36 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 155.99.173.83 at 2014-03-04 12:10:36 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 155.99.173.83 at 2014-03-04 12:10:36 -0700
+
+
+Started GET "/assets/application.js?body=1" for 155.99.173.83 at 2014-03-04 12:10:36 -0700
+  [1m[36mSharedProject Load (2.0ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects"[0m
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (0.7ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (1.2ms)
+Completed 200 OK in 126ms (Views: 96.3ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:25 -0700
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-04 12:11:26 -0700
+  [1m[36mProject Load (2.3ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+  [1m[35mCommit Load (1.6ms)[0m  SELECT "commits".* FROM "commits"
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddColumnScreenShotToProjects (20140304192301)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.9ms)[0m  [1mALTER TABLE "projects" ADD COLUMN "screenshot" text[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140304192301"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
