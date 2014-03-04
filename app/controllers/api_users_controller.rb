@@ -1,4 +1,7 @@
 class ApiUsersController < ApplicationController
+
+  skip_before_filter :verify_authenticity_token
+  
   def register
     @user = User.new register_params
 
