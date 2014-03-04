@@ -189,6 +189,8 @@ The above endpoint is used to update a project and expects the following json st
 ```
 {
   "project" : {
+    "title" : "<Project title>",
+    "description" : "<Project description>",
     "project_json" : "<Project json>",
     "compiled_code" : "<Project compiled code>"
   }
