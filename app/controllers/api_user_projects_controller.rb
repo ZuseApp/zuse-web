@@ -31,7 +31,6 @@ class ApiUserProjectsController < ApplicationController
     @project = @api_user.projects.find_by_uuid params[:uuid]
 
     if @project
-      puts user_update_params
       if @project.update_attributes user_update_params
         head :no_content
       else
@@ -56,6 +55,7 @@ class ApiUserProjectsController < ApplicationController
 
   private
   def user_create_params
+    puts params.keys
     params.require(:project).permit(:project_json, :compiled_code, :title, :description, :uuid)
   end
 

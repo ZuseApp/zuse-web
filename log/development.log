@@ -12575,3 +12575,199 @@ Migrating to AlterSharedProject (20140301200541)
   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140301200541"]]
   [1m[35m (0.3ms)[0m  COMMIT
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started POST "/api/v1/user/projects" for 127.0.0.1 at 2014-03-04 11:39:31 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApiUserProjectsController#create as */*
+  Parameters: {"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}"}, "api_user_project"=>{"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}"}}}
+  [1m[35mUser Load (2.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."token" = 'yHFWthScDl7LerGv1wHBx9m9I_LHKCWneY-nqxCC' LIMIT 1
+Filter chain halted as :authenticate_api_request rendered or redirected
+Completed 401 Unauthorized in 33ms (ActiveRecord: 5.3ms)
+
+
+Started POST "/api/v1/user/register" for 127.0.0.1 at 2014-03-04 11:40:45 -0700
+Processing by ApiUsersController#register as */*
+  Parameters: {"user"=>{"username"=>"test1", "email"=>"title", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "api_user"=>{"user"=>{"username"=>"test1", "email"=>"title", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (2.9ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."username" = 'test1' LIMIT 1
+  [1m[36mUser Exists (0.6ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."email" = 'title' LIMIT 1[0m
+  [1m[35mSQL (5.4ms)[0m  INSERT INTO "users" ("created_at", "email", "password_digest", "token", "updated_at", "username") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Tue, 04 Mar 2014 18:40:45 UTC +00:00], ["email", "title"], ["password_digest", "$2a$10$gvhPRZsYNXTVWoSwVYNb3..7ETLxUnMnn9sRZuVDOHVe5UohihfAq"], ["token", "PuPfdK7zaYMHB93_Nv25fOwkaihEdwHmZwYEKx24"], ["updated_at", Tue, 04 Mar 2014 18:40:45 UTC +00:00], ["username", "test1"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 201 Created in 101ms (Views: 0.2ms | ActiveRecord: 9.7ms)
+
+
+Started POST "/api/v1/user/projects" for 127.0.0.1 at 2014-03-04 11:41:15 -0700
+Processing by ApiUserProjectsController#create as */*
+  Parameters: {"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}"}, "api_user_project"=>{"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}"}}}
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" WHERE "users"."token" = 'PuPfdK7zaYMHB93_Nv25fOwkaihEdwHmZwYEKx24' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mProject Exists (0.7ms)[0m  [1mSELECT 1 AS one FROM "projects" WHERE "projects"."uuid" = 'test1' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 42ms
+
+TypeError (no implicit conversion of nil into String):
+  app/models/project.rb:56:in `compiled_code_is_valid'
+  app/controllers/api_user_projects_controller.rb:13:in `create'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.6ms)
+
+
+Started POST "/api/v1/user/projects" for 127.0.0.1 at 2014-03-04 11:41:47 -0700
+Processing by ApiUserProjectsController#create as */*
+  Parameters: {"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}", "compiled_cod"=>"{}"}, "api_user_project"=>{"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}", "compiled_cod"=>"{}"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."token" = 'PuPfdK7zaYMHB93_Nv25fOwkaihEdwHmZwYEKx24' LIMIT 1[0m
+Unpermitted parameters: compiled_cod
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Exists (0.3ms)[0m  SELECT 1 AS one FROM "projects" WHERE "projects"."uuid" = 'test1' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 8ms
+
+TypeError (no implicit conversion of nil into String):
+  app/models/project.rb:56:in `compiled_code_is_valid'
+  app/controllers/api_user_projects_controller.rb:13:in `create'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.9ms)
+
+
+Started POST "/api/v1/user/projects" for 127.0.0.1 at 2014-03-04 11:42:22 -0700
+Processing by ApiUserProjectsController#create as */*
+  Parameters: {"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}", "compiled_cod"=>"{}"}, "api_user_project"=>{"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}", "compiled_cod"=>"{}"}}}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."token" = 'PuPfdK7zaYMHB93_Nv25fOwkaihEdwHmZwYEKx24' LIMIT 1
+Unpermitted parameters: compiled_cod
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mProject Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "projects" WHERE "projects"."uuid" = 'test1' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 33ms
+
+TypeError (no implicit conversion of nil into String):
+  app/models/project.rb:55:in `compiled_code_is_valid'
+  app/controllers/api_user_projects_controller.rb:13:in `create'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (26.7ms)
+
+
+Started POST "/api/v1/user/projects" for 127.0.0.1 at 2014-03-04 11:42:58 -0700
+Processing by ApiUserProjectsController#create as */*
+  Parameters: {"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}", "compiled_cod"=>"{}"}, "api_user_project"=>{"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}", "compiled_cod"=>"{}"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."token" = 'PuPfdK7zaYMHB93_Nv25fOwkaihEdwHmZwYEKx24' LIMIT 1[0m
+Unpermitted parameters: compiled_cod
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mProject Exists (0.3ms)[0m  SELECT 1 AS one FROM "projects" WHERE "projects"."uuid" = 'test1' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 35ms
+
+TypeError (no implicit conversion of nil into String):
+  app/models/project.rb:55:in `compiled_code_is_valid'
+  app/controllers/api_user_projects_controller.rb:13:in `create'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (2.2ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.8ms)
+
+
+Started POST "/api/v1/user/projects" for 127.0.0.1 at 2014-03-04 11:43:11 -0700
+Processing by ApiUserProjectsController#create as */*
+  Parameters: {"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}", "compiled_code"=>"{}"}, "api_user_project"=>{"project"=>{"uuid"=>"test1", "title"=>"title", "description"=>"", "project_json"=>"{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}", "compiled_code"=>"{}"}}}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."token" = 'PuPfdK7zaYMHB93_Nv25fOwkaihEdwHmZwYEKx24' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mProject Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM "projects" WHERE "projects"."uuid" = 'test1' LIMIT 1[0m
+  [1m[35mSQL (4.0ms)[0m  INSERT INTO "projects" ("created_at", "description", "title", "updated_at", "user_id", "uuid") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", Tue, 04 Mar 2014 18:43:12 UTC +00:00], ["description", ""], ["title", "title"], ["updated_at", Tue, 04 Mar 2014 18:43:12 UTC +00:00], ["user_id", 1], ["uuid", "test1"]]
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "commits" ("compiled_code", "created_at", "project_id", "project_json", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["compiled_code", "{}"], ["created_at", Tue, 04 Mar 2014 18:43:12 UTC +00:00], ["project_id", 1], ["project_json", "{ \"title\" : \"title\", \"description\" : \"\", \"uuid\" : \"test1\"}"], ["updated_at", Tue, 04 Mar 2014 18:43:12 UTC +00:00]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Completed 204 No Content in 31ms (ActiveRecord: 10.3ms)
+
+
+Started POST "/api/v1/user/projects" for 127.0.0.1 at 2014-03-04 11:43:48 -0700
+Error occurred while parsing request parameters.
+Contents:
+
+{ "project" : 
+{
+ 	"uuid" : "test1",
+ 	"title" : "title",
+  "description" : "",
+  "project_json" : "{ \"title\" : \"title\", \"description\" : \"\", 
+  
+  
+  \"uuid\" : \"test1\"}",
+  "compiled_code" : "{}"
+}
+}
+
+ActionDispatch::ParamsParser::ParseError (795: unexpected token at '{ "project" : 
+{
+ 	"uuid" : "test1",
+ 	"title" : "title",
+  "description" : "",
+  "project_json" : "{ \"title\" : \"title\", \"description\" : \"\", 
+  
+  
+  \"uuid\" : \"test1\"}",
+  "compiled_code" : "{}"
+}
+}'):
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:53:in `rescue in parse_formatted_parameters'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:32:in `parse_formatted_parameters'
+  actionpack (4.0.2) lib/action_dispatch/middleware/params_parser.rb:23:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__2302877641065768391__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/andrew/.rvm/rubies/ruby-2.1.1/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.8ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.1.1/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.6ms)

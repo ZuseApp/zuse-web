@@ -51,44 +51,43 @@ class Project < ActiveRecord::Base
   end
 
   def compiled_code_is_valid
-    begin
-      JSON.parse self.compiled_code
-    rescue JSON::ParserError
-      errors.add(:compiled_code, "is not valid JSON")
-    end
+      begin
+        JSON.parse self.compiled_code
+      rescue JSON::ParserError
+        errors.add(:compiled_code, "is not valid JSON")
+      end
   end
-
   def project_json_is_valid_and_fields_match
-    begin
-      project_json = JSON.parse self.project_json
+      begin
+        project_json = JSON.parse self.project_json
 
-      if project_json.has_key?("uuid")
-        if project_json["uuid"] != self.uuid
-          errors.add(:project_json, "uuid doesn't match provided uuid")
+        if project_json.has_key?("id")
+          if project_json["id"] != self.uuid
+            errors.add(:project_json, "id doesn't match provided uuid")
+          end
+        else
+          errors.add(:project_json, "must have id key")
         end
-      else
-        errors.add(:project_json, "must have uuid key")
-      end
 
-      if project_json.has_key?("title")
-        if project_json["title"] != self.title
-          errors.add(:project_json, "title doesn't match provided title")
+        if project_json.has_key?("title")
+          if project_json["title"] != self.title
+            errors.add(:project_json, "title doesn't match provided title")
+          end
+        else
+          errors.add(:project_json, "must have title key")
         end
-      else
-        errors.add(:project_json, "must have title key")
-      end
 
-      if project_json.has_key?("description")
-        if project_json["description"] != self.description
-          errors.add(:project_json, "description doesn't match provided description")
-        end
-      else
-        errors.add(:project_json, "must have description key")
-      end
+        #if project_json.has_key?("description")
+        #  if project_json["description"] != self.description
+        #    errors.add(:project_json, "description doesn't match provided description")
+        #  end
+        #else
+        #  errors.add(:project_json, "must have description key")
+        #end
 
-    rescue JSON::ParserError
-      errors.add(:project_json, "is not valid JSON")
-    end
+      rescue JSON::ParserError
+        errors.add(:project_json, "is not valid JSON")
+      end
   end
 
   def meta
@@ -102,7 +101,8 @@ class Project < ActiveRecord::Base
   end
 
   def full
-    commit = self.commits.order("created_at DESC").last
+    commit = self.latest_commit
+    puts commit.inspect
     {
       uuid: self.uuid,
       title: self.title,

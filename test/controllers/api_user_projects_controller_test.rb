@@ -62,6 +62,7 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
 
   test "Update: No changes to project_json or compiled_code only updates project" do
     project_state = @project.full
+    puts project_state
     @request.headers["Authorization"] = "Token: #{@user.token}"
     put :update, { uuid: @project.uuid, project: FactoryGirl.attributes_for(:project, { title: "Howdy Dudey", 
                                                                                  description: "My description", 
