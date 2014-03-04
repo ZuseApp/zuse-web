@@ -3,13 +3,13 @@ class ApiUserProjectsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-    @projects = @api_user.projects.all
+    @projects = @api_user.projects
     render json: @projects.map { |p| p.meta }, status: :ok
   end
 
   def create
-    @project = @api_user.projects.new user_params
-
+    @project = @api_user.projects.new user_create_params
+    
     if @project.save
       head :no_content
     else
@@ -21,7 +21,7 @@ class ApiUserProjectsController < ApplicationController
     @project = @api_user.projects.find_by_uuid params[:uuid]
 
     if @project
-      render json: @project.full, status: :ok
+      render json: @project.full.except(:username), status: :ok
     else
       head :forbidden
     end
@@ -31,9 +31,11 @@ class ApiUserProjectsController < ApplicationController
     @project = @api_user.projects.find_by_uuid params[:uuid]
 
     if @project
-      if @project.update_attributes user_params
+      puts user_update_params
+      if @project.update_attributes user_update_params
         head :no_content
       else
+
         render json: @project.errors, status: :unprocessable_entity
       end
     else
@@ -53,8 +55,12 @@ class ApiUserProjectsController < ApplicationController
   end
 
   private
-  def user_params
-    params.require(:project).permit(:project_json, :compiled_code)
+  def user_create_params
+    params.require(:project).permit(:project_json, :compiled_code, :title, :description, :uuid)
+  end
+
+  def user_update_params
+    params.require(:project).permit(:project_json, :compiled_code, :title, :description)
   end
 
 end
