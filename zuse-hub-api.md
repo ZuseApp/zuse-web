@@ -329,7 +329,7 @@ The above endpoint is used to quickly share a project via social media and expec
 }
 ```
 
-On success, the endpoint returns an :ok status with the following json:
+On success, the endpoint returns a :created status with the following json:
 
 ```
 { "url" : "<Shared project url>" }
