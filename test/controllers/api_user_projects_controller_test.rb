@@ -3,8 +3,13 @@ require 'test_helper'
 class ApiUserProjectsControllerTest < ActionController::TestCase 
   def setup
     @user = FactoryGirl.create(:user)
-    [1..10].each do |i|
+    (1..10).each do |i|
       @project = FactoryGirl.create(:project, { user_id: @user.id } )
+    end
+
+    @user2 = FactoryGirl.create(:user)
+    (1..10).each do |i|
+      @project2 = FactoryGirl.create(:project, { user_id: @user2.id } )
     end
   end
 
@@ -28,6 +33,15 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
   test "Create: Requires authorization" do
     post :create, project: FactoryGirl.attributes_for(:project)
     assert_response :unauthorized
+  end
+
+  test "Create: Should return errors" do
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+    post :create, project: FactoryGirl.attributes_for(:project, project_json: "")
+    assert_response :unprocessable_entity
+
+    response = JSON.parse @response.body
+    assert_not_nil response
   end
 
   test "Show: Should return a user's specific project" do
@@ -60,33 +74,71 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
-  test "Update: No changes to project_json or compiled_code only updates project" do
+  test "Update: Project meta must match information in project_json" do
     project_state = @project.full
-    puts project_state
     @request.headers["Authorization"] = "Token: #{@user.token}"
     put :update, { uuid: @project.uuid, project: FactoryGirl.attributes_for(:project, { title: "Howdy Dudey", 
                                                                                  description: "My description", 
-                                                                                 project_json: project_state["project_json"], 
-                                                                                 compiled_code: project_state["compiled_code"] }) }
-    assert_response :no_content
-    @project.reload
+                                                                                 project_json: project_state[:project_json], 
+                                                                                 compiled_code: project_state[:compiled_code] }) }
+    assert_response :unprocessable_entity
+    response = JSON.parse @response.body
 
-    assert_equal "Howdy Dudey", @project.title
-    assert_equal "My description", @project.description
-    assert_equal project_state["project_json"], @project.latest_commit.project_json
-    assert_equal project_state["compiled_code"], @project.latest_commit.compiled_code
+    assert_not_nil response["errors"]
   end
 
-  test "Update: Changes to project_json updates project" do
-
+  test "Update: Changes to project_json and project meta updates project" do
+    project_state = @project.full
+    project_state[:project_json] = '{ "title" : "Howdy Dudey", "description" : "My description", "id" : "' + @project.uuid + '" }'
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+    put :update, { uuid: @project.uuid, project: FactoryGirl.attributes_for(:project, { title: "Howdy Dudey", 
+                                                                                 description: "My description", 
+                                                                                 project_json: project_state[:project_json], 
+                                                                                 compiled_code: project_state[:compiled_code] }) }
+    assert_response :no_content
+    @project.reload
+    assert_equal 2, @project.commits.count
   end
 
   test "Update: Requires authorization" do
-
+    project_state = @project.full
+    put :update, { uuid: @project.uuid, project: FactoryGirl.attributes_for(:project, { title: project_state[:title], 
+                                                                                 description: project_state[:description], 
+                                                                                 project_json: project_state[:project_json], 
+                                                                                 compiled_code: project_state[:compiled_code] }) }
+    assert_response :unauthorized
   end
 
   test "Update: Requires project ownership" do
+    project_state = @project.full
+    project_state[:project_json] = '{ "title" : "Howdy Dudey", "description" : "My description", "id" : "' + @project.uuid + '" }'
+    @request.headers["Authorization"] = "Token: #{@user2.token}"
+    put :update, { uuid: @project.uuid, project: FactoryGirl.attributes_for(:project, { title: "Howdy Dudey", 
+                                                                                 description: "My description", 
+                                                                                 project_json: project_state[:project_json], 
+                                                                                 compiled_code: project_state[:compiled_code] }) }
+    assert_response :forbidden
+  end
 
+  test "Destroy: Requires authorization" do
+    delete :destroy, uuid: @project.uuid
+    assert_response :unauthorized
+  end
+
+  test "Destroy: Requires project ownership" do
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+
+    delete :destroy, uuid: @project2.uuid
+    assert_response :forbidden
+  end
+
+  test "Destroy: Should be successful" do
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+
+    delete :destroy, uuid: @project.uuid
+    assert_response :no_content
+    
+    assert_equal 9, @user.projects.count
   end
 
 end

@@ -32,7 +32,7 @@ class Project < ActiveRecord::Base
     commit = self.latest_commit
 
     if commit.is_childless?
-      if commit.needs_update?
+      if commit.needs_update? self.project_json, self.compiled_code 
         new_commit = Commit.new
         new_commit.project_json = self.project_json
         new_commit.compiled_code = self.compiled_code
@@ -51,13 +51,17 @@ class Project < ActiveRecord::Base
   end
 
   def compiled_code_is_valid
-      begin
-        JSON.parse self.compiled_code
-      rescue JSON::ParserError
-        errors.add(:compiled_code, "is not valid JSON")
+      if !self.compiled_code.blank?
+        begin
+          JSON.parse self.compiled_code
+        rescue JSON::ParserError
+          errors.add(:compiled_code, "is not valid JSON")
+        end
       end
   end
+
   def project_json_is_valid_and_fields_match
+    if !self.project_json.blank?
       begin
         project_json = JSON.parse self.project_json
 
@@ -77,17 +81,15 @@ class Project < ActiveRecord::Base
           errors.add(:project_json, "must have title key")
         end
 
-        #if project_json.has_key?("description")
-        #  if project_json["description"] != self.description
-        #    errors.add(:project_json, "description doesn't match provided description")
-        #  end
-        #else
-        #  errors.add(:project_json, "must have description key")
-        #end
-
+        if project_json.has_key?("description")
+          if project_json["description"] != self.description
+            errors.add(:project_json, "description doesn't match provided description")
+          end
+        end
       rescue JSON::ParserError
         errors.add(:project_json, "is not valid JSON")
       end
+    end
   end
 
   def meta
@@ -102,7 +104,6 @@ class Project < ActiveRecord::Base
 
   def full
     commit = self.latest_commit
-    puts commit.inspect
     {
       uuid: self.uuid,
       title: self.title,

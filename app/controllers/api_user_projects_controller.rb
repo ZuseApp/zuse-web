@@ -13,8 +13,6 @@ class ApiUserProjectsController < ApplicationController
     if @project.save
       head :no_content
     else
-      puts "\n\n\nHAHAHAH\n\n\n\n"
-      puts @project.errors.full_messages
       render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
     end
   end
@@ -37,7 +35,7 @@ class ApiUserProjectsController < ApplicationController
         head :no_content
       else
 
-        render json: @project.errors, status: :unprocessable_entity
+        render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
       end
     else
       head :forbidden
@@ -45,7 +43,7 @@ class ApiUserProjectsController < ApplicationController
   end
 
   def destroy
-    @project = @api_user.projects.find_by_id params[:id]
+    @project = @api_user.projects.find_by_uuid params[:uuid]
 
     if @project
       @project.destroy
@@ -57,7 +55,6 @@ class ApiUserProjectsController < ApplicationController
 
   private
   def user_create_params
-    puts params.keys
     params.require(:project).permit(:project_json, :compiled_code, :title, :description, :uuid, :screenshot)
   end
 
