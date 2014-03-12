@@ -119,7 +119,8 @@ The above endpoint is used to obtain the user's (identified by authentication to
     "title" : "<Project title>", 
     "description" : "<Project description>",
     "username" : "<Project author's user name>",
-    "downloads" : <Number of downloads>
+    "downloads" : <Number of downloads>,
+    "screenshot" "<Base64 encoded>"
     },
     { 
       <More projects>
@@ -145,7 +146,8 @@ The above endpoint is used to obtain a user's (identified by authentication toke
   "description" : "<Project description>",
   "downloads" : <Number of downloads>,
   "project_json" : "<Project json>",
-  "compiled_code" : "<Project compiled code>"
+  "compiled_code" : "<Project compiled code>",
+  "screenshot" : "<Base64 encoded>"
 }
 ```
 
@@ -166,7 +168,8 @@ The above endpoint is used to upload a project on Zusehub. This endpoint expects
     "description" : "<Project description>",
     "uuid" : "<Project uuid>",
     "project_json" : "<Project json>",
-    "compiled_code" : "<Project compiled code>"
+    "compiled_code" : "<Project compiled code>",
+    "screenshot" : "<Base64 encoded>"
   }
 }
 ```
@@ -192,7 +195,8 @@ The above endpoint is used to update a project and expects the following json st
     "title" : "<Project title>",
     "description" : "<Project description>",
     "project_json" : "<Project json>",
-    "compiled_code" : "<Project compiled code>"
+    "compiled_code" : "<Project compiled code>",
+    "screenshot" : "<Base64 encoded>"
   }
 }
 ```
@@ -238,7 +242,8 @@ On success, the endpoint returns an :ok status with the following json:
     "title" : "<Project title>", 
     "username" : "<Project author's username>",
     "description" : "<Project description>",
-    "downloads" : <Number of downloads>
+    "downloads" : <Number of downloads>,
+    "screenshot" : "<Base64 encoded>"
     },
     { 
       <More projects>
@@ -263,7 +268,8 @@ The above endpoint is used to obtain meta information about a single project. On
   "title" : "<Project title>", 
   "username" : "<Project author's username>",
   "description" : "<Project description>",
-  "downloads" : <Number of downloads>
+  "downloads" : <Number of downloads>,
+  "screenshot" : "<Base64 encoded>"
 }
 ```
 
