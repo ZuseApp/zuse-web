@@ -1,2 +1,4 @@
 *.swp
-/tmp*
+db/*.sqlite3
+log/*.log
+tmp/**/*
