@@ -51,13 +51,13 @@ class Project < ActiveRecord::Base
   end
 
   def compiled_code_is_valid
-      if !self.compiled_code.blank?
-        begin
-          JSON.parse self.compiled_code
-        rescue JSON::ParserError
-          errors.add(:compiled_code, "is not valid JSON")
-        end
+    if !self.compiled_code.blank?
+      begin
+        JSON.parse self.compiled_code
+      rescue JSON::ParserError
+        errors.add(:compiled_code, "is not valid JSON")
       end
+    end
   end
 
   def project_json_is_valid_and_fields_match

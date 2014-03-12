@@ -15,11 +15,19 @@ class ApiSharedProjectsControllerTest < ActionController::TestCase
   #  assert_response :not_found
   #end
 
-  test "should get url" do
-    post :create, shared_project: FactoryGirl.attributes_for(:shared_project)
+  test "Create: Should get url" do
+    post :create, shared_project: FactoryGirl.attributes_for(:shared_project, description: "")
     assert_response :created
 
     res = JSON.parse @response.body
-    assert res.has_key? ("url")
+    assert_not_nil res["url"]
+  end
+
+  test "Create: Should get errors" do
+    post :create, shared_project: FactoryGirl.attributes_for(:shared_project, title: "", project_json: "", compiled_code: "" )
+    assert_response :unprocessable_entity
+
+    res = JSON.parse @response.body
+    assert_not_nil res["errors"]
   end
 end
