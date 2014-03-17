@@ -5,16 +5,6 @@ class ApiSharedProjectsControllerTest < ActionController::TestCase
     @shared_project = FactoryGirl.create(:shared_project)
   end
 
-  #test "should get shared project" do
-  #  get :show, id: @shared_project.id
-  #  assert_response :ok
-  #end
-
-  #test "should get 404" do
-  #  get :show, id: 0
-  #  assert_response :not_found
-  #end
-
   test "Create: Should get url" do
     post :create, shared_project: FactoryGirl.attributes_for(:shared_project, description: "")
     assert_response :created

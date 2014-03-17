@@ -1,17 +1,21 @@
 class ApiProjectsController < ApplicationController
   before_filter :authenticate_api_request
   skip_before_filter :verify_authenticity_token
+  before_filter :setup_pagination
   
   def index
     @projects = Project.select("*")
     
     if params[:category]
-      if params[:newest] == "newest"
-        @projects.order("created_at DESC").limit(10) 
+      if params[:category] == "newest"
+        @projects = @projects.order("created_at DESC") 
       elsif params[:category] == "popular"
-        @projects.order("downloads DESC").limit(10)
+        @projects = @projects.order("downloads DESC")
       end
     end
+
+    # Paginate
+    @projects = @projects.page(params[:page]).per(params[:per_page])
 
     render json: @projects.map { |p| p.meta }, status: :ok
   end
@@ -38,5 +42,17 @@ class ApiProjectsController < ApplicationController
 
   # TODO
   def fork
+  end
+
+  private
+
+  def setup_pagination
+    if params[:page].nil?
+      params[:page] = 1
+    end
+
+    if params[:per_page].nil?
+      params[:per_page] = 10
+    end
   end
 end
