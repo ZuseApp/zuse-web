@@ -25,6 +25,7 @@ Myapp::Application.routes.draw do
   # Non API
   ############
   resources :shared_projects, only: [ :show ]
+  resources :projects, only: [ :show ]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

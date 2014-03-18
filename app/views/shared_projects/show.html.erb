@@ -1,13 +1,13 @@
 
 <div id="shared-project-container">
   <div id="project-meta">
-    <h1 id="title"><%= @shared_project.title %></h1>
+    <h1 id="title"><%= @title %></h1>
     
     <p id="description">
       This project's description, detailing its functionality, would go here if this project had a description detailing its functionality.
     </p>
 
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://zusehub.herokuapp.com/shared_projects/<%= @shared_project.id %>" data-text="Just played <%= @shared_project.title %>">Tweet</a>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://zusehub.herokuapp.com/shared_projects/<%= @shared_project.id %>" data-text="Just played <%= @title %>">Tweet</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   </div>
 

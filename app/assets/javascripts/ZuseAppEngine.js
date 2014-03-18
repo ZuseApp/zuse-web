@@ -12,12 +12,13 @@ function ZuseAppEngine (options)
   var that = this;
 
   // App code
-  this.code = options.code;
+  this.code = options.project_json;
+  this.compiled_code = options.compiled_code;
   this.sprites = {};
 
   // Interpreter
-  var compiler = new Compiler( { project_json: this.code } );
-  this.interpreter = compiler.getInterpreter();
+  this.interpreter = new Interpreter();
+  this.interpreter.runJSON(this.compiled_code);
   this.loadMethodsIntoInterpreter();
   this.interpreter.propertyUpdateCallback = function (object_id, update) { that.interpreterObjectUpdatedProperty(object_id, update) };
 
@@ -53,10 +54,15 @@ function ZuseAppEngine (options)
   this.loadImages();
 }
 
+/*
+ * Defines a delegate for the interpreter to call
+ */
 ZuseAppEngine.prototype.interpreterObjectUpdatedProperty = function (object_id, update)
 {
+  // Get sprite
   var s = this.sprites[object_id];
 
+  // Determine property that got updated and set it on the sprite
   if ("x" in update)
   {
     s.setX(update.x);
@@ -81,11 +87,16 @@ ZuseAppEngine.prototype.interpreterObjectUpdatedProperty = function (object_id, 
   }
 };
 
+/*
+ * Gets a count of the total number of distinct images
+ * the sprites use
+ */
 ZuseAppEngine.prototype.getImageCount = function()
 {
   var count = 0;
   var images = {};
 
+  // For each sprite, determine if it has an image
   for (var i = 0; i < this.code.objects.length; i++)
   { 
     var obj = this.code.objects[i];
@@ -105,6 +116,9 @@ ZuseAppEngine.prototype.getImageCount = function()
   return count;
 };
 
+/*
+ * Preloads the images for the sprites
+ */
 ZuseAppEngine.prototype.loadImages = function ()
 {
   for (var i = 0; i < this.code.objects.length; i++)
@@ -127,6 +141,9 @@ ZuseAppEngine.prototype.loadImages = function ()
   }
 };
 
+/*
+ * Fires when an image is successfully loaded
+ */
 ZuseAppEngine.prototype.imageLoadSuccess = function (e)
 {
   console.log("Image Loaded: " + e.currentTarget.src);
@@ -140,11 +157,17 @@ ZuseAppEngine.prototype.imageLoadSuccess = function (e)
   }
 };
 
+/*
+ * Throws an exception if there is an error loading the image
+ */
 ZuseAppEngine.prototype.imageLoadError = function (e)
 {
   throw new Error("Image load error: " + e.currentTarget.src); 
 };
 
+/*
+ * Kicks of the Zuse app by calling the start event on all objects
+ */
 ZuseAppEngine.prototype.start = function ()
 {
   console.log("Zuse App Started");
@@ -155,6 +178,9 @@ ZuseAppEngine.prototype.start = function ()
   this.interpreter.triggerEvent("start");
 };
 
+/*
+ * Driver for the calculation intensive parts of the physics engine
+ */
 ZuseAppEngine.prototype.step = function ()
 {
   var that = this;
@@ -171,6 +197,10 @@ ZuseAppEngine.prototype.step = function ()
   this.updateSpritePositions(elapsed);
 };
 
+/*
+ * Creates all the mouse event handlers needed for mouse interaction with the 
+ * canvas
+ */
 ZuseAppEngine.prototype.registerMouseEventHandlers = function ()
 {
   // handle to object scope
@@ -215,6 +245,9 @@ ZuseAppEngine.prototype.registerMouseEventHandlers = function ()
   
 };
 
+/*
+ * Loads the methods into the interpreter that it calls
+ */
 ZuseAppEngine.prototype.loadMethodsIntoInterpreter = function ()
 {
   // Reference to this object's scope
@@ -227,15 +260,33 @@ ZuseAppEngine.prototype.loadMethodsIntoInterpreter = function ()
     that.applyVelocityToSprite(sprite_id, args[0], args[1]);
   }
 
+  // Remove sprite method
   methods.remove = function (sprite_id, args)
   {
     that.removeSpriteFromWorld(sprite_id);
+  }
+
+  // Generate a sprite dynamically
+  methods.generate = function (sprite_id, args)
+  {
+    that.generateFromGenerator(sprite_id, args[0], args[1], args[2])
   }
 
   for (var k in methods)
     this.interpreter.loadMethod(k, methods[k]);
 };
 
+/*
+ * Puts a generated sprite into the world
+ */
+ZuseAppEngine.prototype.generateFromGenerator = function(sprite_id, gen_name, x, y)
+{
+
+}
+
+/*
+ * Applies a velocity to a sprite
+ */
 ZuseAppEngine.prototype.applyVelocityToSprite = function (sprite_id, direction, speed)
 {
   var sprite = this.sprites[sprite_id];
@@ -243,12 +294,18 @@ ZuseAppEngine.prototype.applyVelocityToSprite = function (sprite_id, direction, 
   sprite.applyVelocity(Math.cos(rad) * speed, -Math.sin(rad) * speed);
 };
 
+/*
+ * Removes a sprite from the world
+ */
 ZuseAppEngine.prototype.removeSpriteFromWorld = function(sprite_id)
 {
   delete this.sprites[sprite_id];
   this.interpreter.removeObjectWithIdentifier(sprite_id);
 }
 
+/*
+ * Loads all the sprites into the engine
+ */
 ZuseAppEngine.prototype.loadSprites = function ()
 {
   for (var i = 0; i < this.code.objects.length; i++)
@@ -278,6 +335,9 @@ ZuseAppEngine.prototype.loadSprites = function ()
   }
 };
 
+/*
+ * Keeps the sprite within the world
+ */
 ZuseAppEngine.prototype.boundSpriteByWorld = function()
 {
   for (var k in this.sprites)
@@ -298,6 +358,9 @@ ZuseAppEngine.prototype.boundSpriteByWorld = function()
   }
 };
 
+/*
+ * Updates a sprite's position
+ */
 ZuseAppEngine.prototype.updateSpritePositions = function (dt)
 {
   for (var k in this.sprites)
@@ -312,6 +375,10 @@ ZuseAppEngine.prototype.updateSpritePositions = function (dt)
   }
 };
 
+/*
+ * The drawing aspect of the physics engine. Takes care of
+ * drawing each frame
+ */
 ZuseAppEngine.prototype.draw = function (timestamp)
 {
   var that = this;
@@ -348,11 +415,17 @@ ZuseAppEngine.prototype.draw = function (timestamp)
 
 };
 
+/*
+ * Clears the graphics context
+ */
 ZuseAppEngine.prototype.clearCtx = function ()
 {
   this.ctx.clearRect(0, 0, this.canvas.attr("width"), this.canvas.attr("height"));
 };
 
+/*
+ * Determins whether sprites are colliding
+ */
 ZuseAppEngine.prototype.hitObject = function (x, y)
 {
   var id = null;
@@ -371,12 +444,18 @@ ZuseAppEngine.prototype.hitObject = function (x, y)
   return id;
 };
 
+/*
+ * Gets the correct requestAnimatinoFrame object for the given browser
+ */
 ZuseAppEngine.prototype.setRequestAnimationFrameHandle = function ()
 {
   window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                                  window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 };
 
+/*
+ * Determines if sprites are colliding
+ */
 ZuseAppEngine.prototype.detectSpriteCollision = function ()
 {
   var temp_sprites = {};
@@ -409,6 +488,9 @@ ZuseAppEngine.prototype.detectSpriteCollision = function ()
   }
 };
 
+/*
+ * Determins if sprite is outside of the world
+ */
 ZuseAppEngine.prototype.isSpriteOutsideWorld = function (sprite)
 {
   var pos = sprite.position;

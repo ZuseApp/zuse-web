@@ -126,7 +126,7 @@ Interpreter.prototype.loadMethod = function(name,func)
  * the program into a javascript object
  * and then starts the evaluation process
  */
-Interpreter.prototype.runJSON = function(exp)
+Interpreter.prototype.runJSONString = function(exp)
 {
   // Convert json to object
   var o = JSON.parse(exp);
@@ -137,6 +137,24 @@ Interpreter.prototype.runJSON = function(exp)
   var env = this.addPropertiesToDataStore(empty.properties);
   var context = new ExecutionContext({ id: empty.id, environment: env});
   return this.runCodeWithContext(o,context);
+ 
+};
+
+/*
+ * Converts the json string that represents
+ * the program into a javascript object
+ * and then starts the evaluation process
+ */
+Interpreter.prototype.runJSON = function(exp)
+{
+  // Convert json to object
+  var empty = this.emptyObject();
+
+  this.loadObject(empty);
+
+  var env = this.addPropertiesToDataStore(empty.properties);
+  var context = new ExecutionContext({ id: empty.id, environment: env});
+  return this.runCodeWithContext(exp,context);
  
 };
 
@@ -173,12 +191,12 @@ Interpreter.prototype.runCodeWithContext = function(obj, context)
   var key = this.getObjectKey(obj);
 
   // Handle code block
-  if (key === "code")
-  {
-    return this.runSuiteWithContext(obj[key], context);
-  }
+  //if (key === "code")
+  //{
+  //  return this.runSuiteWithContext(obj[key], context);
+  //}
   // Handle on_event
-  else if (key === "on_event")
+  if (key === "on_event")
   {
     this.events[context.id][obj[key]["name"]] = { code: obj[key]["code"], context: context }; 
   }
@@ -220,7 +238,7 @@ Interpreter.prototype.runCodeWithContext = function(obj, context)
       return null;
   }
   // Handle scope
-  else if (key === "scope")
+  else if (key === "suite")
   {
     return this.runSuiteWithContext(obj[key], context.contextWithNewEnvironment());
   }
@@ -253,6 +271,13 @@ Interpreter.prototype.evalExpressionWithContext = function(exp, context)
 
   // Get key of obj
   var key = this.getObjectKey(exp);
+
+  // Handle object
+  if (key === "object")
+  {
+    this.loadObject(exp["object"]);
+    return exp["object"];
+  }
 
   // Handle a get
   if (key === "get")
