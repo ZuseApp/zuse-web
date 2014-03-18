@@ -5,12 +5,12 @@ class Project < ActiveRecord::Base
   attr_accessor :project_json
   attr_accessor :compiled_code
 
-  validates :project_json, :compiled_code, :user, :title, :uuid, presence: true
+  validates :user, :title, :uuid, presence: true
   validates :uuid, uniqueness: true
   validate :compiled_code_is_valid
   validate :project_json_is_valid_and_fields_match
 
-  after_save :create_commit
+  after_create :create_commit
   before_update :update_or_create_commit
 
   def create_commit
@@ -18,10 +18,7 @@ class Project < ActiveRecord::Base
     commit.project_json = self.project_json
     commit.compiled_code = self.compiled_code
     commit.project = self
-
-    if !commit.save
-      throw "Commit didn't save for some reason"
-    end
+    commit.save!
   end
 
   def latest_commit
@@ -32,20 +29,20 @@ class Project < ActiveRecord::Base
     commit = self.latest_commit
 
     if commit.is_childless?
-      if commit.needs_update? self.project_json, self.compiled_code 
+      if commit.needs_update? self.project_json, self.compiled_code
         new_commit = Commit.new
         new_commit.project_json = self.project_json
         new_commit.compiled_code = self.compiled_code
         new_commit.project = self
         new_commit.parent = commit
 
-        if !commit.save
-          self.errors(:commit, "could not be created")
+        if !new_commit.save
+          self.errors(:project, "commit could not be created")
           false
         end
       end
     else
-      self.errors(:commit, "had a child")
+      self.errors(:project, "commit had a child")
       false
     end
   end
@@ -98,7 +95,8 @@ class Project < ActiveRecord::Base
       title: self.title,
       description: self.description,
       downloads: self.downloads,
-      username: self.user.username
+      username: self.user.username,
+      screenshot: self.screenshot
     }
   end
 
@@ -111,7 +109,8 @@ class Project < ActiveRecord::Base
       downloads: self.downloads,
       username: self.user.username,
       project_json: commit.project_json,
-      compiled_code: commit.compiled_code
+      compiled_code: commit.compiled_code,
+      screenshot: self.screenshot
     }
   end
 end

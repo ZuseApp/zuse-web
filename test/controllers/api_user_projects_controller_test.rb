@@ -50,13 +50,14 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_response :ok
 
     res = JSON.parse @response.body
-    assert_equal 6, res.size
+    assert_equal 7, res.size
     assert_not_nil res["uuid"]
     assert_not_nil res["title"]
     assert_not_nil res["description"]
     assert_not_nil res["downloads"]
     assert_not_nil res["project_json"]
     assert_not_nil res["compiled_code"]
+    assert_not_nil res["screenshot"]
   end
 
   test "Show: Requires project ownership" do
@@ -138,7 +139,8 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     delete :destroy, uuid: @project.uuid
     assert_response :no_content
     
-    assert_equal 9, @user.projects.count
+    assert_equal 9, @user.projects.where(deleted: false).count
+    assert_equal 1, @user.projects.where(deleted: true).first.commits.count
   end
 
 end

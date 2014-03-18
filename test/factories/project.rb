@@ -6,5 +6,6 @@ FactoryGirl.define do
     uuid { SecureRandom.uuid }
     project_json { '{ "title" : "' + title + '", "description" : "' + description + '", "id" : "' + uuid + '" }' }
     compiled_code '{}'
+    screenshot ""
   end
 end

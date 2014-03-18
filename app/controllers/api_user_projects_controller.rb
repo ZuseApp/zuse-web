@@ -1,9 +1,11 @@
 class ApiUserProjectsController < ApplicationController
   before_filter :authenticate_api_request
+  before_filter :setup_pagination, only: [ :index ]
   skip_before_filter :verify_authenticity_token
 
+
   def index
-    @projects = @api_user.projects
+    @projects = @api_user.projects.page(params[:page]).per(params[:per_page])
     render json: @projects.map { |p| p.meta }, status: :ok
   end
 
@@ -34,7 +36,6 @@ class ApiUserProjectsController < ApplicationController
       if @project.update_attributes user_update_params
         head :no_content
       else
-
         render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
       end
     else
@@ -45,11 +46,21 @@ class ApiUserProjectsController < ApplicationController
   def destroy
     @project = @api_user.projects.find_by_uuid params[:uuid]
 
-    if @project
-      @project.destroy
-      head :no_content
-    else
+    if @project.nil?
       head :forbidden
+    elsif @project.deleted
+      head :not_found
+    else
+      @project.deleted = true
+      @commit = @project.latest_commit
+      @project.project_json = @commit.project_json
+      @project.compiled_code = @commit.compiled_code
+
+      if @project.save
+        head :no_content
+      else
+        head :unprocessable_entity
+      end
     end
   end
 
@@ -60,6 +71,16 @@ class ApiUserProjectsController < ApplicationController
 
   def user_update_params
     params.require(:project).permit(:project_json, :compiled_code, :title, :description, :screenshot)
+  end
+
+  def setup_pagination
+    if params[:page].nil?
+      params[:page] = 1
+    end
+
+    if params[:per_page].nil?
+      params[:per_page] = 10
+    end
   end
 
 end
