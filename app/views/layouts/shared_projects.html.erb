@@ -7,7 +7,7 @@
   <%= javascript_include_tag "application" %>
   <%= javascript_tag do %>
     $(function () {
-      window.raw_code = <%= raw @shared_project.project_json %>;
+      window.project_json = <%= raw @shared_project.project_json %>;
 
       window.compiled_code = <%= raw @shared_project.compiled_code %>;
 
