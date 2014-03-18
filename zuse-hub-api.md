@@ -107,10 +107,10 @@ Again, this token should be saved by the client as it will be used to authentica
 #### User Projects
 
 ```
-GET /api/v1/user/projects
+GET /api/v1/user/projects?page=1&per_page=10
 ```
 
-The above endpoint is used to obtain the user's (identified by authentication token) shared projects on zuse hub. On success, the endpoint returns an :ok status with the following json:
+The above endpoint is used to obtain the user's (identified by authentication token) shared projects on zuse hub. Notice the page and per_page url parameters. This allows for pagination of user projects. Page counting starts from 1 not 0. On success, the endpoint returns an :ok status with the following json:
 
 ```
 [
@@ -232,6 +232,14 @@ The above endpoint is used to obtain lists of categorized projects. This endpoin
 ?category=popular | newest | favorites - returns projects that are most popular (most downloads), newest, favorites (most favorited)
 ?user=<username> - returns all projects shared by this user
 ```
+
+All of these combinations should be joined with the following pagination parameters:
+
+```
+?page=1&per_page=10
+```
+
+Page counting begins from 1.
 
 On success, the endpoint returns an :ok status with the following json:
 
