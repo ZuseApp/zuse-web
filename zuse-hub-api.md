@@ -30,7 +30,6 @@ Please find below a series of tables that succinctly describe the API.
 | GET | /api/v1/projects | Token |
 | GET | /api/v1/projects/:uuid | Token |
 | GET | /api/v1/projects/:uuid/download | Token |
-| GET | /api/v1/projects/:uuid/fork | Token |
 
 
 ### Project Sharing on Social Media
@@ -299,24 +298,6 @@ The above endpoint is used to obtain the compiled code for the project for immed
   "compiled_code" : "<Project compiled_code>"
 }
 ```
-
-#### Project Forking
-
-```
-GET /api/v1/projects/:uuid/fork
-```
-The above endpoint is used to fork a copy of a project. This copy comes with its own uuid different from the original project's uuid. On success, the endpoint returns an :ok status with the following json:
-
-```
-{ 
-  "uuid" : "<Newly Generated Project uuid>", 
-  "title" : "<Project title>", 
-  "description" : "<Project description>",
-  "project_json" : "<Project json>",
-  "compiled_code" : "<Project compiled code>"
-}
-```
-
 
 ### Project Sharing on Social Media
 
