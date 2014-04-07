@@ -119,7 +119,8 @@ The above endpoint is used to obtain the user's (identified by authentication to
     "description" : "<Project description>",
     "username" : "<Project author's user name>",
     "downloads" : <Number of downloads>,
-    "screenshot" "<Base64 encoded>"
+    "image_url" : <url for image>,
+    "version" : <Number of commits>
     },
     { 
       <More projects>
@@ -145,8 +146,9 @@ The above endpoint is used to obtain a user's (identified by authentication toke
   "description" : "<Project description>",
   "downloads" : <Number of downloads>,
   "project_json" : "<Project json>",
-  "compiled_code" : "<Project compiled code>",
-  "screenshot" : "<Base64 encoded>"
+  "compiled_code" : "<Project compiled code>"
+  "image_url" : <url for image>,
+  "version" : <Number of commits>
 }
 ```
 
@@ -168,11 +170,11 @@ The above endpoint is used to upload a project on Zusehub. This endpoint expects
     "uuid" : "<Project uuid>",
     "project_json" : "<Project json>",
     "compiled_code" : "<Project compiled code>",
-    "screenshot" : "<Base64 encoded>"
+    "image" : <JSON attachment, still in progress what the final form is>
   }
 }
 ```
-On success, the endpoint returns a :no_content status.
+On success, the endpoint returns a 200 and all project info w/ version and image_url.
 
 The server pulls the project title, description, and uuid out of the project\_json. If any of these keys are not present or if the project\_json or compiled\_code are invalid json the endpoint will return an :unprocessable\_entity status with the following json:
 
@@ -195,12 +197,14 @@ The above endpoint is used to update a project and expects the following json st
     "description" : "<Project description>",
     "project_json" : "<Project json>",
     "compiled_code" : "<Project compiled code>",
-    "screenshot" : "<Base64 encoded>"
+    "screenshot" : "<Base64 encoded>",
+    "image" : <JSON attachment, still in progress what the final form is>
+    "version" : <Number of commits>
   }
 }
 ```
 
-On success, the endpoint returns an :no\_content status. The server grabs the project title, description, and uuid from the project\_json and verifies that the json is valid. If the uuid doesn't match or if the json is not valid the endpoint returns an :unprocessable\_entity status with the following json:
+On success, the endpoint returns a 200 and all project info w/ version and image\_url. The server grabs the project title, description, and uuid from the project\_json and verifies that the json is valid. If the uuid doesn't match or if the json is not valid the endpoint returns an :unprocessable\_entity status with the following json:
 
 ```
 { "errors" : [ <List of full error messages>, ... ] }
@@ -276,7 +280,9 @@ The above endpoint is used to obtain meta information about a single project. On
   "username" : "<Project author's username>",
   "description" : "<Project description>",
   "downloads" : <Number of downloads>,
-  "screenshot" : "<Base64 encoded>"
+  "screenshot" : "<Base64 encoded>",
+  "version" : <Number of commits>,
+  "image_url" : <url for image>
 }
 ```
 
@@ -295,9 +301,14 @@ The above endpoint is used to obtain the compiled code for the project for immed
   "username" : "<Project author's username>",
   "description" : "<Project description>",
   "project_json" : "<Project json>",
-  "compiled_code" : "<Project compiled_code>"
+  "compiled_code" : "<Project compiled_code>",
+  "version" : <Number of commits>
 }
 ```
+
+#### Project Image Download
+
+Endpoint to download shared project images separately from JSON and other project info. This part is not finished yet. Will be updated soon.
 
 ### Project Sharing on Social Media
 
