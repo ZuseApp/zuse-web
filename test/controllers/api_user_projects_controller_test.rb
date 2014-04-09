@@ -33,6 +33,22 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_equal 7, res.size 
   end
 
+  test "Create: Previously deleted project returns new project" do
+    @project.deleted = true
+    @project.save
+
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+    post :create, project: @project.full
+
+    res = JSON.parse @response.body
+    assert_response :ok
+    assert res["uuid"] != @project.uuid
+    @fork = @user.projects.find_by_uuid res["uuid"]
+    assert !@fork.deleted
+    assert_nil @fork.latest_commit.parent
+    assert_not_equal @project.latest_commit.id, @fork.latest_commit.id
+  end
+
   test "Create: Requires authorization" do
     post :create, project: FactoryGirl.attributes_for(:project)
     assert_response :unauthorized
@@ -151,6 +167,7 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_nil @user2.projects.find_by_uuid project_state[:uuid]
     assert_equal 11, @user2.projects.size
     assert_equal 1, @fork.commits.size
+    assert_equal @project.latest_commit.id, @fork.latest_commit.parent.id
     assert_equal project_state[:version], @fork.commits.last.parent.id
   end
 

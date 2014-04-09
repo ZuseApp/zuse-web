@@ -17,7 +17,7 @@ class ApiProjectsControllerTest < ActionController::TestCase
   end
 
   test "Index: No params" do
-    @request.headers["Authorization"] = "Token: #{@user.token}"
+    # @request.headers["Authorization"] = "Token: #{@user.token}"
     get :index
 
     assert_response :ok
@@ -26,7 +26,7 @@ class ApiProjectsControllerTest < ActionController::TestCase
   end
 
   test "Index: Page params" do
-    @request.headers["Authorization"] = "Token: #{@user.token}"
+    # @request.headers["Authorization"] = "Token: #{@user.token}"
     get :index, { page: 2 }
 
     assert_response :ok
@@ -35,7 +35,7 @@ class ApiProjectsControllerTest < ActionController::TestCase
   end
 
   test "Index: Page per_page" do
-    @request.headers["Authorization"] = "Token: #{@user.token}"
+    # @request.headers["Authorization"] = "Token: #{@user.token}"
     get :index, { page: 2, per_page: 3 }
 
     assert_response :ok
@@ -53,7 +53,7 @@ class ApiProjectsControllerTest < ActionController::TestCase
     @projects[17].downloads = 17
     @projects[17].save!
 
-    @request.headers["Authorization"] = "Token: #{@user.token}"
+    # @request.headers["Authorization"] = "Token: #{@user.token}"
     get :index, { page: 1, per_page: 3, category: "popular" }
 
     assert_response :ok
@@ -71,7 +71,7 @@ class ApiProjectsControllerTest < ActionController::TestCase
       sleep 1
     end
 
-    @request.headers["Authorization"] = "Token: #{@user.token}"
+    # @request.headers["Authorization"] = "Token: #{@user.token}"
     get :index, { page: 1, per_page: 3, category: "newest" }
 
     assert_response :ok
@@ -82,14 +82,14 @@ class ApiProjectsControllerTest < ActionController::TestCase
     assert_equal @projects[30].uuid, res[2]["uuid"]
   end
 
-  test "Index: Requires authorization" do
-    get :index
-
-    assert_response :unauthorized
-  end
+  #test "Index: Requires authorization" do
+  #  get :index
+  #
+  #  assert_response :unauthorized
+  #end
 
   test "Download: Pulls down full project" do
-    @request.headers["Authorization"] = "Token: #{@user.token}"
+    # @request.headers["Authorization"] = "Token: #{@user.token}"
     
     get :download, uuid: @projects[0].uuid
     
@@ -108,9 +108,9 @@ class ApiProjectsControllerTest < ActionController::TestCase
     assert_equal @projects[0].screenshot, res["screenshot"]
   end
 
-  test "Download: Requires authorization" do
-    get :download, uuid: @projects[0].uuid
-
-    assert_response :unauthorized
-  end
+  #test "Download: Requires authorization" do
+  #  get :download, uuid: @projects[0].uuid
+  #
+  #  assert_response :unauthorized
+  #end
 end

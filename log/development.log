@@ -20159,3 +20159,4 @@ Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-04-09 09:2
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+  [1m[36mSharedProject Load (4.9ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" ORDER BY "shared_projects"."id" ASC LIMIT 1[0m

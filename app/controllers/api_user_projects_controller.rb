@@ -10,12 +10,24 @@ class ApiUserProjectsController < ApplicationController
   end
 
   def create
-    @project = @api_user.projects.new user_create_params
-    
-    if @project.save
-      render json: @project.full.except(:username, :screenshot), status: :ok
+    @project = @api_user.projects.find_by_uuid params[:project][:uuid]
+
+    if @project
+      @fork = @project.fork @api_user, nil
+
+      if @fork.errors.any?
+        render json: { errors: @fork.errors.full_messages }, status: :unprocessable_entity
+      else
+        render json: @fork.full.except(:username, :screenshot), status: :ok
+      end
     else
-      render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
+      @project = @api_user.projects.new user_create_params
+    
+      if @project.save
+        render json: @project.full.except(:username, :screenshot), status: :ok
+      else
+        render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
+      end
     end
   end
 
@@ -40,16 +52,12 @@ class ApiUserProjectsController < ApplicationController
       end
     else
       @project = Project.find_by_uuid params[:uuid]
-      @fork = @project.fork @api_user, params[:version]
+      @fork = @project.fork_from_version @api_user, params[:version]
 
-      if @fork.class.to_s == "Project"
-        if @fork.errors.empty?
-          render json: @fork.full.except(:username, :screenshot), status: :ok
-        else
-          render json: { errors: @fork.errors.full_messages }, status: :unprocessable_entity
-        end
-      elsif @fork.class.to_s == "Array"
-        render json: { errors: @fork }, status: :unprocessable_entity
+      if @fork.errors.any?
+        render json: { errors: @fork.errors.full_messages }, status: :unprocessable_entity
+      else
+        render json: @fork.full.except(:username, :screenshot), status: :ok
       end
     end
   end

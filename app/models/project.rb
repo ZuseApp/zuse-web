@@ -47,45 +47,51 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def fork_from_version user, version
+    if version.nil?
+      self.errors.add :version, "can't be blank"
+      return self
+    end
+
+    self.fork user, version
+  end
+
   def fork user, version
     begin
-      if version.nil?
-        return [ "Version can't be blank" ]
-      end
-
       if user.nil?
-        return [ "User can't be blank" ]
+        self.errors.add :user, "can't be blank"
+        return self
       end
       
       uuid = SecureRandom.uuid
       
-      commit_parent = Commit.find_by_id version
+      if version.nil?
+        commit_parent = self.latest_commit
+      else
+        commit_parent = Commit.find_by_id version
+      end
+
       project_json = JSON.parse commit_parent.project_json
       project_json["id"] = uuid
       
-      puts self.inspect
-      puts self.commits.inspect
-
       new_project = self.dup
-
-      puts new_project.commits.inspect
-      puts new_project.inspect
 
       new_project.uuid = uuid
       new_project.project_json = project_json.to_json
       new_project.compiled_code = commit_parent.compiled_code
       new_project.user = user
+      new_project.deleted = false
      
       if new_project.save
-        puts new_project.commits.inspect
         commit_child = new_project.latest_commit
-        commit_child.parent = commit_parent
+
+        if version
+          commit_child.parent = commit_parent
+        end
 
         if !commit_child.save
           new_project.destroy
-          errors = commit_child.errors.full_messages
-          commit_child.destroy
-          return errors
+          return commit_child
         end
       end
 
