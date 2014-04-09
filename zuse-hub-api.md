@@ -170,7 +170,7 @@ The above endpoint is used to upload a project on Zusehub. This endpoint expects
     "uuid" : "<Project uuid>",
     "project_json" : "<Project json>",
     "compiled_code" : "<Project compiled code>",
-    "screenshot" : "<Base64 encoded string>"
+    "screenshot" : "<Base64 encoded string of png>"
   }
 }
 ```
@@ -197,7 +197,7 @@ The above endpoint is used to update a project and expects the following json st
     "description" : "<Project description>",
     "project_json" : "<Project json>",
     "compiled_code" : "<Project compiled code>",
-    "screenshot" : "<Base64 encoded>"
+    "screenshot" : "<Base64 encoded string of png>"
     "version" : <Number of commits>
   }
 }
