@@ -27,9 +27,9 @@ Please find below a series of tables that succinctly describe the API.
 
 | Method | Endpoint | Authentication |
 | ------ | -------- | -------------- |
-| GET | /api/v1/projects | Token |
-| GET | /api/v1/projects/:uuid | Token |
-| GET | /api/v1/projects/:uuid/download | Token |
+| GET | /api/v1/projects | None |
+| GET | /api/v1/projects/:uuid | None |
+| GET | /api/v1/projects/:uuid/download | None |
 
 
 ### Project Sharing on Social Media
@@ -119,8 +119,8 @@ The above endpoint is used to obtain the user's (identified by authentication to
     "description" : "<Project description>",
     "username" : "<Project author's user name>",
     "downloads" : <Number of downloads>,
-    "image_url" : <url for image>,
-    "version" : <Number of commits>
+    "screenshot_url" : "<URL for screenshot>",
+    "version" : <Commit id>
     },
     { 
       <More projects>
@@ -147,8 +147,8 @@ The above endpoint is used to obtain a user's (identified by authentication toke
   "downloads" : <Number of downloads>,
   "project_json" : "<Project json>",
   "compiled_code" : "<Project compiled code>"
-  "image_url" : <url for image>,
-  "version" : <Number of commits>
+  "screenshot_url" : "<URL for screenshot>",
+  "version" : <Commit id>
 }
 ```
 
@@ -170,11 +170,11 @@ The above endpoint is used to upload a project on Zusehub. This endpoint expects
     "uuid" : "<Project uuid>",
     "project_json" : "<Project json>",
     "compiled_code" : "<Project compiled code>",
-    "image" : <JSON attachment, still in progress what the final form is>
+    "screenshot" : "<Base64 encoded string>"
   }
 }
 ```
-On success, the endpoint returns a 200 and all project info w/ version and image_url.
+On success, the endpoint returns a 200 and all project info including project version and screenshot\_url. If this project was previously deleted by the user, it will have a new uuid so the project\_json that comes back should always replace the existing project json.
 
 The server pulls the project title, description, and uuid out of the project\_json. If any of these keys are not present or if the project\_json or compiled\_code are invalid json the endpoint will return an :unprocessable\_entity status with the following json:
 
@@ -197,8 +197,7 @@ The above endpoint is used to update a project and expects the following json st
     "description" : "<Project description>",
     "project_json" : "<Project json>",
     "compiled_code" : "<Project compiled code>",
-    "screenshot" : "<Base64 encoded>",
-    "image" : <JSON attachment, still in progress what the final form is>
+    "screenshot" : "<Base64 encoded>"
     "version" : <Number of commits>
   }
 }
@@ -254,7 +253,7 @@ On success, the endpoint returns an :ok status with the following json:
     "username" : "<Project author's username>",
     "description" : "<Project description>",
     "downloads" : <Number of downloads>,
-    "screenshot" : "<Base64 encoded>"
+    "screenshot_url" : "<URL to screenshot>"
     },
     { 
       <More projects>
@@ -280,9 +279,7 @@ The above endpoint is used to obtain meta information about a single project. On
   "username" : "<Project author's username>",
   "description" : "<Project description>",
   "downloads" : <Number of downloads>,
-  "screenshot" : "<Base64 encoded>",
-  "version" : <Number of commits>,
-  "image_url" : <url for image>
+  "screenshot_url" : "<URL for screenshot>"
 }
 ```
 
@@ -302,13 +299,10 @@ The above endpoint is used to obtain the compiled code for the project for immed
   "description" : "<Project description>",
   "project_json" : "<Project json>",
   "compiled_code" : "<Project compiled_code>",
-  "version" : <Number of commits>
+  "version" : <Commit id>,
+  "screenshot_url" : "<URL for screenshot>"
 }
 ```
-
-#### Project Image Download
-
-Endpoint to download shared project images separately from JSON and other project info. This part is not finished yet. Will be updated soon.
 
 ### Project Sharing on Social Media
 
@@ -324,7 +318,7 @@ The above endpoint is used to quickly share a project via social media and expec
 { 
   "shared_project" : {
     "project_json" : "<Project json>",
-    "compiled_code" : <Project compiled code>"
+    "compiled_code" : "<Project compiled code>"
   }
 }
 ```
