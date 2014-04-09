@@ -4,14 +4,28 @@ class Project < ActiveRecord::Base
 
   attr_accessor :project_json
   attr_accessor :compiled_code
+  attr_accessor :screenshot_base64
+
+  has_attached_file :screenshot, { styles: 
+                                   { 
+                                     half: "x262", 
+                                     quarter: "x131", 
+                                     eighth: "x65"
+                                   },
+                                   default_url: "/images/missing/:style.png"}
 
   validates :user, :title, :uuid, presence: true
   validates :uuid, uniqueness: true
   validate :compiled_code_is_valid
   validate :project_json_is_valid_and_fields_match
+  validates_attachment :screenshot, { 
+#                         content_type: { content_type: "image/png" },
+                         size: { less_than_or_equal_to: 100.kilobytes } }
+  do_not_validate_attachment_file_type :screenshot
 
   after_create :create_commit
   before_update :update_or_create_commit
+  before_validation :decode_screenshot_base64
 
   def create_commit
     commit = Commit.new
@@ -151,7 +165,8 @@ class Project < ActiveRecord::Base
       description: self.description,
       downloads: self.downloads,
       username: self.user.username,
-      screenshot: self.screenshot
+      screenshot_url: Url + self.screenshot.url(:quarter),
+      version: self.latest_commit.id
     }
   end
 
@@ -166,7 +181,19 @@ class Project < ActiveRecord::Base
       project_json: commit.project_json,
       compiled_code: commit.compiled_code,
       version: commit.id,
-      screenshot: self.screenshot
+      screenshot_url: Url + self.screenshot.url(:quarter)
     }
+  end
+
+  def decode_screenshot_base64
+    return if self.screenshot_base64.blank?
+
+    decoded_data = Base64.decode64 self.screenshot_base64
+    
+    data = StringIO.new(decoded_data)
+    
+    self.screenshot = data
+    self.screenshot_content_type = "image/png"
+    self.screenshot_file_name = "screenshot.png"
   end
 end

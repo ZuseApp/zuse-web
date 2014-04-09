@@ -105,7 +105,7 @@ class ApiProjectsControllerTest < ActionController::TestCase
     assert_equal @projects[0].commits.first.project_json, res["project_json"]
     assert_equal @projects[0].commits.first.compiled_code, res["compiled_code"]
     assert_equal @projects[0].commits.first.id, res["version"]
-    assert_equal @projects[0].screenshot, res["screenshot"]
+    assert_not_nil res["screenshot_url"]
   end
 
   #test "Download: Requires authorization" do

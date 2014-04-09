@@ -30,7 +30,16 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_response :ok
 
     res = JSON.parse @response.body
-    assert_equal 7, res.size 
+    assert_equal 9, res.size 
+  end
+
+  test "Create: With screenshot" do
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+    post :create, project: FactoryGirl.attributes_for(:project, { screenshot: "R0lGOD lhCwAOAMQfAP////7+/vj4+Hh4eHd3d/v7+/Dw8HV1dfLy8ubm5vX19e3t7fr 6+nl5edra2nZ2dnx8fMHBwYODg/b29np6eujo6JGRkeHh4eTk5LCwsN3d3dfX 13Jycp2dnevr6////yH5BAEAAB8ALAAAAAALAA4AAAVq4NFw1DNAX/o9imAsB tKpxKRd1+YEWUoIiUoiEWEAApIDMLGoRCyWiKThenkwDgeGMiggDLEXQkDoTh CKNLpQDgjeAsY7MHgECgx8YR8oHwNHfwADBACGh4EDA4iGAYAEBAcQIg0Dk gcEIQA7"})
+    
+    res = JSON.parse @response.body
+    assert_response :ok
+    assert_equal 9, res.size
   end
 
   test "Create: Previously deleted project returns new project" do
@@ -42,6 +51,7 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
 
     res = JSON.parse @response.body
     assert_response :ok
+    assert_equal 9, res.size
     assert res["uuid"] != @project.uuid
     @fork = @user.projects.find_by_uuid res["uuid"]
     assert !@fork.deleted
@@ -69,14 +79,14 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_response :ok
 
     res = JSON.parse @response.body
-    assert_equal 8, res.size
+    assert_equal 9, res.size
     assert_not_nil res["uuid"]
     assert_not_nil res["title"]
     assert_not_nil res["description"]
     assert_not_nil res["downloads"]
     assert_not_nil res["project_json"]
     assert_not_nil res["compiled_code"]
-    assert_not_nil res["screenshot"]
+    assert_not_nil res["screenshot_url"]
     assert_not_nil res["version"]
   end
 
@@ -120,7 +130,7 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_response :ok
     res = JSON.parse @response.body
     @project.reload
-    assert_equal 7, res.size
+    assert_equal 9, res.size
     assert_equal 2, @project.commits.count
     assert_nil @project.commits.first.parent
     assert_equal @project.commits.first.id, @project.commits.last.parent.id
@@ -162,7 +172,7 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_response :ok
     res = JSON.parse @response.body
     @fork = @user2.projects.find_by_uuid res["uuid"]
-    assert_equal 7, res.size
+    assert_equal 9, res.size
     assert_not_equal project_state[:uuid], res["uuid"]
     assert_nil @user2.projects.find_by_uuid project_state[:uuid]
     assert_equal 11, @user2.projects.size

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318030729) do
+ActiveRecord::Schema.define(version: 20140409193609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +33,13 @@ ActiveRecord::Schema.define(version: 20140318030729) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "uuid"
-    t.integer  "downloads",   default: 0
+    t.integer  "downloads",               default: 0
     t.integer  "user_id"
-    t.text     "screenshot",  default: ""
-    t.boolean  "deleted",     default: false
+    t.boolean  "deleted",                 default: false
+    t.string   "screenshot_file_name"
+    t.string   "screenshot_content_type"
+    t.integer  "screenshot_file_size"
+    t.datetime "screenshot_updated_at"
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree

@@ -1,4 +1,5 @@
 class ApiUserProjectsController < ApplicationController
+  before_filter :set_screenshot_base64, only: [ :create, :update ]
   before_filter :authenticate_api_request
   before_filter :setup_pagination, only: [ :index ]
   skip_before_filter :verify_authenticity_token
@@ -18,13 +19,13 @@ class ApiUserProjectsController < ApplicationController
       if @fork.errors.any?
         render json: { errors: @fork.errors.full_messages }, status: :unprocessable_entity
       else
-        render json: @fork.full.except(:username, :screenshot), status: :ok
+        render json: @fork.full, status: :ok
       end
     else
       @project = @api_user.projects.new user_create_params
     
       if @project.save
-        render json: @project.full.except(:username, :screenshot), status: :ok
+        render json: @project.full, status: :ok
       else
         render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
       end
@@ -35,7 +36,7 @@ class ApiUserProjectsController < ApplicationController
     @project = @api_user.projects.find_by_uuid params[:uuid]
 
     if @project
-      render json: @project.full.except(:username), status: :ok
+      render json: @project.full, status: :ok
     else
       head :forbidden
     end
@@ -46,7 +47,7 @@ class ApiUserProjectsController < ApplicationController
 
     if @project
       if @project.update_attributes user_update_params
-        render json: @project.full.except(:username, :screenshot), status: :ok
+        render json: @project.full, status: :ok
       else
         render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
       end
@@ -57,7 +58,7 @@ class ApiUserProjectsController < ApplicationController
       if @fork.errors.any?
         render json: { errors: @fork.errors.full_messages }, status: :unprocessable_entity
       else
-        render json: @fork.full.except(:username, :screenshot), status: :ok
+        render json: @fork.full, status: :ok
       end
     end
   end
@@ -85,11 +86,18 @@ class ApiUserProjectsController < ApplicationController
 
   private
   def user_create_params
-    params.require(:project).permit(:project_json, :compiled_code, :title, :description, :uuid, :screenshot)
+    params.require(:project).permit(:project_json, :compiled_code, :title, :description, :uuid, :screenshot_base64, :screenshot)
   end
 
   def user_update_params
-    params.require(:project).permit(:project_json, :compiled_code, :title, :description, :screenshot)
+    params.require(:project).permit(:project_json, :compiled_code, :title, :description, :screenshot_base64, :screenshot)
+  end
+
+  def set_screenshot_base64
+    return if params[:project][:screenshot].blank?
+    
+    params[:project][:screenshot_base64] = params[:project][:screenshot]
+    params[:project][:screenshot] = nil
   end
 
   def setup_pagination
