@@ -13,7 +13,7 @@ class ApiUserProjectsController < ApplicationController
     @project = @api_user.projects.new user_create_params
     
     if @project.save
-      head :no_content
+      render json: @project.full.except(:username, :screenshot), status: :ok
     else
       render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
     end
@@ -34,12 +34,23 @@ class ApiUserProjectsController < ApplicationController
 
     if @project
       if @project.update_attributes user_update_params
-        head :no_content
+        render json: @project.full.except(:username, :screenshot), status: :ok
       else
         render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
       end
     else
-      head :forbidden
+      @project = Project.find_by_uuid params[:uuid]
+      @fork = @project.fork @api_user, params[:version]
+
+      if @fork.class.to_s == "Project"
+        if @fork.errors.empty?
+          render json: @fork.full.except(:username, :screenshot), status: :ok
+        else
+          render json: { errors: @fork.errors.full_messages }, status: :unprocessable_entity
+        end
+      elsif @fork.class.to_s == "Array"
+        render json: { errors: @fork }, status: :unprocessable_entity
+      end
     end
   end
 

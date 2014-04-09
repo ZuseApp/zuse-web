@@ -47,6 +47,55 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def fork user, version
+    begin
+      if version.nil?
+        return [ "Version can't be blank" ]
+      end
+
+      if user.nil?
+        return [ "User can't be blank" ]
+      end
+      
+      uuid = SecureRandom.uuid
+      
+      commit_parent = Commit.find_by_id version
+      project_json = JSON.parse commit_parent.project_json
+      project_json["id"] = uuid
+      
+      puts self.inspect
+      puts self.commits.inspect
+
+      new_project = self.dup
+
+      puts new_project.commits.inspect
+      puts new_project.inspect
+
+      new_project.uuid = uuid
+      new_project.project_json = project_json.to_json
+      new_project.compiled_code = commit_parent.compiled_code
+      new_project.user = user
+     
+      if new_project.save
+        puts new_project.commits.inspect
+        commit_child = new_project.latest_commit
+        commit_child.parent = commit_parent
+
+        if !commit_child.save
+          new_project.destroy
+          errors = commit_child.errors.full_messages
+          commit_child.destroy
+          return errors
+        end
+      end
+
+      new_project
+    rescue JSON::ParserError
+      new_project.errors.add(:project_json, "is not valid JSON")
+      new_project
+    end
+  end
+
   def compiled_code_is_valid
     if !self.compiled_code.blank?
       begin
@@ -110,6 +159,7 @@ class Project < ActiveRecord::Base
       username: self.user.username,
       project_json: commit.project_json,
       compiled_code: commit.compiled_code,
+      version: commit.id,
       screenshot: self.screenshot
     }
   end

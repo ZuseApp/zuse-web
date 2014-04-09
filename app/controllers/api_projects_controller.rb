@@ -1,5 +1,4 @@
 class ApiProjectsController < ApplicationController
-  before_filter :authenticate_api_request
   skip_before_filter :verify_authenticity_token
   before_filter :setup_pagination
   
@@ -38,10 +37,6 @@ class ApiProjectsController < ApplicationController
     else
       head :not_found
     end
-  end
-
-  # TODO
-  def fork
   end
 
   private

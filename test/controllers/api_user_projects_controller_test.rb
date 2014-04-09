@@ -24,10 +24,13 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
-  test "Create: Should return no content" do
+  test "Create: Should return ok" do
     @request.headers["Authorization"] = "Token: #{@user.token}"
     post :create, project: FactoryGirl.attributes_for(:project)
-    assert_response :no_content
+    assert_response :ok
+
+    res = JSON.parse @response.body
+    assert_equal 7, res.size 
   end
 
   test "Create: Requires authorization" do
@@ -50,7 +53,7 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_response :ok
 
     res = JSON.parse @response.body
-    assert_equal 7, res.size
+    assert_equal 8, res.size
     assert_not_nil res["uuid"]
     assert_not_nil res["title"]
     assert_not_nil res["description"]
@@ -58,6 +61,7 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_not_nil res["project_json"]
     assert_not_nil res["compiled_code"]
     assert_not_nil res["screenshot"]
+    assert_not_nil res["version"]
   end
 
   test "Show: Requires project ownership" do
@@ -95,10 +99,15 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     put :update, { uuid: @project.uuid, project: FactoryGirl.attributes_for(:project, { title: "Howdy Dudey", 
                                                                                  description: "My description", 
                                                                                  project_json: project_state[:project_json], 
-                                                                                 compiled_code: project_state[:compiled_code] }) }
-    assert_response :no_content
+                                                                                 compiled_code: project_state[:compiled_code] }),
+                  version: project_state[:version]}
+    assert_response :ok
+    res = JSON.parse @response.body
     @project.reload
+    assert_equal 7, res.size
     assert_equal 2, @project.commits.count
+    assert_nil @project.commits.first.parent
+    assert_equal @project.commits.first.id, @project.commits.last.parent.id
   end
 
   test "Update: Requires authorization" do
@@ -110,7 +119,7 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
-  test "Update: Requires project ownership" do
+  test "Update: Requires project version on fork" do
     project_state = @project.full
     project_state[:project_json] = '{ "title" : "Howdy Dudey", "description" : "My description", "id" : "' + @project.uuid + '" }'
     @request.headers["Authorization"] = "Token: #{@user2.token}"
@@ -118,7 +127,31 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
                                                                                  description: "My description", 
                                                                                  project_json: project_state[:project_json], 
                                                                                  compiled_code: project_state[:compiled_code] }) }
-    assert_response :forbidden
+    assert_response :unprocessable_entity
+    res = JSON.parse @response.body
+    
+    assert_equal 1, res["errors"].size
+    assert_equal "Version can't be blank", res["errors"][0]
+  end
+
+  test "Update: Forks properly" do
+    project_state = @project.full
+    project_state[:project_json] = '{ "title" : "Howdy Dudey", "description" : "My description", "id" : "' + @project.uuid + '" }'
+    @request.headers["Authorization"] = "Token: #{@user2.token}"
+    put :update, { uuid: @project.uuid, project: FactoryGirl.attributes_for(:project, { title: "Howdy Dudey", 
+                                                                                 description: "My description", 
+                                                                                 project_json: project_state[:project_json], 
+                                                                                 compiled_code: project_state[:compiled_code] }), 
+                  version: project_state[:version] }
+    assert_response :ok
+    res = JSON.parse @response.body
+    @fork = @user2.projects.find_by_uuid res["uuid"]
+    assert_equal 7, res.size
+    assert_not_equal project_state[:uuid], res["uuid"]
+    assert_nil @user2.projects.find_by_uuid project_state[:uuid]
+    assert_equal 11, @user2.projects.size
+    assert_equal 1, @fork.commits.size
+    assert_equal project_state[:version], @fork.commits.last.parent.id
   end
 
   test "Destroy: Requires authorization" do

@@ -24,101 +24,14 @@ function Interpreter()
 }
 
 /*
- * Loads an object into the interpreter
+ * Generates an empty object 
+ * Mostly used for testing
  */
-Interpreter.prototype.loadObject = function(o)
+Interpreter.prototype.emptyObject = function()
 {
-  // Add entry in events
-  this.events[o["id"]] = {};
-
-  // Object to objects
-  this.objects[o["id"]] = o;
-
-  var env = this.addPropertiesToDataStore(o["properties"]);
-
-  var context = new ExecutionContext({ id: o["id"], environment: env});
-
-  this.properties[o["id"]] = context;
-
-  // Run the code
-  this.runSuiteWithContext(this.objects[o["id"]].code, context);
-};
-
-/*
- * Triggers an event on all objects with empty params
- */
-Interpreter.prototype.triggerEvent = function (event_name)
-{
-  this.triggerEventWithParameters(event_name, {});
-};
-
-/*
- * Triggers the named event on all object with the given parameters
- */
-Interpreter.prototype.triggerEventWithParameters = function (event_name, parameters)
-{
-  // Loop through objects and trigger the event
-  for (var k in this.events)
-    this.triggerEventOnObjectWithParameters(event_name, k, parameters);
-};
-
-/*
- * Triggers an event of type 'event_name' on an object with id 'object_id'
- * passing the given parameters
- */
-Interpreter.prototype.triggerEventOnObjectWithParameters = function(event_name, object_id, parameters)
-{
-  // Make sure the object is in the event hash and that the event name is in the objects events
-  if (!(object_id in this.events) || !(event_name in this.events[object_id]))
-    return null;
-
-  // get new context for event
-  var new_context = this.events[object_id][event_name].context.contextWithNewEnvironment();
-  
-  // Add parameters to store
-  var params = this.addPropertiesToDataStore(parameters);
-
-  // Add these to the context
-  new_context.addPropertiesToEnvironment(params);
-
-  // Run the code
-  return this.runSuiteWithContext(this.events[object_id][event_name].code, new_context);
-};
-
-/*
- * Adds the values of the properties object into the data store
- * with a unique identifier key. Creates an object where key is 
- * the key from properties and its value is the identifier of
- * the value in the store
- */
-Interpreter.prototype.addPropertiesToDataStore = function(properties)
-{
-  // Create empty environment
-  var environment = {};
-
-  // For each key in properties
-  for (var p in properties)
-  {
-    // Generate a unique key
-    var unique_key = String.uuid();
-
-    // add identifier to the environment
-    environment[p] = unique_key;
-
-    // add value to the store
-    this.data_store[unique_key] = properties[p];
-  }
-
-  // Return the environment
-  return environment;
-};
-
-/*
- * Loads a method into the interpreter
- */
-Interpreter.prototype.loadMethod = function(name,func)
-{
-  this.methods[name] = func;
+  return { id: String.uuid(),
+           properties: {},
+           code: []};
 };
 
 /*
@@ -159,17 +72,6 @@ Interpreter.prototype.runJSON = function(exp)
 };
 
 /*
- * Generates an empty object 
- * Mostly used for testing
- */
-Interpreter.prototype.emptyObject = function()
-{
-  return { id: String.uuid(),
-           properties: {},
-           code: []};
-};
-
-/*
  * Interprets a series of statements, return the result of the last
  */
 Interpreter.prototype.runSuiteWithContext = function(suites, context)
@@ -190,11 +92,6 @@ Interpreter.prototype.runCodeWithContext = function(obj, context)
   // Get key of obj
   var key = this.getObjectKey(obj);
 
-  // Handle code block
-  //if (key === "code")
-  //{
-  //  return this.runSuiteWithContext(obj[key], context);
-  //}
   // Handle on_event
   if (key === "on_event")
   {
@@ -253,6 +150,34 @@ Interpreter.prototype.runCodeWithContext = function(obj, context)
     return this.evalExpressionWithContext(obj, context);
   }
   
+};
+
+/*
+ * Adds the values of the properties object into the data store
+ * with a unique identifier key. Creates an object where key is 
+ * the key from properties and its value is the identifier of
+ * the value in the store
+ */
+Interpreter.prototype.addPropertiesToDataStore = function(properties)
+{
+  // Create empty environment
+  var environment = {};
+
+  // For each key in properties
+  for (var p in properties)
+  {
+    // Generate a unique key
+    var unique_key = String.uuid();
+
+    // add identifier to the environment
+    environment[p] = unique_key;
+
+    // add value to the store
+    this.data_store[unique_key] = properties[p];
+  }
+
+  // Return the environment
+  return environment;
 };
 
 /*
@@ -338,28 +263,28 @@ Interpreter.prototype.evalMathExpressionWithContext = function(exp, context)
   {
     // Handle addition
     case "+":
-      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
-      return val.slice(1).foldl(function(a,b) { return a + that.evalExpressionWithContext(b, context); }, first); 
+      var first = Coercer.toNumber(this.evalExpressionWithContext(val.slice(0,1)[0], context));
+      return val.slice(1).foldl(function(a,b) { return Coercer.toNumber(a) + Coercer.toNumber(that.evalExpressionWithContext(b, context)); }, first); 
       break;
     // Handle subtraction
     case "-":
-      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
-      return val.slice(1).foldl(function(a,b) { return a - that.evalExpressionWithContext(b, context); }, first);
+      var first = Coercer.toNumber(this.evalExpressionWithContext(val.slice(0,1)[0], context));
+      return val.slice(1).foldl(function(a,b) { return Coercer.toNumber(a) - Coercer.toNumber(that.evalExpressionWithContext(b, context)); }, first);
       break;
     // Handle multiplication
     case "*":
-      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
-      return val.slice(1).foldl(function(a,b) { return a * that.evalExpressionWithContext(b, context); }, first);
+      var first = Coercer.toNumber(this.evalExpressionWithContext(val.slice(0,1)[0], context));
+      return val.slice(1).foldl(function(a,b) { return Coercer.toNumber(a) * Coercer.toNumber(that.evalExpressionWithContext(b, context)); }, first);
       break;
     // Handle division
     case "/":
-      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
-       return val.slice(1).foldl(function(a,b) { return a / that.evalExpressionWithContext(b, context); }, first);
+      var first = Coercer.toNumber(this.evalExpressionWithContext(val.slice(0,1)[0], context));
+       return val.slice(1).foldl(function(a,b) { return Coercer.toNumber(a) / Coercer.toNumber(that.evalExpressionWithContext(b, context)); }, first);
       break;
     // Handle modulus
     case "%":
-      var first = this.evalExpressionWithContext(val.slice(0,1)[0], context);
-      return val.slice(1).foldl(function(a,b) { return a % that.evalExpressionWithContext(b, context); }, first);
+      var first = Coercer.toNumber(this.evalExpressionWithContext(val.slice(0,1)[0], context));
+      return val.slice(1).foldl(function(a,b) { return Coercer.toNumber(a) % Coercer.toNumber(that.evalExpressionWithContext(b, context)); }, first);
       break;
   }
  
@@ -418,6 +343,76 @@ Interpreter.prototype.evalBoolExpressionWithContext = function(exp, context)
 
   // If we get here must not have been a boolean expressoin
   return null;
+};
+
+/*
+ * Loads a method into the interpreter
+ */
+Interpreter.prototype.loadMethod = function(name,func)
+{
+  this.methods[name] = func;
+};
+
+/*
+ * Loads an object into the interpreter
+ */
+Interpreter.prototype.loadObject = function(o)
+{
+  // Add entry in events
+  this.events[o["id"]] = {};
+
+  // Object to objects
+  this.objects[o["id"]] = o;
+
+  var env = this.addPropertiesToDataStore(o["properties"]);
+
+  var context = new ExecutionContext({ id: o["id"], environment: env});
+
+  this.properties[o["id"]] = context;
+
+  // Run the code
+  this.runSuiteWithContext(this.objects[o["id"]].code, context);
+};
+
+/*
+ * Triggers an event on all objects with empty params
+ */
+Interpreter.prototype.triggerEvent = function (event_name)
+{
+  this.triggerEventWithParameters(event_name, {});
+};
+
+/*
+ * Triggers the named event on all object with the given parameters
+ */
+Interpreter.prototype.triggerEventWithParameters = function (event_name, parameters)
+{
+  // Loop through objects and trigger the event
+  for (var k in this.events)
+    this.triggerEventOnObjectWithParameters(event_name, k, parameters);
+};
+
+/*
+ * Triggers an event of type 'event_name' on an object with id 'object_id'
+ * passing the given parameters
+ */
+Interpreter.prototype.triggerEventOnObjectWithParameters = function(event_name, object_id, parameters)
+{
+  // Make sure the object is in the event hash and that the event name is in the objects events
+  if (!(object_id in this.events) || !(event_name in this.events[object_id]))
+    return null;
+
+  // get new context for event
+  var new_context = this.events[object_id][event_name].context.contextWithNewEnvironment();
+  
+  // Add parameters to store
+  var params = this.addPropertiesToDataStore(parameters);
+
+  // Add these to the context
+  new_context.addPropertiesToEnvironment(params);
+
+  // Run the code
+  return this.runSuiteWithContext(this.events[object_id][event_name].code, new_context);
 };
 
 /*

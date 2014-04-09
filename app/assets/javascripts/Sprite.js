@@ -1,3 +1,15 @@
+/*
+ * Sprite.js
+ *
+ * Author: Andrew Butterfield
+ * Date: 21 Feb 2014
+ *
+ * Defines a class that represents a sprite in the ZuseAppEngine
+ */
+
+/*
+ * Constructor
+ */
 function Sprite (options)
 {
   this.id = options.id;
@@ -23,31 +35,47 @@ function Sprite (options)
   }
 }
 
+/*
+ * Returns whether the sprite has a velocity
+ */
 Sprite.prototype.hasVelocity = function ()
 {
   return this.vx != 0.0 || this.vy != 0.0;
 };
 
+/*
+ * Updates position based on last time click
+ */
 Sprite.prototype.updatePosition = function (dt)
 {
   this.setX(this.cx + (this.vx * (dt / 1000)));
   this.setY(this.cy + (this.vy * (dt / 1000)));
 };
 
+/*
+ * Sets both cx and x of this sprite
+ */
 Sprite.prototype.setX = function (x)
 {
   this.cx = x;
   this.x = Math.round(this.cx - (this.width/2));
 };
 
+/*
+ * Sets both cy and y of this sprite
+ */
 Sprite.prototype.setY = function (y)
 {
   this.cy = y;
   this.y = Math.round(this.cy - (this.height/2));
 };
 
+/*
+ * Rasterizes images when resizes on canvas
+ */
 Sprite.prototype.rasterizeImage = function (img)
 {
+  // Short curcuit and don't rasterize to increase performance
   //if (img.height <= this.height && img.width <= this.width)
   {
     this.image = img;
@@ -79,21 +107,33 @@ Sprite.prototype.rasterizeImage = function (img)
   this.image = c1;
 };
 
+/*
+ * Determines whether the given x, y position is a hit within this sprite
+ */
 Sprite.prototype.isHit = function (x, y)
 {
   return x >= this.x && x <= this.x + this.width && y >= this.y && y <= this.y + this.height;
 };
 
+/*
+ * Returns the right boundary of the sprite
+ */
 Sprite.prototype.right = function ()
 {
   return this.x + this.width;
 };
 
+/*
+ * Returns the left boundary of the sprite
+ */
 Sprite.prototype.left = function ()
 {
   return this.x;
 };
 
+/*
+ * Returns whether the passed in sprite is colliding with this sprite
+ */
 Sprite.prototype.collidesWith = function (other_sprite)
 {
   var s = other_sprite;
@@ -104,6 +144,9 @@ Sprite.prototype.collidesWith = function (other_sprite)
   return false;
 };
 
+/*
+ * Resolves a collision with another sprite by bouncing (elastic collision)
+ */
 Sprite.prototype.resolveCollisionWith = function (other_sprite)
 {
   var diff = 0;
@@ -218,21 +261,33 @@ Sprite.prototype.resolveCollisionWith = function (other_sprite)
   
 };
 
+/*
+ * Returns the top position of this sprite
+ */
 Sprite.prototype.top = function ()
 {
   return this.y;
 };
 
+/*
+ * Returns the bottom position of this sprite
+ */
 Sprite.prototype.bottom = function ()
 {
   return this.y + this.height;
 };
 
+/*
+ * Returns a position object of this sprite
+ */
 Sprite.prototype.position = function ()
 {
   return { x: this.x, y: this.y, cx: this.cx, cy: this.cy };
 }
 
+/*
+ * Sets this sprite's position to the passed in pos objects information
+ */
 Sprite.prototype.restorePosition = function (pos)
 {
   this.x = pos.x;
@@ -241,6 +296,9 @@ Sprite.prototype.restorePosition = function (pos)
   this.cy = pos.cy;
 };
 
+/*
+ * Sets a velocity for this sprite
+ */
 Sprite.prototype.applyVelocity = function (vx, vy)
 {
   this.vx = vx;

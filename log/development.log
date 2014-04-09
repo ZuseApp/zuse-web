@@ -19269,3 +19269,893 @@ Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-03-18 13:3
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-03-18 13:33:41 -0600
+  [1m[36mProject Load (3.8ms)[0m  [1mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (3.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mProject Exists (2.2ms)[0m  [1mSELECT 1 AS one FROM "projects" WHERE ("projects"."uuid" = '0A4855A7-E329-499E-BD9D-9417346E8C8D' AND "projects"."id" != 1) LIMIT 1[0m
+  [1m[35mProject Exists (1.1ms)[0m  SELECT 1 AS one FROM "projects" WHERE ("projects"."uuid" = '0A4855A7-E329-499E-BD9D-9417346E8C8D' AND "projects"."id" != 1) LIMIT 1
+  [1m[36mProject Exists (0.9ms)[0m  [1mSELECT 1 AS one FROM "projects" WHERE ("projects"."uuid" = '0A4855A7-E329-499E-BD9D-9417346E8C8D' AND "projects"."id" != 1) LIMIT 1[0m
+  [1m[36m (1.7ms)[0m  [1mSELECT COUNT(*) FROM "shared_projects"[0m
+
+
+Started GET "/shared_projects/2" for 127.0.0.1 at 2014-04-05 11:40:00 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSharedProject Load (1.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 2 LIMIT 1
+Completed 500 Internal Server Error in 25ms
+
+TypeError (no implicit conversion of nil into String):
+  app/controllers/shared_projects_controller.rb:7:in `show'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.3ms)
+
+
+Started GET "/shared_projects/44" for 127.0.0.1 at 2014-04-05 11:40:09 -0600
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"44"}
+  [1m[36mSharedProject Load (1.7ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 44 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (1.0ms)
+  Rendered layouts/_header.html.erb (0.4ms)
+Completed 200 OK in 888ms (Views: 883.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/Coercer.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-05 11:40:10 -0600
+
+
+Started GET "/shared_projects/44" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"44"}
+  [1m[35mSharedProject Load (0.5ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 44 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+Completed 200 OK in 75ms (Views: 71.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/Coercer.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-05 11:41:23 -0600
+
+
+Started GET "/shared_projects/45" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"45"}
+  [1m[36mSharedProject Load (0.6ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 45 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+Completed 200 OK in 44ms (Views: 42.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/Coercer.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:34 -0600
+
+
+Started GET "/shared_projects/46" for 127.0.0.1 at 2014-04-05 11:42:50 -0600
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"46"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 46 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+Completed 200 OK in 16ms (Views: 13.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:50 -0600
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:50 -0600
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:50 -0600
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:50 -0600
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:50 -0600
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:50 -0600
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/Coercer.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:51 -0600
+
+
+Started GET "/shared_projects/47" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"47"}
+  [1m[36mSharedProject Load (1.0ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 47 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 10.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/Coercer.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-05 11:42:58 -0600
+
+
+Started GET "/shared_projects/48" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"48"}
+  [1m[35mSharedProject Load (0.5ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 48 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 10.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/Coercer.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:05 -0600
+
+
+Started GET "/shared_projects/49" for 127.0.0.1 at 2014-04-05 11:43:13 -0600
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"49"}
+  [1m[36mSharedProject Load (0.5ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 49 LIMIT 1[0m
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `project_json' for nil:NilClass):
+  app/controllers/shared_projects_controller.rb:7:in `show'
+
+
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.1ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.9ms)
+  Rendered /Users/andrew/.rvm/gems/ruby-2.0.0-p451/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.2ms)
+
+
+Started GET "/shared_projects/48" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"48"}
+  [1m[35mSharedProject Load (0.6ms)[0m  SELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 48 LIMIT 1
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.2ms)
+  Rendered layouts/_header.html.erb (0.1ms)
+Completed 200 OK in 50ms (Views: 46.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/Coercer.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-05 11:43:22 -0600
+  [1m[35mSharedProject Load (4.4ms)[0m  SELECT "shared_projects".* FROM "shared_projects" ORDER BY "shared_projects"."id" DESC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (8.6ms)[0m  UPDATE "shared_projects" SET "compiled_code" = $1, "updated_at" = $2 WHERE "shared_projects"."id" = 48  [["compiled_code", "{\n  \"generators\" : [\n\n  ],\n  \"id\" : \"A36769EB-0175-4EC2-97DD-9E0E681DFA4C\",\n  \"collision_groups\" : {\n    \"text\" : [\n\n    ],\n    \"ball\" : [\n      \"paddle\",\n      \"brick\"\n    ],\n    \"paddle\" : [\n      \"ball\"\n    ],\n    \"brick\" : [\n      \"ball\"\n    ]\n  },\n  \"version\" : \"1.0.0\",\n  \"objects\" : [\n    {\n      \"type\" : \"text\",\n      \"id\" : \"score\",\n      \"collision_group\" : \"text\",\n      \"code\" : [\n        {\n          \"on_event\" : {\n            \"name\" : \"score\",\n            \"code\" : [\n              {\n                \"set\" : [\n                  \"score\",\n                  {\n                    \"+\" : [\n                      {\n                        \"get\" : \"score\"\n                      },\n                      1\n                    ]\n                  }\n                ]\n              },\n              {\n                \"set\" : [\n                  \"text\",\n                  {\n                    \"get\" : \"score\"\n                  }\n                ]\n              }\n            ],\n            \"parameters\" : [\n\n            ]\n          }\n        }\n      ],\n      \"physics_body\" : \"none\",\n      \"properties\" : {\n        \"y\" : 499,\n        \"width\" : 100,\n        \"text\" : \"0\",\n        \"score\" : 0,\n        \"x\" : 270,\n        \"height\" : 50\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 452,\n        \"width\" : 64,\n        \"x\" : 53,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"AA230D34-CA98-45D7-9C6D-F2CD7BD15EFA\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 452,\n        \"width\" : 64,\n        \"x\" : 123,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"AB37B553-8E5A-4331-9CE0-4535BE4BD511\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 452,\n        \"width\" : 64,\n        \"x\" : 193,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"193EA3F5-C059-4223-87B7-EE554C713CE0\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 452,\n        \"width\" : 64,\n        \"x\" : 263,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"B2EC74F2-7484-412C-8F3F-5EBE68C87CD4\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 417,\n        \"width\" : 64,\n        \"x\" : 88,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"9A75DF35-2992-4271-ABA0-BB786BE59E6B\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 417,\n        \"width\" : 64,\n        \"x\" : 158,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"E8825123-AA3F-4E5E-B6F8-D1FBCEEB389E\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 417,\n        \"width\" : 64,\n        \"x\" : 228,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"DF35FE55-BE9C-4011-98B9-089579B2CA07\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 382,\n        \"width\" : 64,\n        \"x\" : 53,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"06B2560B-3E0C-428E-B672-B0464AB2E1F2\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 382,\n        \"width\" : 64,\n        \"x\" : 123,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"C30FB6D2-99F3-4AD4-A4C2-FC55707F5510\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 382,\n        \"width\" : 64,\n        \"x\" : 193,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"428956B0-B6AA-4EDD-BB7C-83809BFF1327\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 382,\n        \"width\" : 64,\n        \"x\" : 263,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"A3BC4097-0258-4284-9978-E4B67DAC797F\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 347,\n        \"width\" : 64,\n        \"x\" : 88,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"E3E37F7E-5062-4B81-A7F8-D103C5A5E9DA\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 347,\n        \"width\" : 64,\n        \"x\" : 158,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"7CF87828-2687-43D8-BEB6-C4C6DC4BFBE9\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 347,\n        \"width\" : 64,\n        \"x\" : 228,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"90F23CB9-62CE-4FEF-AB35-09FF1B4A5547\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 312,\n        \"width\" : 64,\n        \"x\" : 53,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"C4CDDCC8-32A4-4C1B-94AA-D69F9BAFFB62\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 312,\n        \"width\" : 64,\n        \"x\" : 123,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"66BBF7CA-985A-40C7-9587-5CA64DD5D178\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 312,\n        \"width\" : 64,\n        \"x\" : 193,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"DE9B3D74-12C6-4B76-86AE-A7A08A99507A\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 312,\n        \"width\" : 64,\n        \"x\" : 263,\n        \"height\" : 32\n      },\n      \"type\" : \"image\",\n      \"id\" : \"0B214181-92FE-4CE2-94A7-9B5C684973E7\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"brick\",\n      \"image\" : {\n        \"path\" : \"sprite_brick.png\"\n      },\n      \"traits\" : {\n        \"Disappearable\" : {\n          \"parameters\" : [\n\n          ]\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 28,\n        \"width\" : 129,\n        \"x\" : 93.5,\n        \"height\" : 28\n      },\n      \"type\" : \"image\",\n      \"id\" : \"20E26463-2409-4D90-8ED9-937FE6746DED\",\n      \"code\" : [\n\n      ],\n      \"physics_body\" : \"rectangle\",\n      \"collision_group\" : \"paddle\",\n      \"image\" : {\n        \"path\" : \"sprite_paddle.png\"\n      },\n      \"traits\" : {\n        \"Draggable\" : {\n          \"parameters\" : {\n            \"vertical\" : false,\n            \"horizontal\" : true\n          }\n        }\n      }\n    },\n    {\n      \"properties\" : {\n        \"y\" : 70.5,\n        \"width\" : 30,\n        \"x\" : 106,\n        \"height\" : 30\n      },\n      \"type\" : \"image\",\n      \"id\" : \"B00B8AED-B3C3-4A3C-AB0E-3559E0BCA33C\",\n      \"code\" : [\n        {\n          \"on_event\" : {\n            \"name\" : \"start\",\n            \"code\" : [\n              {\n                \"call\" : {\n                  \"method\" : \"move\",\n                  \"parameters\" : [\n                    45,\n                    200\n                  ]\n                }\n              }\n            ],\n            \"parameters\" : [\n\n            ]\n          }\n        }\n      ],\n      \"physics_body\" : \"circle\",\n      \"collision_group\" : \"ball\",\n      \"image\" : {\n        \"path\" : \"sprite_ball.png\"\n      },\n      \"traits\" : {\n\n      }\n    }\n  ],\n  \"traits\" : {\n    \"Draggable\" : {\n      \"code\" : [\n        {\n          \"set\" : [\n            \"offset_x\",\n            0\n          ]\n        },\n        {\n          \"set\" : [\n            \"offset_y\",\n            0\n          ]\n        },\n        {\n          \"on_event\" : {\n            \"parameters\" : [\n              \"touch_x\",\n              \"touch_y\"\n            ],\n            \"code\" : [\n              {\n                \"set\" : [\n                  \"offset_x\",\n                  {\n                    \"-\" : [\n                      {\n                        \"get\" : \"touch_x\"\n                      },\n                      {\n                        \"get\" : \"x\"\n                      }\n                    ]\n                  }\n                ]\n              },\n              {\n                \"set\" : [\n                  \"offset_y\",\n                  {\n                    \"-\" : [\n                      {\n                        \"get\" : \"touch_y\"\n                      },\n                      {\n                        \"get\" : \"y\"\n                      }\n                    ]\n                  }\n                ]\n              }\n            ],\n            \"name\" : \"touch_began\"\n          }\n        },\n        {\n          \"on_event\" : {\n            \"parameters\" : [\n              \"touch_x\",\n              \"touch_y\"\n            ],\n            \"code\" : [\n              {\n                \"if\" : {\n                  \"test\" : {\n                    \"==\" : [\n                      {\n                        \"get\" : \"horizontal\"\n                      },\n                      true\n                    ]\n                  },\n                  \"true\" : [\n                    {\n                      \"set\" : [\n                        \"x\",\n                        {\n                          \"-\" : [\n                            {\n                              \"get\" : \"touch_x\"\n                            },\n                            {\n                              \"get\" : \"offset_x\"\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              },\n              {\n                \"if\" : {\n                  \"test\" : {\n                    \"==\" : [\n                      {\n                        \"get\" : \"vertical\"\n                      },\n                      true\n                    ]\n                  },\n                  \"true\" : [\n                    {\n                      \"set\" : [\n                        \"y\",\n                        {\n                          \"-\" : [\n                            {\n                              \"get\" : \"touch_y\"\n                            },\n                            {\n                              \"get\" : \"offset_y\"\n                            }\n                          ]\n                        }\n                      ]\n                    }\n                  ]\n                }\n              }\n            ],\n            \"name\" : \"touch_moved\"\n          }\n        }\n      ],\n      \"parameters\" : {\n        \"vertical\" : true,\n        \"horizontal\" : true\n      }\n    },\n    \"Disappearable\" : {\n      \"code\" : [\n        {\n          \"set\" : [\n            \"hits left\",\n            1\n          ]\n        },\n        {\n          \"on_event\" : {\n            \"name\" : \"collision\",\n            \"code\" : [\n              {\n                \"set\" : [\n                  \"hits left\",\n                  {\n                    \"-\" : [\n                      {\n                        \"get\" : \"hits left\"\n                      },\n                      1\n                    ]\n                  }\n                ]\n              },\n              {\n                \"if\" : {\n                  \"test\" : {\n                    \"==\" : [\n                      {\n                        \"get\" : \"hits left\"\n                      },\n                      0\n                    ]\n                  },\n                  \"true\" : [\n                    {\n                      \"call\" : {\n                        \"method\" : \"remove\"\n                      }\n                    }\n                  ]\n                }\n              },\n              {\n                \"trigger_event\" : {\n                  \"name\" : \"score\",\n                  \"parameters\" : {\n\n                  }\n                }\n              }\n            ],\n            \"parameters\" : [\n              \"other_sprite\"\n            ]\n          }\n        }\n      ],\n      \"parameters\" : [\n\n      ]\n    }\n  },\n  \"title\" : \"Breakout\"\n}"], ["updated_at", Sat, 05 Apr 2014 17:46:28 UTC +00:00]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/shared_projects/48" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+Processing by SharedProjectsController#show as HTML
+  Parameters: {"id"=>"48"}
+  [1m[36mSharedProject Load (0.8ms)[0m  [1mSELECT "shared_projects".* FROM "shared_projects" WHERE "shared_projects"."id" = 48 LIMIT 1[0m
+  Rendered shared_projects/show.html.erb within layouts/shared_projects (0.1ms)
+  Rendered layouts/_header.html.erb (0.0ms)
+Completed 200 OK in 14ms (Views: 10.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/Coercer.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-05 11:46:33 -0600
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-09 09:21:58 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PageController#index as HTML
+  Rendered page/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 594ms (Views: 579.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/page.css?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/Coercer.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/page.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-09 09:21:59 -0600
+
+
+Started GET "/" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+Processing by PageController#index as HTML
+  Rendered page/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/api_user_projects.css?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/api_projects.css?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/projects.css?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/api_shared_projects.css?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/page.css?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/api_users.css?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/shared_projects.css?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/Coercer.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/Compiler.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/ZuseAppEngine.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/Renderer.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/Interpreter.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/Sprite.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/ExecutionContext.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/api_shared_projects.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/api_projects.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/api_user_projects.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/api_users.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/extend_core_datatypes.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/page.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/projects.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/shared_projects.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-09 09:22:15 -0600

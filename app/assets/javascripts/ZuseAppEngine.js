@@ -166,7 +166,7 @@ ZuseAppEngine.prototype.imageLoadError = function (e)
 };
 
 /*
- * Kicks of the Zuse app by calling the start event on all objects
+ * Kicks off the Zuse app by calling the start event on all objects
  */
 ZuseAppEngine.prototype.start = function ()
 {

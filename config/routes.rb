@@ -27,6 +27,8 @@ Myapp::Application.routes.draw do
   resources :shared_projects, only: [ :show ]
   resources :projects, only: [ :show ]
 
+  root 'page#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
