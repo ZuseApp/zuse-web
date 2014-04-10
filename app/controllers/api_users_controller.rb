@@ -15,7 +15,7 @@ class ApiUsersController < ApplicationController
   def authenticate
     @user = User.find_by_username params[:user][:username]
 
-    if @user && @user.authenticate params[:user][:password]
+    if @user && @user.authenticate(params[:user][:password])
       render json: { token: @user.token }, status: :ok
     else
       head :unauthorized
