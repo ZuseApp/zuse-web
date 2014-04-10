@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
   has_many :commits
 
   attr_accessor :project_json
-  attr_accessor :compiled_code
+  attr_accessor :compiled_components
   attr_accessor :screenshot_base64
 
   has_attached_file :screenshot, { styles: 
@@ -16,7 +16,7 @@ class Project < ActiveRecord::Base
 
   validates :user, :title, :uuid, presence: true
   validates :uuid, uniqueness: true
-  validate :compiled_code_is_valid
+  validate :compiled_components_is_valid
   validate :project_json_is_valid_and_fields_match
   validates_attachment :screenshot, { 
                          content_type: { content_type: "image/png" },
@@ -30,7 +30,7 @@ class Project < ActiveRecord::Base
   def create_commit
     commit = Commit.new
     commit.project_json = self.project_json
-    commit.compiled_code = self.compiled_code
+    commit.compiled_components = self.compiled_components
     commit.project = self
     commit.save!
   end
@@ -43,10 +43,10 @@ class Project < ActiveRecord::Base
     commit = self.latest_commit
 
     if commit.is_childless?
-      if commit.needs_update? self.project_json, self.compiled_code
+      if commit.needs_update? self.project_json, self.compiled_components
         new_commit = Commit.new
         new_commit.project_json = self.project_json
-        new_commit.compiled_code = self.compiled_code
+        new_commit.compiled_components = self.compiled_components
         new_commit.project = self
         new_commit.parent = commit
 
@@ -61,16 +61,16 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def fork_from_version user, version
-    if version.nil?
-      self.errors.add :version, "can't be blank"
+  def fork_from_commit_number user, commit_number
+    if commit_number.nil?
+      self.errors.add :commit_number, "can't be blank"
       return self
     end
 
-    self.fork user, version
+    self.fork user, commit_number
   end
 
-  def fork user, version
+  def fork user, commit_number
     begin
       if user.nil?
         self.errors.add :user, "can't be blank"
@@ -79,10 +79,10 @@ class Project < ActiveRecord::Base
       
       uuid = SecureRandom.uuid
       
-      if version.nil?
+      if commit_number.nil?
         commit_parent = self.latest_commit
       else
-        commit_parent = Commit.find_by_id version
+        commit_parent = Commit.find_by_id commit_number
       end
 
       project_json = JSON.parse commit_parent.project_json
@@ -92,14 +92,14 @@ class Project < ActiveRecord::Base
 
       new_project.uuid = uuid
       new_project.project_json = project_json.to_json
-      new_project.compiled_code = commit_parent.compiled_code
+      new_project.compiled_components = commit_parent.compiled_components
       new_project.user = user
       new_project.deleted = false
      
       if new_project.save
         commit_child = new_project.latest_commit
 
-        if version
+        if commit_number
           commit_child.parent = commit_parent
         end
 
@@ -116,12 +116,12 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def compiled_code_is_valid
-    if !self.compiled_code.blank?
+  def compiled_components_is_valid
+    if !self.compiled_components.blank?
       begin
-        JSON.parse self.compiled_code
+        JSON.parse self.compiled_components
       rescue JSON::ParserError
-        errors.add(:compiled_code, "is not valid JSON")
+        errors.add(:compiled_components, "is not valid JSON")
       end
     end
   end
@@ -166,7 +166,7 @@ class Project < ActiveRecord::Base
       downloads: self.downloads,
       username: self.user.username,
       screenshot_url: Url + self.screenshot.url(:quarter),
-      version: self.latest_commit.id
+      commit_number: self.latest_commit.id
     }
   end
 
@@ -179,8 +179,7 @@ class Project < ActiveRecord::Base
       downloads: self.downloads,
       username: self.user.username,
       project_json: commit.project_json,
-      compiled_code: commit.compiled_code,
-      version: commit.id,
+      commit_number: commit.id,
       screenshot_url: Url + self.screenshot.url(:quarter)
     }
   end

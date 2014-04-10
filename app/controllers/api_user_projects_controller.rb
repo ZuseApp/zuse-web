@@ -53,7 +53,7 @@ class ApiUserProjectsController < ApplicationController
       end
     else
       @project = Project.find_by_uuid params[:uuid]
-      @fork = @project.fork_from_version @api_user, params[:version]
+      @fork = @project.fork_from_commit_number @api_user, params[:project][:commit_number]
 
       if @fork.errors.any?
         render json: { errors: @fork.errors.full_messages }, status: :unprocessable_entity
@@ -74,7 +74,7 @@ class ApiUserProjectsController < ApplicationController
       @project.deleted = true
       @commit = @project.latest_commit
       @project.project_json = @commit.project_json
-      @project.compiled_code = @commit.compiled_code
+      @project.compiled_components = @commit.compiled_components
 
       if @project.save
         head :no_content
@@ -86,11 +86,22 @@ class ApiUserProjectsController < ApplicationController
 
   private
   def user_create_params
-    params.require(:project).permit(:project_json, :compiled_code, :title, :description, :uuid, :screenshot_base64, :screenshot)
+    params.require(:project).permit(:project_json, 
+                                    :compiled_components, 
+                                    :title, :description, 
+                                    :uuid, 
+                                    :screenshot_base64, 
+                                    :screenshot)
   end
 
   def user_update_params
-    params.require(:project).permit(:project_json, :compiled_code, :title, :description, :screenshot_base64, :screenshot)
+    params.require(:project).permit(:project_json, 
+                                    :compiled_components, 
+                                    :title, 
+                                    :description, 
+                                    :screenshot_base64, 
+                                    :screenshot,
+                                    :commit_number)
   end
 
   def set_screenshot_base64

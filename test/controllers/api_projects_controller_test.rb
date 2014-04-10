@@ -96,15 +96,14 @@ class ApiProjectsControllerTest < ActionController::TestCase
     assert_response :ok
 
     res = JSON.parse @response.body
-    assert_equal 9, res.size
+    assert_equal 8, res.size
     assert_equal @projects[0].uuid, res["uuid"]
     assert_equal @projects[0].title, res["title"]
     assert_equal @projects[0].description, res["description"]
     assert_equal @projects[0].downloads, res["downloads"]
     assert_equal @projects[0].user.username, res["username"]
     assert_equal @projects[0].commits.first.project_json, res["project_json"]
-    assert_equal @projects[0].commits.first.compiled_code, res["compiled_code"]
-    assert_equal @projects[0].commits.first.id, res["version"]
+    assert_equal @projects[0].commits.first.id, res["commit_number"]
     assert_not_nil res["screenshot_url"]
   end
 

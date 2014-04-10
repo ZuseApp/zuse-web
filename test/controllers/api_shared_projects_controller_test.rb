@@ -14,7 +14,7 @@ class ApiSharedProjectsControllerTest < ActionController::TestCase
   end
 
   test "Create: Should get errors" do
-    post :create, shared_project: FactoryGirl.attributes_for(:shared_project, title: "", project_json: "", compiled_code: "" )
+    post :create, shared_project: FactoryGirl.attributes_for(:shared_project, title: "", project_json: "", compiled_components: "" )
     assert_response :unprocessable_entity
 
     res = JSON.parse @response.body

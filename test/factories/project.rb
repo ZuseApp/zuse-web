@@ -5,7 +5,7 @@ FactoryGirl.define do
     downloads 0
     uuid { SecureRandom.uuid }
     project_json { '{ "title" : "' + title + '", "description" : "' + description + '", "id" : "' + uuid + '" }' }
-    compiled_code '{}'
+    compiled_components '{}'
     screenshot ""
   end
 end

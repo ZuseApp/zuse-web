@@ -1,8 +1,8 @@
 class SharedProject < ActiveRecord::Base
  
-  validates :project_json, :compiled_code, presence: true
+  validates :project_json, :compiled_components, presence: true
   validate :project_json_is_valid
-  validate :compiled_code_is_valid
+  validate :compiled_components_is_valid
 
   def project_json_is_valid
     if !self.project_json.blank?
@@ -14,12 +14,12 @@ class SharedProject < ActiveRecord::Base
     end
   end
 
-  def compiled_code_is_valid
-    if !self.compiled_code.blank?
+  def compiled_components_is_valid
+    if !self.compiled_components.blank?
       begin
-        JSON.parse self.compiled_code
+        JSON.parse self.compiled_components
       rescue JSON::ParserError
-        errors.add(:compiled_code, "is not valid JSON")
+        errors.add(:compiled_components, "is not valid JSON")
       end
     end
   end

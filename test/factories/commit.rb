@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :commit do
     project_json "{}"
-    compiled_code "{}"
+    compiled_components "{}"
   end
 end

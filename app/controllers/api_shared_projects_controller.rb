@@ -13,6 +13,6 @@ class ApiSharedProjectsController < ApplicationController
 
   private
   def shared_project_params
-    params.require(:shared_project).permit(:project_json, :compiled_code)
+    params.require(:shared_project).permit(:project_json, :compiled_components)
   end
 end

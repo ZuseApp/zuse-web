@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140409193609) do
+ActiveRecord::Schema.define(version: 20140410152948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140409193609) do
     t.integer  "project_id"
     t.string   "ancestry"
     t.text     "project_json"
-    t.text     "compiled_code"
+    t.text     "compiled_components"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140409193609) do
 
   create_table "shared_projects", force: true do |t|
     t.text     "project_json"
-    t.text     "compiled_code"
+    t.text     "compiled_components"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
