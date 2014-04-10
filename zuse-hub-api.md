@@ -120,7 +120,7 @@ The above endpoint is used to obtain the user's (identified by authentication to
     "username" : "<Project author's user name>",
     "downloads" : <Number of downloads>,
     "screenshot_url" : "<URL for screenshot>",
-    "version" : <Commit id>
+    "commit_number" : <Commit id>
     },
     { 
       <More projects>
@@ -146,9 +146,8 @@ The above endpoint is used to obtain a user's (identified by authentication toke
   "description" : "<Project description>",
   "downloads" : <Number of downloads>,
   "project_json" : "<Project json>",
-  "compiled_code" : "<Project compiled code>"
   "screenshot_url" : "<URL for screenshot>",
-  "version" : <Commit id>
+  "commit_number" : <Commit id>
 }
 ```
 
@@ -169,7 +168,7 @@ The above endpoint is used to upload a project on Zusehub. This endpoint expects
     "description" : "<Project description>",
     "uuid" : "<Project uuid>",
     "project_json" : "<Project json>",
-    "compiled_code" : "<Project compiled code>",
+    "compiled_components" : "<Project compiled components>",
     "screenshot" : "<Base64 encoded string of png>"
   }
 }
@@ -196,9 +195,9 @@ The above endpoint is used to update a project and expects the following json st
     "title" : "<Project title>",
     "description" : "<Project description>",
     "project_json" : "<Project json>",
-    "compiled_code" : "<Project compiled code>",
+    "compiled_components" : "<Project compiled components>",
     "screenshot" : "<Base64 encoded string of png>"
-    "version" : <Number of commits>
+    "commit_number" : <Commit id>
   }
 }
 ```
@@ -253,7 +252,8 @@ On success, the endpoint returns an :ok status with the following json:
     "username" : "<Project author's username>",
     "description" : "<Project description>",
     "downloads" : <Number of downloads>,
-    "screenshot_url" : "<URL to screenshot>"
+    "screenshot_url" : "<URL to screenshot>",
+    "commit_number" : <Commit id>
     },
     { 
       <More projects>
@@ -279,7 +279,8 @@ The above endpoint is used to obtain meta information about a single project. On
   "username" : "<Project author's username>",
   "description" : "<Project description>",
   "downloads" : <Number of downloads>,
-  "screenshot_url" : "<URL for screenshot>"
+  "screenshot_url" : "<URL for screenshot>",
+  "commit_number" : <Commit id>
 }
 ```
 
@@ -297,9 +298,9 @@ The above endpoint is used to obtain the compiled code for the project for immed
   "title" : "<Project title>", 
   "username" : "<Project author's username>",
   "description" : "<Project description>",
+  "downloads" : <Number of downloads>,
   "project_json" : "<Project json>",
-  "compiled_code" : "<Project compiled_code>",
-  "version" : <Commit id>,
+  "commit_number" : <Commit id>,
   "screenshot_url" : "<URL for screenshot>"
 }
 ```
@@ -318,7 +319,7 @@ The above endpoint is used to quickly share a project via social media and expec
 { 
   "shared_project" : {
     "project_json" : "<Project json>",
-    "compiled_code" : "<Project compiled code>"
+    "compiled_components" : "<Project compiled components>"
   }
 }
 ```
