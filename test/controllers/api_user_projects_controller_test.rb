@@ -35,7 +35,7 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
 
   test "Create: With screenshot" do
     @request.headers["Authorization"] = "Token: #{@user.token}"
-    post :create, project: FactoryGirl.attributes_for(:project, { screenshot: "R0lGOD lhCwAOAMQfAP////7+/vj4+Hh4eHd3d/v7+/Dw8HV1dfLy8ubm5vX19e3t7fr 6+nl5edra2nZ2dnx8fMHBwYODg/b29np6eujo6JGRkeHh4eTk5LCwsN3d3dfX 13Jycp2dnevr6////yH5BAEAAB8ALAAAAAALAA4AAAVq4NFw1DNAX/o9imAsB tKpxKRd1+YEWUoIiUoiEWEAApIDMLGoRCyWiKThenkwDgeGMiggDLEXQkDoTh CKNLpQDgjeAsY7MHgECgx8YR8oHwNHfwADBACGh4EDA4iGAYAEBAcQIg0Dk gcEIQA7"})
+    post :create, project: FactoryGirl.attributes_for(:project, { screenshot: "iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAF0lEQVQI12O82dHx+8sXli937vx+/x4ARKkKV16Ef5MAAAAASUVORK5CYII="})
     
     res = JSON.parse @response.body
     assert_response :ok

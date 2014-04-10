@@ -12,14 +12,14 @@ class Project < ActiveRecord::Base
                                      quarter: "x131", 
                                      eighth: "x65"
                                    },
-                                   default_url: "/images/missing/:style.png"}
+                                   default_url: "/missing/screenshot/:style.png"}
 
   validates :user, :title, :uuid, presence: true
   validates :uuid, uniqueness: true
   validate :compiled_code_is_valid
   validate :project_json_is_valid_and_fields_match
   validates_attachment :screenshot, { 
-#                         content_type: { content_type: "image/png" },
+                         content_type: { content_type: "image/png" },
                          size: { less_than_or_equal_to: 100.kilobytes } }
   do_not_validate_attachment_file_type :screenshot
 
@@ -187,13 +187,12 @@ class Project < ActiveRecord::Base
 
   def decode_screenshot_base64
     return if self.screenshot_base64.blank?
-
+    
     decoded_data = Base64.decode64 self.screenshot_base64
     
     data = StringIO.new(decoded_data)
     
     self.screenshot = data
-    self.screenshot_content_type = "image/png"
     self.screenshot_file_name = "screenshot.png"
   end
 end
