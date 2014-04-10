@@ -125,9 +125,30 @@ class ApiProjectsControllerTest < ActionController::TestCase
     assert_not_nil res["screenshot_url"]
   end
 
+  test "Download: Not found when deleted" do
+    get :download, uuid: @project_deleted.uuid
+
+    assert_response :not_found
+  end
+
   #test "Download: Requires authorization" do
   #  get :download, uuid: @projects[0].uuid
   #
   #  assert_response :unauthorized
   #end
+  
+  test "Show: Not found when deleted" do
+    get :show, uuid: @projects[0].uuid
+
+    res = JSON.parse @response.body
+    assert_response :ok
+
+    assert_equal 7, res.size
+  end
+
+  test "Show: Pulls down project meta" do
+    get :show, uuid: @project_deleted.uuid
+
+    assert_response :not_found
+  end
 end

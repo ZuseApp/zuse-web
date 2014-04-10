@@ -43,7 +43,9 @@ class ApiUserProjectsController < ApplicationController
       if @project.deleted
         head :not_found
       else
-        render json: @project.full, status: :ok
+        @project_hash = @project.full
+        @project_hash[:screenshot_url] = @project.screenshot.url(:half)
+        render json: @project_hash, status: :ok
       end
     else
       head :forbidden
