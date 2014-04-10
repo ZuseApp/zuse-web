@@ -3,7 +3,7 @@ class ApiProjectsController < ApplicationController
   before_filter :setup_pagination
   
   def index
-    @projects = Project.active
+    @projects = Project.shared
     
     if params[:category]
       if params[:category] == "newest"
@@ -20,7 +20,7 @@ class ApiProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.active.find_by_uuid params[:uuid]
+    @project = Project.shared.find_by_uuid params[:uuid]
 
     if @project
       @project_hash = @project.meta
@@ -32,7 +32,7 @@ class ApiProjectsController < ApplicationController
   end
 
   def download
-    @project = Project.active.find_by_uuid params[:uuid]
+    @project = Project.shared.find_by_uuid params[:uuid]
 
     if @project
       @project.increment_download_count

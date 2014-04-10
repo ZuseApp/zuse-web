@@ -1,12 +1,13 @@
 class ApiUserProjectsController < ApplicationController
   before_filter :set_screenshot_base64, only: [ :create, :update ]
   before_filter :authenticate_api_request
+  before_filter :validate_commit_number, only: [ :update ]
   before_filter :setup_pagination, only: [ :index ]
   skip_before_filter :verify_authenticity_token
 
 
   def index
-    @projects = @api_user.projects.active.page(params[:page]).per(params[:per_page])
+    @projects = @api_user.projects.shared.page(params[:page]).per(params[:per_page])
     render json: @projects.map { |p| p.meta }, status: :ok
   end
 
@@ -15,15 +16,15 @@ class ApiUserProjectsController < ApplicationController
 
     if @project
       if @project.deleted
-        @fork = @project.fork @api_user, nil
+        @project.deleted = false
 
-        if @fork.errors.any?
-          render json: { errors: @fork.errors.full_messages }, status: :unprocessable_entity
+        if @project.update_attributes user_create_params
+          render json: @project.full, status: :ok
         else
-          render json: @fork.full, status: :ok
+          render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
         end
       else
-        render json: { errors: ["Project already exists"] }, status: :unprocessable_entity
+        head :conflict
       end
     else
       @project = @api_user.projects.new user_create_params
@@ -44,7 +45,7 @@ class ApiUserProjectsController < ApplicationController
         head :not_found
       else
         @project_hash = @project.full
-        @project_hash[:screenshot_url] = @project.screenshot.url(:half)
+        @project_hash[:screenshot_url] = Url + @project.screenshot.url(:half)
         render json: @project_hash, status: :ok
       end
     else
@@ -59,12 +60,12 @@ class ApiUserProjectsController < ApplicationController
       if @project.deleted
         head :not_found
         return
-      end
-
-      if @project.update_attributes user_update_params
-        render json: @project.full, status: :ok
       else
-        render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
+        if @project.update_attributes user_update_params.except(:commit_number)
+          render json: @project.full, status: :ok
+        else
+          render json: { errors: @project.errors.full_messages }, status: :unprocessable_entity
+        end
       end
     else
       @project = Project.find_by_uuid params[:uuid]
@@ -92,9 +93,9 @@ class ApiUserProjectsController < ApplicationController
       @project.compiled_components = @commit.compiled_components
 
       if @project.save
-        head :no_content
+        head :ok
       else
-        head :unprocessable_entity
+        head :failed_dependency
       end
     end
   end
@@ -136,4 +137,9 @@ class ApiUserProjectsController < ApplicationController
     end
   end
 
+  def validate_commit_number
+    if params[:project][:commit_number].blank?
+      render json: { errors: ["Commit number can't be blank"] }, status: :unprocessable_entity
+    end
+  end
 end

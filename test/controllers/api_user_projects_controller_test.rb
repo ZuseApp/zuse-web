@@ -7,6 +7,8 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
       @project = FactoryGirl.create(:project, { user_id: @user.id } )
     end
 
+    @project_deleted = FactoryGirl.create(:project, { user_id: @user.id, deleted: true })
+
     @user2 = FactoryGirl.create(:user)
     (1..10).each do |i|
       @project2 = FactoryGirl.create(:project, { user_id: @user2.id } )
@@ -17,6 +19,19 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     @request.headers["Authorization"] = "Token: #{@user.token}"
     get :index
     assert_response :ok
+  end
+
+  test "Index: Should return only shared projects" do
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+    get :index, { per_page: 100 }
+
+    assert_response :ok
+    res = JSON.parse @response.body
+    assert 11, res.size
+
+    res.each do |project|
+      assert project["uuid"] != @project_deleted.uuid
+    end
   end
 
   test "Index: Requires authorization" do
@@ -33,6 +48,34 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_equal 8, res.size 
   end
 
+  test "Create: Previously shared, but now unshared, is now shared" do
+    commit = @project_deleted.latest_commit
+    project_attributes = @project_deleted.full
+    project_attributes[:compiled_components] = commit.compiled_components
+
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+    
+    post :create, project: project_attributes
+    assert_response :ok
+
+    @project_deleted.reload
+    res = JSON.parse @response.body
+    assert_equal 8, res.size
+    assert !@project_deleted.deleted
+  end
+
+  test "Create: Can't create an already shared project" do
+    commit = @project.latest_commit
+    project_attributes = @project.full
+    project_attributes[:compiled_components] = commit.compiled_components
+    
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+    
+    post :create, project: project_attributes
+    assert_response :conflict
+  end
+
+
   test "Create: With screenshot" do
     @request.headers["Authorization"] = "Token: #{@user.token}"
     post :create, project: FactoryGirl.attributes_for(:project, { screenshot: "iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAIAAAD91JpzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAF0lEQVQI12O82dHx+8sXli937vx+/x4ARKkKV16Ef5MAAAAASUVORK5CYII="})
@@ -40,23 +83,6 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     res = JSON.parse @response.body
     assert_response :ok
     assert_equal 8, res.size
-  end
-
-  test "Create: Previously deleted project returns new project" do
-    @project.deleted = true
-    @project.save
-
-    @request.headers["Authorization"] = "Token: #{@user.token}"
-    post :create, project: @project.full
-
-    res = JSON.parse @response.body
-    assert_response :ok
-    assert_equal 8, res.size
-    assert res["uuid"] != @project.uuid
-    @fork = @user.projects.find_by_uuid res["uuid"]
-    assert !@fork.deleted
-    assert_nil @fork.latest_commit.parent
-    assert_not_equal @project.latest_commit.id, @fork.latest_commit.id
   end
 
   test "Create: Requires authorization" do
@@ -104,6 +130,20 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
+  test "Show: Can't find unshared project" do
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+
+    get :show, uuid: @project_deleted.uuid
+    assert_response :not_found
+  end
+
+  test "Show: Can't find nonexistent project" do
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+
+    get :show, uuid: SecureRandom.uuid
+    assert_response :forbidden
+  end
+
   test "Update: Project meta must match information in project_json" do
     project_state = @project.full
     @request.headers["Authorization"] = "Token: #{@user.token}"
@@ -117,6 +157,19 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_not_nil response["errors"]
   end
 
+  test "Update: If project deleted not found" do
+    project_state = @project_deleted.full
+    project_state[:project_json] = '{ "title" : "Howdy Dudey", "description" : "My description", "id" : "' + @project.uuid + '" }'
+    project_state[:compiled_components] = "{ \"hello\" : 1 }"
+
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+    
+    put :update, { uuid: @project_deleted.uuid, 
+                   project: project_state }
+
+    assert_response :not_found
+  end
+
   test "Update: Changes to project_json and project meta updates project" do
     project_state = @project.full
     project_state[:project_json] = '{ "title" : "Howdy Dudey", "description" : "My description", "id" : "' + @project.uuid + '" }'
@@ -124,8 +177,8 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     put :update, { uuid: @project.uuid, 
                    project: FactoryGirl.attributes_for(:project, { title: "Howdy Dudey",
                                                                    description: "My description", 
-                                                                   project_json: project_state[:project_json]}),
-                  version: project_state[:version]}
+                                                                   project_json: project_state[:project_json],
+                                                                   commit_number: project_state[:commit_number]})}
     assert_response :ok
     res = JSON.parse @response.body
     @project.reload
@@ -193,11 +246,18 @@ class ApiUserProjectsControllerTest < ActionController::TestCase
     assert_response :forbidden
   end
 
+  test "Destroy: Requires project be shared" do
+    @request.headers["Authorization"] = "Token: #{@user.token}"
+
+    delete :destroy, uuid: @project_deleted.uuid
+    assert_response :not_found
+  end
+
   test "Destroy: Should be successful" do
     @request.headers["Authorization"] = "Token: #{@user.token}"
 
     delete :destroy, uuid: @project.uuid
-    assert_response :no_content
+    assert_response :ok
     
     assert_equal 9, @user.projects.where(deleted: false).count
     assert_equal 1, @user.projects.where(deleted: true).first.commits.count

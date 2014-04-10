@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :commits
 
-  scope :active, -> { where(deleted: false) }
+  scope :shared, -> { where(deleted: false) }
 
   attr_accessor :project_json
   attr_accessor :compiled_components
