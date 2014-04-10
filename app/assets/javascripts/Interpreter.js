@@ -325,19 +325,23 @@ Interpreter.prototype.evalBoolExpressionWithContext = function(exp, context)
       break;
     // handle >
     case ">":
-      return this.evalExpressionWithContext(val[0], context) > this.evalExpressionWithContext(val[1], context);
+      return Coercer.toNumber(this.evalExpressionWithContext(val[0], context)) >
+        Coercer.toNumber(this.evalExpressionWithContext(val[1], context));
       break;
     // handle <
     case "<":
-      return this.evalExpressionWithContext(val[0], context) < this.evalExpressionWithContext(val[1], context);
+      return Coercer.toNumber(this.evalExpressionWithContext(val[0], context)) < 
+        Coercer.toNumber(this.evalExpressionWithContext(val[1], context));
       break;
     // handle >=
     case ">=":
-      return this.evalExpressionWithContext(val[0], context) >= this.evalExpressionWithContext(val[1], context);
+      return Coercer.toNumber(this.evalExpressionWithContext(val[0], context)) >=
+        Coercer.toNumber(this.evalExpressionWithContext(val[1], context));
       break;
     // handle <=
     case "<=":
-      return this.evalExpressionWithContext(val[0], context) <= this.evalExpressionWithContext(val[1], context);
+      return Coercer.toNumber(this.evalExpressionWithContext(val[0], context)) <=
+        Coercer.toNumber(this.evalExpressionWithContext(val[1], context));
       break;
   }
 
