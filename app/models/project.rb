@@ -2,6 +2,8 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :commits
 
+  scope :active, -> { where(deleted: false) }
+
   attr_accessor :project_json
   attr_accessor :compiled_components
   attr_accessor :screenshot_base64
@@ -193,5 +195,13 @@ class Project < ActiveRecord::Base
     
     self.screenshot = data
     self.screenshot_file_name = "screenshot.png"
+  end
+
+  def increment_download_count
+    @commit = self.latest_commit
+    self.project_json = @commit.project_json
+    self.compiled_components = @commit.compiled_components
+    self.downloads = self.downloads + 1
+    self.save
   end
 end

@@ -6,7 +6,7 @@ class ApiUserProjectsController < ApplicationController
 
 
   def index
-    @projects = @api_user.projects.page(params[:page]).per(params[:per_page])
+    @projects = @api_user.projects.active.page(params[:page]).per(params[:per_page])
     render json: @projects.map { |p| p.meta }, status: :ok
   end
 
@@ -14,12 +14,16 @@ class ApiUserProjectsController < ApplicationController
     @project = @api_user.projects.find_by_uuid params[:project][:uuid]
 
     if @project
-      @fork = @project.fork @api_user, nil
+      if @project.deleted
+        @fork = @project.fork @api_user, nil
 
-      if @fork.errors.any?
-        render json: { errors: @fork.errors.full_messages }, status: :unprocessable_entity
+        if @fork.errors.any?
+          render json: { errors: @fork.errors.full_messages }, status: :unprocessable_entity
+        else
+          render json: @fork.full, status: :ok
+        end
       else
-        render json: @fork.full, status: :ok
+        render json: { errors: ["Project already exists"] }, status: :unprocessable_entity
       end
     else
       @project = @api_user.projects.new user_create_params
@@ -36,7 +40,11 @@ class ApiUserProjectsController < ApplicationController
     @project = @api_user.projects.find_by_uuid params[:uuid]
 
     if @project
-      render json: @project.full, status: :ok
+      if @project.deleted
+        head :not_found
+      else
+        render json: @project.full, status: :ok
+      end
     else
       head :forbidden
     end
@@ -46,6 +54,11 @@ class ApiUserProjectsController < ApplicationController
     @project = @api_user.projects.find_by_uuid params[:uuid]
 
     if @project
+      if @project.deleted
+        head :not_found
+        return
+      end
+
       if @project.update_attributes user_update_params
         render json: @project.full, status: :ok
       else

@@ -10,6 +10,9 @@ class ApiProjectsControllerTest < ActionController::TestCase
     (1..30).each do |i|
       @projects << FactoryGirl.create(:project, { user_id: @user.id } )
     end
+
+    @project_deleted = FactoryGirl.create(:project, { user_id: @user.id, deleted: true })
+
   end
 
   def teardown
@@ -23,6 +26,18 @@ class ApiProjectsControllerTest < ActionController::TestCase
     assert_response :ok
     res = JSON.parse @response.body
     assert_equal 10, res.size
+  end
+
+  test "Index: Deleted don't show" do
+    # @request.headers["Authorization"] = "Token: #{@user.token}"
+    get :index, { per_page: 100 }
+
+    assert_response :ok
+    res = JSON.parse @response.body
+    
+    res.each do |project|
+      assert project["uuid"] != @project_deleted.uuid
+    end
   end
 
   test "Index: Page params" do
@@ -90,10 +105,13 @@ class ApiProjectsControllerTest < ActionController::TestCase
 
   test "Download: Pulls down full project" do
     # @request.headers["Authorization"] = "Token: #{@user.token}"
+    assert_equal 0, @projects[0].downloads 
     
     get :download, uuid: @projects[0].uuid
     
     assert_response :ok
+
+    @projects[0].reload
 
     res = JSON.parse @response.body
     assert_equal 8, res.size

@@ -3,7 +3,7 @@ class ApiProjectsController < ApplicationController
   before_filter :setup_pagination
   
   def index
-    @projects = Project.select("*")
+    @projects = Project.active
     
     if params[:category]
       if params[:category] == "newest"
@@ -20,7 +20,7 @@ class ApiProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find_by_uuid params[:uuid]
+    @project = Project.active.find_by_uuid params[:uuid]
 
     if @project
       render json: @project.meta, status: :ok
@@ -30,9 +30,10 @@ class ApiProjectsController < ApplicationController
   end
 
   def download
-    @project = Project.find_by_uuid params[:uuid]
+    @project = Project.active.find_by_uuid params[:uuid]
 
     if @project
+      @project.increment_download_count
       render json: @project.full, status: :ok
     else
       head :not_found
