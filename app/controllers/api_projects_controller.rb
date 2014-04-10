@@ -24,7 +24,7 @@ class ApiProjectsController < ApplicationController
 
     if @project
       @project_hash = @project.meta
-      @project_hash[:screenshot_url] = @project.screenshot.url(:half)
+      @project_hash[:screenshot_url] = Url + @project.screenshot.url(:half)
       render json: @project_hash, status: :ok
     else
       head :not_found
