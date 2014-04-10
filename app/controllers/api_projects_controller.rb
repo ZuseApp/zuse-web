@@ -23,7 +23,9 @@ class ApiProjectsController < ApplicationController
     @project = Project.active.find_by_uuid params[:uuid]
 
     if @project
-      render json: @project.meta, status: :ok
+      @project_hash = @project.meta
+      @project_hash[:screenshot_url] = @project.screenshot.url(:half)
+      render json: @project_hash, status: :ok
     else
       head :not_found
     end
