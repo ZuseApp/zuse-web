@@ -20,7 +20,10 @@ function Interpreter()
   this.events = {};
   this.data_store = {};
 
+  // Delegate callbacks
   this.propertyUpdateCallback = null;
+  this.shouldDelegateProperty = null;
+  this.valueForProperty = null;
 }
 
 /*
@@ -207,12 +210,19 @@ Interpreter.prototype.evalExpressionWithContext = function(exp, context)
   // Handle a get
   if (key === "get")
   {
-    // If the key is in the environment return it
-    if (exp["get"] in context.environment)
-      return this.data_store[context.environment[exp["get"]]];
-    // Otherwise throw an exception
+    if (this.shouldDelegateProperty(context.id, exp["get"]))
+    {
+      return this.valueForProperty(context.id, exp["get"]);
+    }
     else
-      throw new Error("Free variable: " + exp["get"]);
+    {
+      // If the key is in the environment return it
+      if (exp["get"] in context.environment)
+        return this.data_store[context.environment[exp["get"]]];
+      // Otherwise throw an exception
+      else
+        throw new Error("Free variable: " + exp["get"]);
+    }
   }
   // Handle method call
   else if (key === "call")
@@ -404,7 +414,9 @@ Interpreter.prototype.triggerEventOnObjectWithParameters = function(event_name, 
 {
   // Make sure the object is in the event hash and that the event name is in the objects events
   if (!(object_id in this.events) || !(event_name in this.events[object_id]))
+  {
     return null;
+  }
 
   // get new context for event
   var new_context = this.events[object_id][event_name].context.contextWithNewEnvironment();

@@ -9,11 +9,11 @@
     $(function () {
       window.project_json = <%= raw @commit.project_json %>;
 
-      window.compiled_code = <%= raw @commit.compiled_code %>;
+      window.compiled_components = <%= raw @commit.compiled_components %>;
 
       var canvas = $("#viewport");
 
-      window.game = new ZuseAppEngine( { canvas: canvas, project_json: window.project_json, compiled_code: window.compiled_code } );
+      window.game = new ZuseAppEngine( { canvas: canvas, project_json: window.project_json, compiled_components: window.compiled_components } );
     });
   <% end %>
   <%= csrf_meta_tags %>

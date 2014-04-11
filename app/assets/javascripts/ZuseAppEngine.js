@@ -13,14 +13,28 @@ function ZuseAppEngine (options)
 
   // App code
   this.code = options.project_json;
-  this.compiled_code = options.compiled_code;
+  this.compiled_code = options.compiled_components.objects;
+  this.generators = options.compiled_components.generators;
   this.sprites = {};
+  this.timed_events = [];
 
   // Interpreter
   this.interpreter = new Interpreter();
   this.interpreter.runJSON(this.compiled_code);
   this.loadMethodsIntoInterpreter();
-  this.interpreter.propertyUpdateCallback = function (object_id, update) { that.interpreterObjectUpdatedProperty(object_id, update) };
+    
+  // Interpreter delegates
+  this.interpreter.propertyUpdateCallback = function (object_id, update) { 
+    that.interpreterObjectUpdatedProperty(object_id, update) 
+  };
+  
+  this.interpreter.shouldDelegateProperty = function (object_id, property_name) { 
+    that.interpreterShouldDelegateProperty(object_id, property_name);
+  };
+
+  this.interpreter.valueForProperty = function (object_id, property_name) {
+    that.interpreterValueForProperty(object_id, property_name);
+  };
 
   // jQuery canvas handle
   this.canvas = options.canvas;
@@ -88,6 +102,37 @@ ZuseAppEngine.prototype.interpreterObjectUpdatedProperty = function (object_id, 
 };
 
 /*
+ * Determines whether a property should be delegated to this
+ */
+ZuseAppEngine.prototype.interpreterShouldDelegateProperty = function(object_id, property_name)
+{
+  var properties = { x: "", y: "" };
+
+  return property_name in properties;
+};
+
+/*
+ * Delivers a property that should be delegated
+ */
+ZuseAppEngine.prototype.interpreterValueForProperty = function(object_id, property_name)
+{
+  var sprite = this.sprites[object_id];
+
+  if (property_name === "x")
+  {
+    return sprite.cx;
+  }
+  else if (property_name === "y")
+  {
+    return sprite.cy;
+  }
+  else
+  {
+    throw new Error("interpreterValueForProperty: property_name not found");
+  }
+};
+
+/*
  * Gets a count of the total number of distinct images
  * the sprites use
  */
@@ -111,7 +156,23 @@ ZuseAppEngine.prototype.getImageCount = function()
       images[path] = "";
       count++;
     }
-  } 
+  }
+
+  for (var i = 0; i < this.code.generators.length; i++)
+  { 
+    var obj = this.code.generators[i];
+
+    if (!("image" in obj))
+      continue;
+
+    var path = obj.image.path;
+
+    if (!(path in images))
+    {
+      images[path] = "";
+      count++;
+    }
+  }
 
   return count;
 };
@@ -129,6 +190,39 @@ ZuseAppEngine.prototype.loadImages = function ()
       continue;
 
     var path = obj.image.path;
+
+    // Temp fix for bug in json TODO
+    if (path.indexOf(".png") != (path.length - 4))
+    {
+      path = path + ".png";
+    }
+
+    var that = this;
+
+    if (!(path in this.images))
+    {
+      this.images[path] = new Image();
+      this.images[path].onload = function (e) { that.imageLoadSuccess(e); };
+      this.images[path].onerror = function (e) { that.imageLoadError(e); };
+      this.images[path].src = "/images/" + path;
+    }
+  }
+
+  for (var i = 0; i < this.code.generators.length; i++)
+  { 
+    var obj = this.code.generators[i];
+
+    if (!("image" in obj))
+      continue;
+
+    var path = obj.image.path;
+
+    // Temp fix for bug in json TODO
+    if (path.indexOf(".png") != (path.length - 4))
+    {
+      path = path + ".png";
+    }
+
     var that = this;
 
     if (!(path in this.images))
@@ -195,6 +289,7 @@ ZuseAppEngine.prototype.step = function ()
   this.detectSpriteCollision();
   this.boundSpriteByWorld();
   this.updateSpritePositions(elapsed);
+  this.runTimedEvents();
 };
 
 /*
@@ -258,31 +353,107 @@ ZuseAppEngine.prototype.loadMethodsIntoInterpreter = function ()
   methods.move = function (sprite_id, args)
   {
     that.applyVelocityToSprite(sprite_id, args[0], args[1]);
-  }
+  };
 
   // Remove sprite method
   methods.remove = function (sprite_id, args)
   {
     that.removeSpriteFromWorld(sprite_id);
-  }
+  };
 
   // Generate a sprite dynamically
   methods.generate = function (sprite_id, args)
   {
     that.generateFromGenerator(sprite_id, args[0], args[1], args[2])
-  }
+  };
+
+  methods.explosion = function (sprite_id, args)
+  {
+  };
+
+  methods.random_number = function (sprite_id, args)
+  {
+    return that.random_number(sprite_id, args[0], args[1]);
+  };
+
+  methods.every_seconds = function (sprite_id, args)
+  {
+    that.registerTimedEvent(sprite_id, args[0], args[1]);
+  };
 
   for (var k in methods)
     this.interpreter.loadMethod(k, methods[k]);
 };
 
 /*
+ * Registers a timed event
+ */
+ZuseAppEngine.prototype.registerTimedEvent = function(sprite_id, seconds, event_name)
+{
+  var timed_event = {};
+  
+  timed_event.interval = 1000 * seconds;
+  timed_event.event_name = event_name;
+  timed_event.sprite_id = sprite_id;
+
+  if (window.performance.now) 
+  {
+    timed_event.next_time = window.performance.now() + timed_event.interval;
+  } 
+  else 
+  {
+    timed_event.next_time = Date.now() + timed_event.interval;
+  }
+
+  this.timed_events.push(timed_event);
+};
+
+/*
+ * Generates a random number between low and high
+ */
+ZuseAppEngine.prototype.random_number = function (sprite_id, low, high)
+{
+  low = Math.floor(Coercer.toNumber(low));
+  high = Math.floor(Coercer.toNumber(high)) + 1;
+
+  return Math.floor(Math.random() * (high - low) + low);
+};
+
+/*
  * Puts a generated sprite into the world
  */
-ZuseAppEngine.prototype.generateFromGenerator = function(sprite_id, gen_name, x, y)
+ZuseAppEngine.prototype.generateFromGenerator = function(sprite_id, generator_id, x, y)
 {
+  var object = $.extend(true, {}, this.generators[generator_id]);
+  object.object.id = String.uuid();
 
-}
+  object.object.properties.x = x;
+  object.object.properties.y = y;
+
+  this.interpreter.runJSON(object);
+
+  var project_json_generator = null;
+
+  for (var i = 0; i < this.code.generators.length; i++)
+  {
+    var generator = this.code.generators[i];
+
+    if (generator.name === generator_id)
+    {
+      project_json_generator = generator;
+      break;
+    }
+  }
+
+  var sprite = $.extend(true, {}, project_json_generator);
+  sprite.id = object.object.id;
+  sprite.properties.x = x;
+  sprite.properties.y = y;
+
+  this.sprites[sprite.id] = this.createSprite(sprite);
+
+  this.interpreter.triggerEventOnObjectWithParameters("start", sprite.id, {});
+};
 
 /*
  * Applies a velocity to a sprite
@@ -301,7 +472,35 @@ ZuseAppEngine.prototype.removeSpriteFromWorld = function(sprite_id)
 {
   delete this.sprites[sprite_id];
   this.interpreter.removeObjectWithIdentifier(sprite_id);
-}
+};
+
+/*
+ * Triggers timed events if the time is right
+ */
+ZuseAppEngine.prototype.runTimedEvents = function()
+{
+  var now;
+
+  if (window.performance.now) 
+  {
+    now = window.performance.now();
+  } 
+  else 
+  {
+    now = Date.now();
+  }
+  
+  for (var i = 0; i < this.timed_events.length; i++)
+  {
+    var timed_event = this.timed_events[i];
+   
+    if (timed_event.next_time <= now)
+    {
+      timed_event.next_time = timed_event.next_time + timed_event.interval;
+      this.interpreter.triggerEventOnObjectWithParameters(timed_event.event_name, timed_event.sprite_id, {});
+    }
+  }
+};
 
 /*
  * Loads all the sprites into the engine
@@ -311,7 +510,16 @@ ZuseAppEngine.prototype.loadSprites = function ()
   for (var i = 0; i < this.code.objects.length; i++)
   { 
     var obj = this.code.objects[i];
-    var options = {};
+    this.sprites[obj.id] = this.createSprite(obj);
+  }
+};
+
+/*
+ * Creates a Sprite from object info
+ */
+ZuseAppEngine.prototype.createSprite = function (obj)
+{
+  var options = {};
 
     options.id = obj.id;
     options.x = obj.properties.x;
@@ -328,11 +536,18 @@ ZuseAppEngine.prototype.loadSprites = function ()
     }
     else if (obj.type === "image")
     {
-      options.image = this.images[obj.image.path];
+      var path = obj.image.path;
+
+      // Temp fix for bug in json TODO
+      if (path.indexOf(".png") != (path.length - 4))
+      {
+        path = path + ".png";
+      }
+
+      options.image = this.images[path];
     }
-    
-    this.sprites[obj.id] = new Sprite(options);
-  }
+
+    return new Sprite(options);
 };
 
 /*
@@ -345,16 +560,28 @@ ZuseAppEngine.prototype.boundSpriteByWorld = function()
     var s = this.sprites[k];
     
     if (s.left() <= 0 && s.vx < 0)
+    {
       s.vx = s.vx * -1;
+      this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: "world" });
+    }
 
     if (s.right() >= this.canvas.attr("width") && s.vx > 0)
+    {
       s.vx = s.vx * -1;
+      this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: "world" });
+    }
 
     if (s.top() <= 0 && s.vy < 0)
+    {
       s.vy = s.vy * -1;
+      this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: "world" });
+    }
       
     if (s.bottom() >= this.canvas.attr("height") && s.vy > 0)
+    {
       s.vy = s.vy * -1;
+      this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: "world" });
+    }
   }
 };
 
@@ -371,7 +598,9 @@ ZuseAppEngine.prototype.updateSpritePositions = function (dt)
     s.updatePosition(dt);
 
     if (this.isSpriteOutsideWorld(s))
+    {
       s.restorePosition(old_position);
+    }
   }
 };
 
@@ -480,9 +709,9 @@ ZuseAppEngine.prototype.detectSpriteCollision = function ()
 
       if (cg.contains(temp_sprites[q].collision_group) && s.collidesWith(temp_sprites[q]))
       {
+        this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: temp_sprites[q].collision_group });
+        this.interpreter.triggerEventOnObjectWithParameters("collision", temp_sprites[q].id, { other_group: s.collision_group });
         s.resolveCollisionWith(temp_sprites[q]);
-        this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_sprite: temp_sprites[q].id });
-        this.interpreter.triggerEventOnObjectWithParameters("collision", temp_sprites[q].id, { other_sprite: s.id });
       }
     }
   }
