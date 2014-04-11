@@ -500,7 +500,7 @@ ZuseAppEngine.prototype.runTimedEvents = function()
 {
   var now;
 
-  if (window.performance.now) 
+  if (window.performance) 
   {
     now = window.performance.now();
   } 
