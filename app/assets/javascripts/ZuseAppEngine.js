@@ -415,7 +415,7 @@ ZuseAppEngine.prototype.registerTimedEvent = function(sprite_id, seconds, event_
   timed_event.event_name = event_name;
   timed_event.sprite_id = sprite_id;
 
-  if (window.performance.now) 
+  if (window.performance) 
   {
     timed_event.next_time = window.performance.now() + timed_event.interval;
   } 
