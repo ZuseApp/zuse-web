@@ -99,6 +99,14 @@ ZuseAppEngine.prototype.interpreterObjectUpdatedProperty = function (object_id, 
   {
     s.text = update.text;
   }
+  else if ("width" in update)
+  {
+    s.width = update.width;
+  }
+  else if ("height" in update)
+  {
+    s.height = update.height;
+  }
 };
 
 /*
