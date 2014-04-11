@@ -728,9 +728,9 @@ ZuseAppEngine.prototype.detectSpriteCollision = function ()
 
       if (cg.contains(temp_sprites[q].collision_group) && s.collidesWith(temp_sprites[q]))
       {
+        s.resolveCollisionWith(temp_sprites[q]);
         this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: temp_sprites[q].collision_group });
         this.interpreter.triggerEventOnObjectWithParameters("collision", temp_sprites[q].id, { other_group: s.collision_group });
-        s.resolveCollisionWith(temp_sprites[q]);
       }
     }
   }

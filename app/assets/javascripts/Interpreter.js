@@ -425,7 +425,9 @@ Interpreter.prototype.triggerEventOnObjectWithParameters = function(event_name, 
     return null;
   }
 
-  for (var i = 0; i < this.events[object_id][event_name].length; i++)
+  var event_code = this.events[object_id][event_name];
+  
+  for (var i = 0; i < event_code.length; i++)
   {
     // get new context for event
     var new_context = this.events[object_id][event_name][i].context.contextWithNewEnvironment();
