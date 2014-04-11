@@ -138,7 +138,6 @@ ZuseAppEngine.prototype.interpreterValueForProperty = function(object_id, proper
  */
 ZuseAppEngine.prototype.getImageCount = function()
 {
-  var count = 0;
   var images = {};
 
   // For each sprite, determine if it has an image
@@ -151,10 +150,15 @@ ZuseAppEngine.prototype.getImageCount = function()
 
     var path = obj.image.path;
 
+    // Temp fix for bug in json TODO
+    if (path.indexOf(".png") != (path.length - 4))
+    {
+      path = path + ".png";
+    }
+
     if (!(path in images))
     {
       images[path] = "";
-      count++;
     }
   }
 
@@ -167,14 +171,21 @@ ZuseAppEngine.prototype.getImageCount = function()
 
     var path = obj.image.path;
 
+    // Temp fix for bug in json TODO
+    if (path.indexOf(".png") != (path.length - 4))
+    {
+      path = path + ".png";
+    }
+
     if (!(path in images))
     {
       images[path] = "";
-      count++;
     }
   }
 
-  return count;
+  console.log(images);
+  console.log(Object.keys(images).length);
+  return Object.keys(images).length;
 };
 
 /*
