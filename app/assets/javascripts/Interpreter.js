@@ -98,7 +98,14 @@ Interpreter.prototype.runCodeWithContext = function(obj, context)
   // Handle on_event
   if (key === "on_event")
   {
-    this.events[context.id][obj[key]["name"]] = { code: obj[key]["code"], context: context }; 
+    var event_code_array = this.events[context.id][obj[key]["name"]];
+
+    if (!event_code_array)
+    {
+      this.events[context.id][obj[key]["name"]] = [];
+    }
+
+    this.events[context.id][obj[key]["name"]].push({ code: obj[key]["code"], context: context }); 
   }
   // Handle set
   else if (key === "set")
@@ -289,7 +296,7 @@ Interpreter.prototype.evalMathExpressionWithContext = function(exp, context)
     // Handle division
     case "/":
       var first = Coercer.toNumber(this.evalExpressionWithContext(val.slice(0,1)[0], context));
-       return val.slice(1).foldl(function(a,b) { return Coercer.toNumber(a) / Coercer.toNumber(that.evalExpressionWithContext(b, context)); }, first);
+       return val.slice(1).foldl(function(a,b) { var divisor = Coercer.toNumber(that.evalExpressionWithContext(b, context)); if (divisor === 0) divisor = 1; return Coercer.toNumber(a) / divisor; }, first);
       break;
     // Handle modulus
     case "%":
@@ -418,17 +425,20 @@ Interpreter.prototype.triggerEventOnObjectWithParameters = function(event_name, 
     return null;
   }
 
-  // get new context for event
-  var new_context = this.events[object_id][event_name].context.contextWithNewEnvironment();
+  for (var i = 0; i < this.events[object_id][event_name].length; i++)
+  {
+    // get new context for event
+    var new_context = this.events[object_id][event_name][i].context.contextWithNewEnvironment();
   
-  // Add parameters to store
-  var params = this.addPropertiesToDataStore(parameters);
+    // Add parameters to store
+    var params = this.addPropertiesToDataStore(parameters);
 
-  // Add these to the context
-  new_context.addPropertiesToEnvironment(params);
+    // Add these to the context
+    new_context.addPropertiesToEnvironment(params);
 
-  // Run the code
-  return this.runSuiteWithContext(this.events[object_id][event_name].code, new_context);
+    // Run the code
+    this.runSuiteWithContext(this.events[object_id][event_name][i].code, new_context);
+  }
 };
 
 /*

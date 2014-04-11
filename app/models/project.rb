@@ -167,7 +167,7 @@ class Project < ActiveRecord::Base
       description: self.description,
       downloads: self.downloads,
       username: self.user.username,
-      screenshot_url: Url + self.screenshot.url(:quarter),
+      screenshot_url: Url + self.screenshot.url(:half),
       commit_number: self.latest_commit.id
     }
   end
