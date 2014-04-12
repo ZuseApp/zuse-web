@@ -180,23 +180,23 @@ Sprite.prototype.resolveCollisionWith = function (other_sprite)
       dynamic.vy = dynamic.vy * -1;
 
       if (dynamic.top() <= static.bottom())
-        dynamic.setX(dynamic.cx + verticalOverlap)
+        dynamic.setX(dynamic.cx + verticalOverlap + 1)
       else
-        dynamic.setX(dynamic.cx - verticalOverlap)
+        dynamic.setX(dynamic.cx - verticalOverlap - 1)
 
       if (dynamic.left() <= static.right())
-        dynamic.setY(dynamic.cy + horizontalOverlap)
+        dynamic.setY(dynamic.cy + horizontalOverlap + 1)
       else
-        dynamic.setY(dynamic.cy - horizontalOverlap)
+        dynamic.setY(dynamic.cy - horizontalOverlap - 1)
     }
     else if (horizontalOverlap > verticalOverlap)
     {
       dynamic.vy = dynamic.vy * -1;
 
       if (dynamic.top() <= static.bottom())
-        dynamic.setX(dynamic.cx + verticalOverlap)
+        dynamic.setX(dynamic.cx + verticalOverlap + 1)
       else
-        dynamic.setX(dynamic.cx - verticalOverlap)
+        dynamic.setX(dynamic.cx - verticalOverlap - 1)
 
     }
     else if (horizontalOverlap < verticalOverlap)
@@ -204,9 +204,9 @@ Sprite.prototype.resolveCollisionWith = function (other_sprite)
       dynamic.vx = dynamic.vx * -1;
 
       if (dynamic.left() <= static.right())
-        dynamic.setY(dynamic.cy + horizontalOverlap)
+        dynamic.setY(dynamic.cy + horizontalOverlap + 1)
       else
-        dynamic.setY(dynamic.cy - horizontalOverlap)
+        dynamic.setY(dynamic.cy - horizontalOverlap - 1)
     }
   }
   else
