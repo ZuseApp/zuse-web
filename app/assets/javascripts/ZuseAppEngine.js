@@ -29,11 +29,11 @@ function ZuseAppEngine (options)
   };
   
   this.interpreter.shouldDelegateProperty = function (object_id, property_name) { 
-    that.interpreterShouldDelegateProperty(object_id, property_name);
+    return that.interpreterShouldDelegateProperty(object_id, property_name);
   };
 
   this.interpreter.valueForProperty = function (object_id, property_name) {
-    that.interpreterValueForProperty(object_id, property_name);
+    return that.interpreterValueForProperty(object_id, property_name);
   };
 
   // jQuery canvas handle
@@ -132,7 +132,7 @@ ZuseAppEngine.prototype.interpreterValueForProperty = function(object_id, proper
   }
   else if (property_name === "y")
   {
-    return sprite.cy;
+    return Math.abs(sprite.cy - this.canvas.innerHeight());
   }
   else
   {

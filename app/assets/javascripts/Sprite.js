@@ -153,145 +153,92 @@ Sprite.prototype.resolveCollisionWith = function (other_sprite)
   if (!this.collidesWith(other_sprite))
     return;
 
-  var s = other_sprite;
   var overlap = this.getOverlapVector(other_sprite);
+  var static = null;
+  var dynamic = null;
 
-  if (overlap.x)
+  if (!this.hasVelocity() && other_sprite.hasVelocity())
   {
-    if (this.vx == 0 || s.vx == 0)
+    static = this;
+    dynamic = other_sprite;
+  }
+
+  if (!other_sprite.hasVelocity() && this.hasVelocity())
+  {
+    static = other_sprite;
+    dynamic = this;
+  }
+
+  if (static != null)
+  {
+    if (overlap.x)
     {
-      var sprite;
-
-      if (this.vx == 0)
-        sprite = s;
-      else
-        sprite = this;
-
-      if (sprite.vx < 0)
+      if (dynamic.vx < 0)
       {
-        sprite.setX(sprite.cx + overlap.x);
+        if (dynamic.left() < static.right())
+          dynamic.setX(dynamic.cx + overlap.x);
+        else
+          dynamic.setX(dynamic.cx - overlap.x);
       }
       else
       {
-        sprite.setX(sprite.cx - overlap.x);
+        if (dynamic.right() > static.left())
+          dynamic.setX(dynamic.cx - overlap.x);
+        else
+          dynamic.setX(dynamic.cx + overlap.x);
       }
-
-      sprite.vx = sprite.vx * -1;
-    }
-    else if (this.vx < 0 && s.vx < 0)
-    {
-      var sprite;
-
-      if (this.vx < s.vx)
-        sprite = this;
-      else
-        sprite = s;
-
-      sprite.setX(sprite.cx + overlap.x);
-      sprite.vx = sprite.vx * -1;
-    }
-    else if (this.vx > 0 && s.vx > 0)
-    {
-      var sprite;
-
-      if (this.vx > s.vx)
-        sprite = this;
-      else
-        sprite = s;
-
-      sprite.setX(sprite.cx - overlap.x);
-      sprite.vx = sprite.vx * -1;
+      dynamic.vx = dynamic.vx * -1;
     }
     else
     {
-      var left;
-      var right;
-
-      if (this.vx > 0)
+      if (dynamic.yx < 0)
       {
-        left = this;
-        right = s;
+        if (dynamic.bottom() > static.top())
+          dynamic.setY(dynamic.cy - overlap.y);
+        else
+          dynamic.setY(dynamic.cy + overlap.y);
       }
       else
       {
-        left = s;
-        right = this;
+        if (dynamic.top() < static.bottom())
+          dynamic.setY(dynamic.cy + overlap.y);
+        else
+          dynamic.setY(dynamic.cy - overlap.y);
       }
-
-      left.setX(left.cx - Math.floor(overlap.x/2));
-      right.setX(right.cx + Math.ceil(overlap.x/2));
-      left.vx = left.vx * -1;
-      right.vx = right.vx * -1;
+      
+      dynamic.vy = dynamic.vy * -1;
     }
   }
   else
   {
-    if (this.vy == 0 || s.vy == 0)
+    if (overlap.x)
     {
-      var sprite;
-
-      if (this.vy == 0)
-        sprite = s;
-      else
-        sprite = this;
-
-      if (sprite.vy < 0)
+      if (s.vx < 0)
       {
-        sprite.setY(sprite.cy + overlap.y);
+        s.setX(dynamic.cx + overlap.x);
       }
       else
       {
-        sprite.setY(sprite.cy - overlap.y);
+        dynamic.setX(dynamic.cx - overlap.x);
       }
-
-      sprite.vy = sprite.vy * -1;
-    }
-    else if (this.vy < 0 && s.vy < 0)
-    {
-      var sprite;
-
-      if (this.vy < s.vy)
-        sprite = this;
-      else
-        sprite = s;
-
-      sprite.setY(sprite.cy + overlap.y);
-      sprite.vy = sprite.vy * -1;
-    }
-    else if (this.vy > 0 && s.vy > 0)
-    {
-      var sprite;
-
-      if (this.vy > s.vy)
-        sprite = this;
-      else
-        sprite = s;
-
-      sprite.setY(sprite.cy - overlap.y);
-      sprite.vy = sprite.vy * -1;
+      dynamic.vx = dynamic.vx * -1;
     }
     else
     {
-      var top;
-      var bottom;
-
-      if (this.vx > 0)
+      if (s.yx < 0)
       {
-        top = this;
-        bottom = s;
+        dynamic.setY(dynamic.cy + overlap.y);
       }
       else
       {
-        top = s;
-        bottom = this;
+        dynamic.setY(dynamic.cy - overlap.y);
       }
-
-      top.setX(top.cx - Math.floor(overlap.x/2));
-      bottom.setX(bottom.cx + Math.ceil(overlap.x/2));
-      top.vx = top.vx * -1;
-      bottom.vx = bottom.vx * -1;
+      
+      dynamic.vy = dynamic.vy * -1;
     }
   }
+  
+
 };
 
 /*

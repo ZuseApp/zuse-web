@@ -217,7 +217,8 @@ Interpreter.prototype.evalExpressionWithContext = function(exp, context)
   // Handle a get
   if (key === "get")
   {
-    if (this.shouldDelegateProperty(context.id, exp["get"]))
+    var should = this.shouldDelegateProperty(context.id, exp["get"]);
+    if (should)
     {
       return this.valueForProperty(context.id, exp["get"]);
     }
