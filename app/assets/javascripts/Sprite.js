@@ -145,9 +145,173 @@ Sprite.prototype.collidesWith = function (other_sprite)
 };
 
 /*
- * Resolves a collision with another sprite by bouncing (elastic collision)
+ * Resolves a collision with another sprite by bouncing
  */
 Sprite.prototype.resolveCollisionWith = function (other_sprite)
+{
+  // Check if still colliding
+  if (!this.collidesWith(other_sprite))
+    return;
+
+  var s = other_sprite;
+  var overlap = this.getOverlapVector(other_sprite);
+
+  if (overlap.x)
+  {
+    if (this.vx == 0 || s.vx == 0)
+    {
+      var sprite;
+
+      if (this.vx == 0)
+        sprite = s;
+      else
+        sprite = this;
+
+      if (sprite.vx < 0)
+      {
+        sprite.setX(sprite.cx + overlap.x);
+      }
+      else
+      {
+        sprite.setX(sprite.cx - overlap.x);
+      }
+
+      sprite.vx = sprite.vx * -1;
+    }
+    else if (this.vx < 0 && s.vx < 0)
+    {
+      var sprite;
+
+      if (this.vx < s.vx)
+        sprite = this;
+      else
+        sprite = s;
+
+      sprite.setX(sprite.cx + overlap.x);
+      sprite.vx = sprite.vx * -1;
+    }
+    else if (this.vx > 0 && s.vx > 0)
+    {
+      var sprite;
+
+      if (this.vx > s.vx)
+        sprite = this;
+      else
+        sprite = s;
+
+      sprite.setX(sprite.cx - overlap.x);
+      sprite.vx = sprite.vx * -1;
+    }
+    else
+    {
+      var left;
+      var right;
+
+      if (this.vx > 0)
+      {
+        left = this;
+        right = s;
+      }
+      else
+      {
+        left = s;
+        right = this;
+      }
+
+      left.setX(left.cx - Math.floor(overlap.x/2));
+      right.setX(right.cx + Math.ceil(overlap.x/2));
+      left.vx = left.vx * -1;
+      right.vx = right.vx * -1;
+    }
+  }
+  else
+  {
+    if (this.vy == 0 || s.vy == 0)
+    {
+      var sprite;
+
+      if (this.vy == 0)
+        sprite = s;
+      else
+        sprite = this;
+
+      if (sprite.vy < 0)
+      {
+        sprite.setY(sprite.cy + overlap.y);
+      }
+      else
+      {
+        sprite.setY(sprite.cy - overlap.y);
+      }
+
+      sprite.vy = sprite.vy * -1;
+    }
+    else if (this.vy < 0 && s.vy < 0)
+    {
+      var sprite;
+
+      if (this.vy < s.vy)
+        sprite = this;
+      else
+        sprite = s;
+
+      sprite.setY(sprite.cy + overlap.y);
+      sprite.vy = sprite.vy * -1;
+    }
+    else if (this.vy > 0 && s.vy > 0)
+    {
+      var sprite;
+
+      if (this.vy > s.vy)
+        sprite = this;
+      else
+        sprite = s;
+
+      sprite.setY(sprite.cy - overlap.y);
+      sprite.vy = sprite.vy * -1;
+    }
+    else
+    {
+      var top;
+      var bottom;
+
+      if (this.vx > 0)
+      {
+        top = this;
+        bottom = s;
+      }
+      else
+      {
+        top = s;
+        bottom = this;
+      }
+
+      top.setX(top.cx - Math.floor(overlap.x/2));
+      bottom.setX(bottom.cx + Math.ceil(overlap.x/2));
+      top.vx = top.vx * -1;
+      bottom.vx = bottom.vx * -1;
+    }
+  }
+};
+
+/*
+ * Returns overlap vector
+ */
+Sprite.prototype.getOverlapVector = function (other_sprite)
+{
+  var x = (other_sprite.width/2 + this.width/2) - (Math.abs(other_sprite.cx - this.cx));
+  var y = (other_sprite.height/2 + this.height/2) - (Math.abs(other_sprite.cy - this.cy));
+
+  if (x <= y)
+    return { x: Math.ceil(x), y: null };
+  else
+    return { x: null, y: Math.ceil(y) };
+}
+
+/*
+ * Resolves a collision with another sprite by bouncing (elastic collision)
+ */
+Sprite.prototype.resolveCollisionWithOld = function (other_sprite)
 {
   var diff = 0;
   var width = 0;
@@ -176,6 +340,7 @@ Sprite.prototype.resolveCollisionWith = function (other_sprite)
 
     if (horizontalOverlap == verticalOverlap)
     {
+      console.log("even steven");
       dynamic.vx = dynamic.vx * -1;
       dynamic.vy = dynamic.vy * -1;
 
@@ -191,6 +356,7 @@ Sprite.prototype.resolveCollisionWith = function (other_sprite)
     }
     else if (horizontalOverlap > verticalOverlap)
     {
+      console.log("horizontal");
       dynamic.vy = dynamic.vy * -1;
 
       if (dynamic.top() <= static.bottom())
@@ -201,6 +367,7 @@ Sprite.prototype.resolveCollisionWith = function (other_sprite)
     }
     else if (horizontalOverlap < verticalOverlap)
     {
+      console.log("vertical");
       dynamic.vx = dynamic.vx * -1;
 
       if (dynamic.left() <= static.right())
