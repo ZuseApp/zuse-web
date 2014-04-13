@@ -353,7 +353,7 @@ ZuseAppEngine.prototype.registerMouseEventHandlers = function ()
 
   $(document).on("mouseup", function (e){
     that.mouseDown = false;
-    that.interpreter.triggerEventOnObjectWithParameters("touch_ended", that.currentObject.id, { touch_x: x, touch_y: that.canvas.innerHeight() - y });
+    that.interpreter.triggerEventOnObjectWithParameters("touch_ended", that.currentObject.id, { touch_x: that.currentObject.cx, touch_y: that.canvas.innerHeight() - that.currentObject.cy });
     that.currentObject = null;
     console.log("mouse up");
   });
