@@ -322,7 +322,8 @@ ZuseAppEngine.prototype.registerMouseEventHandlers = function ()
 
   $(document).on("mousedown", function (e){
     var id = null;
-    
+    var handler;
+
     if (e.target.nodeName !== "CANVAS")
       return;
     
@@ -330,32 +331,74 @@ ZuseAppEngine.prototype.registerMouseEventHandlers = function ()
     var y = e.pageY - e.target.offsetTop - 1;
    
     that.mouseDown = true;
+
     if (id = that.hitObject(x, y))
     {
+      e.preventDefault();
+
       that.currentObject = that.sprites[id];
+      
+      if (x < that.currentObject.width/2)
+        x = that.currentObject.width/2;
+      else if (x > that.canvas.innerWidth() - that.currentObject.width/2)
+        x = that.canvas.innerWidth() - that.currentObject.width/2;
+
+      if (y < that.currentObject.height/2)
+        y = that.currentObject.height/2;
+      else if (y > that.canvas.innerHeight() - that.currentObject.height/2)
+        y = that.canvas.innerHeight() - that.currentObject.height/2;
+
       that.interpreter.triggerEventOnObjectWithParameters("touch_began", id, { touch_x: x, touch_y: that.canvas.innerHeight() - y });
     }
-  });
+  
 
-  $(document).on("mousemove", function (e) {
-    if (!that.mouseDown || that.currentObject == null)
-      return;
+    $(document).on("mousemove", handler = function (e) {
+      if (!that.mouseDown || that.currentObject == null)
+        return;
 
-    if (e.target.nodeName === "CANVAS")
-    {
-      var x = e.pageX - e.target.offsetLeft - 1;
-      var y = e.pageY - e.target.offsetTop - 1;
+      if (e.target.nodeName === "CANVAS")
+      {
+        e.preventDefault();
 
-      that.interpreter.triggerEventOnObjectWithParameters("touch_moved", that.currentObject.id, { touch_x: x, touch_y: that.canvas.innerHeight() - y });
-    }
+        var x = e.pageX - e.target.offsetLeft - 1;
+        var y = e.pageY - e.target.offsetTop - 1;
 
-  });
+        if (x < that.currentObject.width/2)
+          x = that.currentObject.width/2;
+        else if (x > that.canvas.innerWidth() - that.currentObject.width/2)
+          x = that.canvas.innerWidth() - that.currentObject.width/2;
 
-  $(document).on("mouseup", function (e){
-    that.mouseDown = false;
-    that.interpreter.triggerEventOnObjectWithParameters("touch_ended", that.currentObject.id, { touch_x: that.currentObject.cx, touch_y: that.canvas.innerHeight() - that.currentObject.cy });
-    that.currentObject = null;
-    console.log("mouse up");
+        if (y < that.currentObject.height/2)
+          y = that.currentObject.height/2;
+        else if (y > that.canvas.innerHeight() - that.currentObject.height/2)
+          y = that.canvas.innerHeight() - that.currentObject.height/2;
+
+        that.interpreter.triggerEventOnObjectWithParameters("touch_moved", that.currentObject.id, { touch_x: x, touch_y: that.canvas.innerHeight() - y });
+      }
+      else
+      {
+        $(document).off("mousemove", handler);
+        
+        that.mouseDown = false;
+        that.interpreter.triggerEventOnObjectWithParameters("touch_ended", that.currentObject.id, 
+            { touch_x: that.currentObject.cx, touch_y: that.canvas.innerHeight() - that.currentObject.cy });
+        that.currentObject = null;
+      }
+
+    });
+
+    $(document).on("mouseup", function (e){
+      
+      $(document).off("mousemove", handler);
+
+      if (!that.mouseDown || that.currentObject == null)
+        return;
+
+      that.mouseDown = false;
+      that.interpreter.triggerEventOnObjectWithParameters("touch_ended", that.currentObject.id, 
+        { touch_x: that.currentObject.cx, touch_y: that.canvas.innerHeight() - that.currentObject.cy });
+      that.currentObject = null;
+    });
   });
   
 };
