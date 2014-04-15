@@ -1,25 +1,24 @@
+<div class="container green">
+  <div id="shared-project-container">
+    <div id="project-meta">
+      <h1 id="title"><%= @title %></h1>
+      
+      <p id="description">
+        This project's description, detailing its functionality, would go here if this project had a description detailing its functionality.
+      </p>
 
-<div id="shared-project-container">
-  <div id="project-meta">
-    <h1 id="title"><%= @title %></h1>
-    
-    <p id="description">
-      This project's description, detailing its functionality, would go here if this project had a description detailing its functionality.
-    </p>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= shared_project_url(@shared_project) %>" data-text="Just played <%= @title %>">Tweet</a>
+      <div class="fb-share-button" data-href="<%= shared_project_url(@shared_project) %>" data-type="button_count" style="top: -5px; margin-left: -20px;"></div>
+    </div>
 
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= shared_project_url(@shared_project) %>" data-text="Just played <%= @title %>">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    
-    <div class="fb-share-button" data-href="<%= shared_project_url(@shared_project) %>" data-type="button_count" style="top: -5px"></div>
-  </div>
-
-  <div id="canvas-container">
-    <canvas id="viewport"></canvas>
-    <div id="canvas-controls">
-      <div id="play-panel">
-        <span id="refresh" title="start" class="icon ion-refresh"></span>
+    <div id="canvas-container">
+      <canvas id="viewport"></canvas>
+      <div id="canvas-controls">
+        <div id="play-panel">
+          <span id="refresh" title="start" class="icon ion-refresh"></span>
+        </div>
       </div>
     </div>
+    
   </div>
-  
 </div>

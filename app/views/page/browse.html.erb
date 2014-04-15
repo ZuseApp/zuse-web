@@ -1,0 +1,38 @@
+<div class="container purple">
+  <div id="browse-container">
+    <div class="filter-controls">
+      
+      <form method="get">
+        <label id="browse-by-label">Browse by:</label>
+        <select name="category" onchange="this.form.submit()">
+          <option value="popular" <%= "selected=\"selected\"" if params[:category] == "popular"%>>Most Popular</option>
+          <option value="newest" <%= "selected=\"selected\"" if params[:category] == "newest"%>>Newest</option>
+        </select>
+      </form>
+
+      <%= paginate @projects %>
+    </div>
+    <div id="results">
+      <div class="row">
+      <% count = 1 %>
+      <% @projects.each do |project| %>
+        <div class="game">
+          <a href="<%= project_path(project) %>"><img class="screenshot" alt="<%= project.title %>" src="<%= project.screenshot.url(:half) %>" /></a>
+          <a class="text-link" href="<%= project_path(project) %>"><%= project.title %></a>
+          <p><b>Downloads:</b> <%= project.downloads %></p>
+          <p><b>Created:</b> <%= project.created_at %></p>
+        </div>
+
+        <% if ((count % 5) == 0 && count < params[:per_page].to_i) %>
+          </div>
+          <div class="row">
+        <% end %>
+        <% count = count + 1 %>
+      <% end %>
+      </div>
+      <div class="filter-controls-bottom">
+       <%= paginate @projects %>
+      </div>
+    </div>
+  </div>
+</div>

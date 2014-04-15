@@ -9,7 +9,7 @@ Myapp::Application.routes.draw do
   post "/api/v1/user/auth" => "api_users#authenticate"
 
   # User specific project access
-  resources :projects, param: :uuid, path: "/api/v1/user/projects", controller: :api_user_projects, except: [ :edit, :new ]
+  resources :projects, param: :uuid, path: "/api/v1/user/projects", controller: :api_user_projects, except: [ :edit, :new ], as: :api_v1_user_projects
 
   # General project access
   get "/api/v1/projects" => "api_projects#index"
@@ -27,7 +27,9 @@ Myapp::Application.routes.draw do
   resources :shared_projects, only: [ :show ]
   resources :projects, only: [ :show ]
 
-  root 'page#index'
+  root 'shared_projects#index'
+
+  get "/browse" => "page#browse", as: :browse_projects
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

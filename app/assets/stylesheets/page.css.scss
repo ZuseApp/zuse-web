@@ -1,3 +1,83 @@
 // Place all the styles related to the Page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#browse-container
+{
+  width: 1024px;
+  margin: 0px auto;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+
+  .filter-controls-bottom
+  {
+    position: relative;
+    overflow: hidden;
+    height: 30px;
+  }
+
+  .row
+  {
+    overflow: hidden;
+    clear: both;
+    padding: 20px;
+  }
+
+  nav.pagination
+  {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    span.current { color: #793A8D; }
+
+    a:link { color:#986AA6; }
+    a:visited { color:#986AA6; }
+    a:hover { color:#793A8D; }
+    a:active { color:#986AA6; }
+  }
+
+  #browse-by-label
+  {
+    color: #793A8D;
+    font-size: 16pt;
+  }
+
+  #results
+  {
+    .game
+    {
+      float: left;
+      margin: 15px 15px 15px 15px;
+      width: 160px;
+
+      .screenshot
+      {
+        width: 160px;
+        height: 262px;
+        display: block;
+        margin: 0 auto;
+        box-shadow: 0px 0px 20px 0px #793A8D;
+      }
+
+      a:link { color:#793A8D; text-decoration: none; }
+      a:visited { color:#793A8D; }
+      a:hover { color:#793A8D; text-decoration: underline; }
+      a:active { color:#793A8D; }
+
+      .text-link
+      {
+        display: block;
+        padding: 10px 0px;
+      }
+
+      p
+      {
+        margin: 0px;
+        font-size: 10pt;
+        color: #986AA6;
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@
 {
   width: 660px;
   margin: 0px auto;
+  margin-top: 20px;
 
   #project-meta
   {
@@ -15,14 +16,29 @@
     #title
     {
       margin: 0px;
-      color: #fff;
+      color: #A46026;
       font-weight: 600;
     }
 
     #description
     {
-      color: #888;
+      color: #B87C44;
     }
+  }
+
+  #viewport
+  {
+    box-shadow: 0px 0px 40px 0px #A46026;
+  }
+
+  .icon
+  {
+    color: #A46026;
+  }
+
+  .icon:hover
+  {
+    text-shadow: 0px 0px 20px #A46026;
   }
 
 }

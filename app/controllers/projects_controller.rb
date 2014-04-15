@@ -9,4 +9,5 @@ class ProjectsController < ApplicationController
       redirect_to "/404.html", status: :not_found
     end
   end
+
 end

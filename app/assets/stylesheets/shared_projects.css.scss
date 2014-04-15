@@ -6,6 +6,8 @@
 {
   width: 660px;
   margin: 0px auto;
+  margin-top: 20px;
+  height: 100%;
 
   #project-meta
   {
@@ -15,16 +17,77 @@
     #title
     {
       margin: 0px;
-      color: #fff;
+      color: #616632;
       font-weight: 600;
     }
 
     #description
     {
-      color: #888;
+      color: #878f45;
     }
+
+    
+  }
+
+  #viewport
+  {
+    box-shadow: 0px 0px 40px 0px #616632;
+  }
+
+  .icon
+  {
+    color: #616632;
+  }
+
+  .icon:hover
+  {
+    text-shadow: 0px 0px 20px #616632;
   }
 
 }
 
+#root-container
+{
+  width: 860px;
+  margin: 0px auto;
+  margin-top: 20px;
+  height: 100%;
+
+  #project-meta
+  {
+    width: 320px;
+    float: left;
+
+    #title
+    {
+      margin: 0px;
+      color: #234A60;
+      font-weight: 600;
+    }
+
+    #description p
+    {
+      color: #2F6787;
+      font-size: 14pt;
+    }
+
+    
+  }
+
+  #viewport
+  {
+    box-shadow: 0px 0px 40px 0px #234A60;
+  }
+
+  .icon
+  {
+    color: #234A60;
+  }
+
+  .icon:hover
+  {
+    text-shadow: 0px 0px 20px #234A60;
+  }
+
+}
 

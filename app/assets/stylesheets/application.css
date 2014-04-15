@@ -14,8 +14,9 @@
 
 body
 {
-  background-color: #333333;
+  margin: 0;
   font-family: "Open Sans", sans-serif;
+  background-color: #333333;
 }
 
 canvas
@@ -29,6 +30,29 @@ canvas
 #header
 {
   width: 100%;
+  background-color: #333333;
+  padding: 10px;
+}
+
+#navigation
+{
+  float: right;
+  list-style-type: none;
+  margin: 0px;
+  margin-top: 4px;
+  margin-right: 20px;
+  padding: 10px;
+  font-size: 14pt;
+}
+
+#navigation a:link { color:#FFf;  }
+#navigation a:visited { color:#fff; } 
+#navigation a:hover { color:#FCE07B; text-decoration: underline; }
+#navigation a:active { color:#fff; }
+
+#navigation li
+{
+  float: left;
 }
 
 #logo
@@ -71,3 +95,37 @@ canvas
   display: none;
 }
 
+.green
+{
+  background-color: #cfd675;
+}
+
+.yellow
+{
+  background-color: #FEB773;
+}
+
+.blue
+{
+  background-color: #74BDE5;
+}
+
+.purple
+{
+  background-color: #dba1ed;
+}
+
+.container
+{
+  padding: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#footer
+{
+  text-align: center;
+  padding: 30px;
+  background-color: #333333;
+  color: #fff;
+}
