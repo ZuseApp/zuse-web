@@ -17,6 +17,7 @@ function ZuseAppEngine (options)
   this.generators = options.compiled_components.generators;
   this.sprites = {};
   this.timed_events = [];
+  this.removed_sprites = [];
 
   // Interpreter
   this.interpreter = new Interpreter();
@@ -319,6 +320,7 @@ ZuseAppEngine.prototype.step = function ()
   this.boundSpriteByWorld();
   this.updateSpritePositions(elapsed);
   this.runTimedEvents();
+  this.removeSpritesFromWorld();
 };
 
 /*
@@ -431,7 +433,7 @@ ZuseAppEngine.prototype.loadMethodsIntoInterpreter = function ()
   // Remove sprite method
   methods.remove = function (sprite_id, args)
   {
-    that.removeSpriteFromWorld(sprite_id);
+    that.registerSpriteRemoval(sprite_id);
   };
 
   // Generate a sprite dynamically
@@ -462,6 +464,12 @@ ZuseAppEngine.prototype.loadMethodsIntoInterpreter = function ()
   methods.in_seconds = function (sprite_id, args)
   {
     that.registerTimedEvent(sprite_id, args[0], args[1], false, false);
+  };
+
+  methods.bounce = function (sprite_id, args)
+  {
+    that.bounceSpriteOffWorld(sprite_id);
+    that.bounceSpriteOffOtherSprite(sprite_id);
   };
 
   for (var k in methods)
@@ -557,12 +565,40 @@ ZuseAppEngine.prototype.applyVelocityToSprite = function (sprite_id, direction, 
 };
 
 /*
+ * Register sprite removal
+ */
+ZuseAppEngine.prototype.registerSpriteRemoval = function (sprite_id)
+{
+  var sprite = {};
+  sprite.id = sprite_id;
+  sprite.removal_time = Date.now() + 50;
+
+  this.removed_sprites.push(sprite);
+};
+
+/*
  * Removes a sprite from the world
  */
-ZuseAppEngine.prototype.removeSpriteFromWorld = function(sprite_id)
+ZuseAppEngine.prototype.removeSpritesFromWorld = function()
 {
-  delete this.sprites[sprite_id];
-  this.interpreter.removeObjectWithIdentifier(sprite_id);
+  var removed_sprites = this.removed_sprites;
+  var now = Date.now();
+  this.removed_sprites = [];
+
+  for (var i = 0; i < removed_sprites.length; i++)
+  {
+    var sprite = removed_sprites[i];
+
+    if (sprite.removal_time < now)
+    {
+      delete this.sprites[sprite.id];
+      this.interpreter.removeObjectWithIdentifier(sprite.id);
+    }
+    else
+    {
+      this.removed_sprites.push(sprite);
+    }
+  }
 };
 
 /*
@@ -664,27 +700,51 @@ ZuseAppEngine.prototype.boundSpriteByWorld = function()
     
     if (s.left() <= 0 && s.vx < 0)
     {
-      s.vx = s.vx * -1;
       this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: "world" });
     }
 
     if (s.right() >= this.canvas.attr("width") && s.vx > 0)
     {
-      s.vx = s.vx * -1;
       this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: "world" });
     }
 
     if (s.top() <= 0 && s.vy < 0)
     {
-      s.vy = s.vy * -1;
       this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: "world" });
     }
       
     if (s.bottom() >= this.canvas.attr("height") && s.vy > 0)
     {
-      s.vy = s.vy * -1;
       this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: "world" });
     }
+  }
+};
+
+/*
+ * Keeps the sprite within the world
+ */
+ZuseAppEngine.prototype.bounceSpriteOffWorld = function(sprite_id)
+{
+  var s = this.sprites[sprite_id];
+  
+  if (s.left() <= 0 && s.vx < 0)
+  {
+    s.vx = s.vx * -1;
+  }
+
+  if (s.right() >= this.canvas.attr("width") && s.vx > 0)
+  {
+    s.vx = s.vx * -1;
+  }
+
+  if (s.top() <= 0 && s.vy < 0)
+  {
+    s.vy = s.vy * -1;
+  }
+    
+  if (s.bottom() >= this.canvas.attr("height") && s.vy > 0)
+  {
+    s.vy = s.vy * -1;
   }
 };
 
@@ -818,13 +878,43 @@ ZuseAppEngine.prototype.detectSpriteCollision = function ()
 
       if (cg.contains(temp_sprites[q].collision_group) && s.collidesWith(temp_sprites[q]))
       {
-        s.resolveCollisionWith(temp_sprites[q]);
         this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: temp_sprites[q].collision_group });
         this.interpreter.triggerEventOnObjectWithParameters("collision", temp_sprites[q].id, { other_group: s.collision_group });
       }
     }
   }
 };
+
+/*
+ * Determines if sprites are colliding
+ */
+ZuseAppEngine.prototype.bounceSpriteOffOtherSprite = function (sprite_id)
+{
+  var temp_sprites = {};
+
+  for (var k in this.sprites)
+  {
+    if (this.sprites[k].collision_group in this.collision_groups)
+      temp_sprites[k] = this.sprites[k];
+  }
+
+  if (!(this.sprites[sprite_id].collision_group in this.collision_groups))
+    return;
+
+  var s = this.sprites[sprite_id];
+  delete temp_sprites[sprite_id];
+
+  for (var q in temp_sprites)
+  {
+    var cg = this.collision_groups[s.collision_group];
+
+    if (cg.contains(temp_sprites[q].collision_group) && s.collidesWith(temp_sprites[q]))
+    {
+      s.resolveCollisionWith(temp_sprites[q]);
+    }
+  }
+};
+
 
 /*
  * Determins if sprite is outside of the world
