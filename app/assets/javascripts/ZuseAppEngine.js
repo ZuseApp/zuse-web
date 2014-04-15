@@ -571,7 +571,7 @@ ZuseAppEngine.prototype.registerSpriteRemoval = function (sprite_id)
 {
   var sprite = {};
   sprite.id = sprite_id;
-  sprite.removal_time = Date.now() + 50;
+  sprite.removal_time = Date.now() + 1;
 
   this.removed_sprites.push(sprite);
 };
