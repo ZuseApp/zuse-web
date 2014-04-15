@@ -276,7 +276,6 @@ ZuseAppEngine.prototype.imageLoadSuccess = function (e)
   {
     this.registerMouseEventHandlers();
     this.loadSprites();
-    this.interpreter.runJSON(this.compiled_code);
     this.start();
   }
 };
@@ -297,9 +296,62 @@ ZuseAppEngine.prototype.start = function ()
   console.log("Zuse App Started");
   var that = this;
 
+  this.interpreter.runJSON(this.compiled_code);
+
   this.animationFrameId = requestAnimationFrame(function (ts) { that.draw(ts); });
   this.timeoutId = setTimeout( function () { that.step(); }, 1000 / 60 );
   this.interpreter.triggerEvent("start");
+};
+
+/*
+ * Pauses app engine
+ */
+ZuseAppEngine.prototype.pause = function ()
+{
+  clearInterval(this.timeoutId);
+  cancelAnimationFrame(this.animationFrameId);
+};
+
+/*
+ * Continues the app
+ */
+ZuseAppEngine.prototype.continue = function ()
+{
+  var that = this;
+  var timed_events = this.timed_events;
+  var now;
+
+  if (window.performance) 
+  {
+    now = window.performance.now();
+  } 
+  else 
+  {
+    now = Date.now();
+  }
+
+  for (var i = 0; i < timed_events.length; i++)
+  {
+    var timed_event = timed_events[i];
+
+    if (timed_event.runs_immediately)
+      timed_event.next_time = now;
+    else
+      timed_event.next_time = now + timed_event.interval;
+  }
+
+  this.animationFrameId = requestAnimationFrame(function (ts) { that.draw(ts); });
+  this.timeoutId = setTimeout( function () { that.step(); }, 1000 / 60 );
+};
+
+/*
+ * Stops app engine
+ */
+ZuseAppEngine.prototype.stop = function ()
+{
+  clearInterval(this.timeoutId);
+  cancelAnimationFrame(this.animationFrameId);
+  this.clearCtx();
 };
 
 /*
@@ -487,6 +539,7 @@ ZuseAppEngine.prototype.registerTimedEvent = function(sprite_id, seconds, event_
   timed_event.event_name = event_name;
   timed_event.sprite_id = sprite_id;
   timed_event.repeats = repeats;
+  timed_event.runs_immediately = runs_immediately;
   
   var time_to_add;
 

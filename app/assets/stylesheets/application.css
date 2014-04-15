@@ -37,3 +37,37 @@ canvas
   height: 50px;
 }
 
+#canvas-container
+{
+  width: 320px;
+  float:left;
+  margin-left: 20px;
+}
+
+#canvas-controls
+{
+  padding: 10px;
+}
+
+#canvas-controls .icon
+{
+  font-size: 30pt;
+  cursor: pointer;
+  color: #fff;
+}
+
+#canvas-controls .icon:hover
+{
+  text-shadow: 0px 0px 20px #fff;
+}
+
+#stop-pause-panel span:nth-child(2)
+{
+  margin-left: 15px;
+}
+
+#stop-pause-panel
+{
+  display: none;
+}
+
