@@ -108,6 +108,10 @@ ZuseAppEngine.prototype.interpreterObjectUpdatedProperty = function (object_id, 
   {
     s.height = update.height;
   }
+  else if ("angle" in update)
+  {
+    s.angle = update.angle;
+  }
 };
 
 /*
@@ -115,7 +119,7 @@ ZuseAppEngine.prototype.interpreterObjectUpdatedProperty = function (object_id, 
  */
 ZuseAppEngine.prototype.interpreterShouldDelegateProperty = function(object_id, property_name)
 {
-  var properties = { x: "", y: "" };
+  var properties = { x: "", y: "" , angle: ""};
 
   return property_name in properties;
 };
@@ -134,6 +138,10 @@ ZuseAppEngine.prototype.interpreterValueForProperty = function(object_id, proper
   else if (property_name === "y")
   {
     return Math.abs(sprite.cy - this.canvas.innerHeight());
+  }
+  else if (property_name === "angle")
+  {
+    return sprite.angle;
   }
   else
   {
@@ -443,7 +451,17 @@ ZuseAppEngine.prototype.loadMethodsIntoInterpreter = function ()
 
   methods.every_seconds = function (sprite_id, args)
   {
-    that.registerTimedEvent(sprite_id, args[0], args[1]);
+    that.registerTimedEvent(sprite_id, args[0], args[1], true, true);
+  };
+
+  methods.after_seconds = function (sprite_id, args)
+  {
+    that.registerTimedEvent(sprite_id, args[0], args[1], true, false);
+  };
+
+  methods.in_seconds = function (sprite_id, args)
+  {
+    that.registerTimedEvent(sprite_id, args[0], args[1], false, false);
   };
 
   for (var k in methods)
@@ -451,23 +469,31 @@ ZuseAppEngine.prototype.loadMethodsIntoInterpreter = function ()
 };
 
 /*
- * Registers a timed event
+ * Registers an after timed event
  */
-ZuseAppEngine.prototype.registerTimedEvent = function(sprite_id, seconds, event_name)
+ZuseAppEngine.prototype.registerTimedEvent = function(sprite_id, seconds, event_name, repeats, runs_immediately)
 {
   var timed_event = {};
-  
+
   timed_event.interval = 1000 * seconds;
   timed_event.event_name = event_name;
   timed_event.sprite_id = sprite_id;
+  timed_event.repeats = repeats;
+  
+  var time_to_add;
+
+  if (runs_immediately)
+    time_to_add = 0;
+  else
+    time_to_add = timed_event.interval;
 
   if (window.performance) 
   {
-    timed_event.next_time = window.performance.now() + timed_event.interval;
+    timed_event.next_time = window.performance.now() + time_to_add;
   } 
   else 
   {
-    timed_event.next_time = Date.now() + timed_event.interval;
+    timed_event.next_time = Date.now() + time_to_add;
   }
 
   this.timed_events.push(timed_event);
@@ -554,16 +580,27 @@ ZuseAppEngine.prototype.runTimedEvents = function()
   {
     now = Date.now();
   }
-  
-  for (var i = 0; i < this.timed_events.length; i++)
+ 
+  var events = this.timed_events;
+  this.timed_events = [];
+
+  for (var i = 0; i < events.length; i++)
   {
-    var timed_event = this.timed_events[i];
+    var timed_event = events[i];
+    var ran = false;
    
     if (timed_event.next_time <= now)
     {
+      ran = true;
       timed_event.next_time = timed_event.next_time + timed_event.interval;
       this.interpreter.triggerEventOnObjectWithParameters(timed_event.event_name, timed_event.sprite_id, {});
     }
+
+    if (timed_event.repeats || (!timed_event.repeats && !ran))
+    {
+      this.timed_events.push(timed_event);
+    }
+
   }
 };
 
@@ -594,6 +631,7 @@ ZuseAppEngine.prototype.createSprite = function (obj)
     options.physics_body = obj.physics_body;
     options.collision_group = obj.collision_group;
     options.type = obj.type;
+    options.angle = obj.angle;
 
     if (obj.type === "text")
     {
@@ -691,20 +729,26 @@ ZuseAppEngine.prototype.draw = function (timestamp)
   for (var k in this.sprites)
   {
     var s = this.sprites[k];
-       
+    
+    this.ctx.save();
+    this.ctx.translate(s.cx, s.cy);
+    this.ctx.rotate(-s.angle * Math.PI/180);
+
     if (s.type === "image")
     {
-      this.ctx.drawImage(s.image, s.x, s.y, s.width, s.height);
+      this.ctx.drawImage(s.image, -s.width/2, -s.height/2, s.width, s.height);
     }
     else if (s.type === "text")
     {
       this.ctx.textAlign = "center";
       this.ctx.textBaseline = "middle";
-      this.ctx.font = "30px Helvetica";
+      this.ctx.font = "17px Helvetica";
 
-      this.ctx.fillText(s.text, s.cx, s.cy, s.width);
+      this.ctx.fillText(s.text, 0, 0, s.width);
 
     }
+
+    this.ctx.restore();
   }
 
 };

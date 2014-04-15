@@ -21,6 +21,7 @@ function Sprite (options)
   this.y = Math.round(this.cy - (this.height/2));
   this.vx = 0.0;
   this.vy = 0.0;
+  this.angle = options.angle;
   this.physics_body = options.physics_body;
   this.collision_group = options.collision_group;
   this.type = options.type;
