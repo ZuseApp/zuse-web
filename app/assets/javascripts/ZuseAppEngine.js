@@ -318,9 +318,9 @@ ZuseAppEngine.prototype.step = function ()
   this.lastStep = now;
   this.detectSpriteCollision();
   this.boundSpriteByWorld();
-  this.removeSpritesFromWorld();
   this.updateSpritePositions(elapsed);
   this.runTimedEvents();
+  this.removeSpritesFromWorld();
 };
 
 /*
@@ -589,8 +589,15 @@ ZuseAppEngine.prototype.removeSpritesFromWorld = function()
   {
     var sprite = removed_sprites[i];
 
-    delete this.sprites[sprite.id];
-    this.interpreter.removeObjectWithIdentifier(sprite.id);
+    if (sprite.removal_time < now)
+    {
+      delete this.sprites[sprite.id];
+      this.interpreter.removeObjectWithIdentifier(sprite.id);
+    }
+    else
+    {
+      this.removed_sprites.push(sprite);
+    }
   }
 };
 
