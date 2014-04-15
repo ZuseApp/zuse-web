@@ -53,6 +53,7 @@ canvas
 #navigation li
 {
   float: left;
+  margin-left: 20px;
 }
 
 #logo
