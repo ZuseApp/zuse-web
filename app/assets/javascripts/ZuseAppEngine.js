@@ -20,8 +20,8 @@ function ZuseAppEngine (options)
 
   // Interpreter
   this.interpreter = new Interpreter();
-  this.interpreter.runJSON(this.compiled_code);
   this.loadMethodsIntoInterpreter();
+  
     
   // Interpreter delegates
   this.interpreter.propertyUpdateCallback = function (object_id, update) { 
@@ -35,6 +35,7 @@ function ZuseAppEngine (options)
   this.interpreter.valueForProperty = function (object_id, property_name) {
     return that.interpreterValueForProperty(object_id, property_name);
   };
+
 
   // jQuery canvas handle
   this.canvas = options.canvas;
@@ -266,6 +267,7 @@ ZuseAppEngine.prototype.imageLoadSuccess = function (e)
   {
     this.registerMouseEventHandlers();
     this.loadSprites();
+    this.interpreter.runJSON(this.compiled_code);
     this.start();
   }
 };
@@ -493,8 +495,6 @@ ZuseAppEngine.prototype.generateFromGenerator = function(sprite_id, generator_id
   object.object.properties.x = x;
   object.object.properties.y = y;
 
-  this.interpreter.runJSON(object);
-
   var project_json_generator = null;
 
   for (var i = 0; i < this.code.generators.length; i++)
@@ -514,6 +514,8 @@ ZuseAppEngine.prototype.generateFromGenerator = function(sprite_id, generator_id
   sprite.properties.y = y;
 
   this.sprites[sprite.id] = this.createSprite(sprite);
+  
+  this.interpreter.runJSON(object);
 
   this.interpreter.triggerEventOnObjectWithParameters("start", sprite.id, {});
 };
