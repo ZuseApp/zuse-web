@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
       redirect_to "/404.html", status: :not_found
     end
 
-    @project.downloads = @project.downloads + 1
+    @project.views = @project.views + 1
     @project.project_json = @commit.project_json
     @project.compiled_components = @commit.compiled_components
     @project.save
