@@ -20,7 +20,7 @@
           <a href="<%= project_path(project) %>"><img class="screenshot" alt="<%= project.title %>" src="<%= project.screenshot.url(:half) %>" /></a>
           <a class="text-link" href="<%= project_path(project) %>"><%= project.title %></a>
           <p><b>Username:</b> <%= project.user.username %></p>
-          <p><b>Downloads:</b> <%= project.views %></p>
+          <p><b>Views:</b> <%= project.views %></p>
           <p><b>Created:</b> <%= project.created_at %></p>
         </div>
 
