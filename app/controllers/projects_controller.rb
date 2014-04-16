@@ -10,6 +10,8 @@ class ProjectsController < ApplicationController
     end
 
     @project.downloads = @project.downloads + 1
+    @project.project_json = @commit.project_json
+    @project.compiled_components = @commit.compiled_components
     @project.save
   end
 
