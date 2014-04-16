@@ -8,6 +8,9 @@ class ProjectsController < ApplicationController
     if @project.nil?
       redirect_to "/404.html", status: :not_found
     end
+
+    @project.downloads = @project.downloads + 1
+    @project.save
   end
 
 end
