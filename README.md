@@ -10,7 +10,7 @@ In order to install the web portion of ZuseHub follow these steps:
 4. run `bundle install`
 4. run `rake db:create:all`
 5. run `rake db:migrate`
-6. run `rails` s to boot up the server
+6. run `rails s` to boot up the server
 
 
 ZuseHub has some front end pages but relies on content coming from iOS clients that are sharing projects onto ZuseHub through the api that it provides.
