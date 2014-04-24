@@ -19,6 +19,9 @@ class PageController < ApplicationController
     @projects = @projects.page(params[:page]).per(params[:per_page])
   end
 
+  def tutorial
+  end
+
   def setup_pagination
     if params[:page].nil?
       params[:page] = 1
