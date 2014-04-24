@@ -113,6 +113,10 @@ ZuseAppEngine.prototype.interpreterObjectUpdatedProperty = function (object_id, 
   {
     s.angle = update.angle;
   }
+  else if ("hidden" in update)
+  {
+    s.hidden = update.hidden;
+  }
 };
 
 /*
@@ -719,6 +723,7 @@ ZuseAppEngine.prototype.createSprite = function (obj)
     options.height = obj.properties.height;
     options.physics_body = obj.physics_body;
     options.collision_group = obj.collision_group;
+    options.hidden = obj.hidden;
     options.type = obj.type;
     options.angle = obj.angle;
 
@@ -846,6 +851,11 @@ ZuseAppEngine.prototype.draw = function (timestamp)
     this.ctx.save();
     this.ctx.translate(s.cx, s.cy);
     this.ctx.rotate(-s.angle * Math.PI/180);
+
+    if (s.hidden)
+    {
+      this.ctx.globalAlpha = 0.0;
+    }
 
     if (s.type === "image")
     {
