@@ -923,23 +923,24 @@ ZuseAppEngine.prototype.detectSpriteCollision = function ()
 
   for (var k in this.sprites)
   {
-    if (this.sprites[k].collision_group in this.collision_groups)
+    //if (this.sprites[k].collision_group in this.collision_groups)
       temp_sprites[k] = this.sprites[k];
   }
 
   for (var k in this.sprites)
   {
-    if (!(this.sprites[k].collision_group in this.collision_groups))
-      continue;
+    //if (!(this.sprites[k].collision_group in this.collision_groups))
+    //  continue;
 
     var s = this.sprites[k];
     delete temp_sprites[k];
 
     for (var q in temp_sprites)
     {
-      var cg = this.collision_groups[s.collision_group];
-
-      if (cg.contains(temp_sprites[q].collision_group) && s.collidesWith(temp_sprites[q]))
+      //var cg = this.collision_groups[s.collision_group];
+      //cg.contains(temp_sprites[q].collision_group) && 
+      
+      if (s.collidesWith(temp_sprites[q]))
       {
         this.interpreter.triggerEventOnObjectWithParameters("collision", s.id, { other_group: temp_sprites[q].collision_group });
         this.interpreter.triggerEventOnObjectWithParameters("collision", temp_sprites[q].id, { other_group: s.collision_group });
@@ -957,21 +958,21 @@ ZuseAppEngine.prototype.bounceSpriteOffOtherSprite = function (sprite_id)
 
   for (var k in this.sprites)
   {
-    if (this.sprites[k].collision_group in this.collision_groups)
+    //if (this.sprites[k].collision_group in this.collision_groups)
       temp_sprites[k] = this.sprites[k];
   }
 
-  if (!(this.sprites[sprite_id].collision_group in this.collision_groups))
-    return;
+  //if (!(this.sprites[sprite_id].collision_group in this.collision_groups))
+  //  return;
 
   var s = this.sprites[sprite_id];
   delete temp_sprites[sprite_id];
 
   for (var q in temp_sprites)
   {
-    var cg = this.collision_groups[s.collision_group];
-
-    if (cg.contains(temp_sprites[q].collision_group) && s.collidesWith(temp_sprites[q]))
+    //var cg = this.collision_groups[s.collision_group];
+    // cg.contains(temp_sprites[q].collision_group) && 
+    if (s.collidesWith(temp_sprites[q]))
     {
       s.resolveCollisionWith(temp_sprites[q]);
     }
